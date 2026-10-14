@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import pb from '@/lib/pocketbase/client'
 import { toast } from '@/hooks/use-toast'
+import { Logo } from '@/components/Logo'
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState('')
@@ -48,8 +49,8 @@ export default function ForgotPassword() {
             to="/"
             className="inline-flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
           >
-            <div className="w-12 h-12 rounded-2xl bg-gradient-to-br from-[#004173] to-[#0979B0] flex items-center justify-center text-white shadow-md shadow-[#004173]/20">
-              <span className="font-serif font-black text-2xl tracking-tight">3S</span>
+            <div className="p-1.5 rounded-2xl bg-white shadow-md shadow-[#004173]/10 border border-slate-100 flex items-center justify-center">
+              <Logo height={48} showText={false} alt="3S Corretora de Seguros" />
             </div>
             <div className="text-left">
               <span className="font-serif font-bold text-xl leading-tight text-[#004173] block">

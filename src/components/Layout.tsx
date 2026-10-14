@@ -5,18 +5,21 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
 
 export default function Layout() {
   const location = useLocation()
   const isDashboardRoute = location.pathname.startsWith('/painel/contatos')
 
   return (
-    <div className="flex flex-col min-h-screen bg-white text-slate-900">
+    <div className="flex flex-col min-h-screen bg-white text-slate-900 relative">
       {!isDashboardRoute && <Header />}
       <main className={`flex-grow ${!isDashboardRoute ? 'pt-[76px]' : ''}`}>
         <Outlet />
       </main>
       {!isDashboardRoute && <Footer />}
+      {/* Botão flutuante de WhatsApp fixo em todas as telas públicas */}
+      {!isDashboardRoute && <WhatsAppFloatingButton />}
     </div>
   )
 }

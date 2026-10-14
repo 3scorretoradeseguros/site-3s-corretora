@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { MapPin, Phone, Mail, ShieldCheck, Lock, ExternalLink, Heart } from 'lucide-react'
 import { COMPANY_INFO } from '@/types'
+import { Logo } from '@/components/Logo'
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
@@ -13,8 +14,8 @@ export const Footer: React.FC = () => {
           {/* Coluna 1: Marca e Proposta */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#0979B0] to-[#0CB7F2] flex items-center justify-center text-white shadow-md">
-                <span className="font-serif font-black text-xl tracking-tight">3S</span>
+              <div className="p-1 rounded-xl bg-white shadow-md flex items-center justify-center">
+                <Logo height={42} showText={false} alt="3S Corretora de Seguros" />
               </div>
               <div className="flex flex-col">
                 <span className="font-serif font-bold text-lg leading-tight text-white tracking-tight">

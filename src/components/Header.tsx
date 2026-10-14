@@ -4,6 +4,7 @@ import { ShieldCheck, Menu, X, Phone, Lock, ChevronRight, ExternalLink } from 'l
 import { Button } from '@/components/ui/button'
 import { COMPANY_INFO } from '@/types'
 import { useAuth } from '@/contexts/AuthContext'
+import { Logo } from '@/components/Logo'
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -58,10 +59,10 @@ export const Header: React.FC = () => {
           {/* Logo */}
           <Link
             to="/"
-            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg"
+            className="flex items-center gap-3 group focus:outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-lg transition-transform duration-200 group-hover:opacity-95"
           >
-            <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#004173] to-[#0979B0] flex items-center justify-center text-white shadow-md shadow-[#004173]/20 group-hover:scale-105 transition-transform duration-200">
-              <span className="font-serif font-black text-xl tracking-tight">3S</span>
+            <div className="p-1 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center group-hover:scale-105 transition-transform duration-200">
+              <Logo height={42} showText={false} alt="3S Corretora de Seguros" />
             </div>
             <div className="flex flex-col">
               <span className="font-serif font-bold text-lg leading-tight text-[#004173] tracking-tight">

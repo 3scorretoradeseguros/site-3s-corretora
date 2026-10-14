@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import { Logo } from '@/components/Logo'
 import {
   Inbox,
   CheckCircle,
@@ -212,8 +213,8 @@ export default function ContactsDashboard() {
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center gap-4">
               <Link to="/" className="flex items-center gap-2.5 group">
-                <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-[#004173] to-[#0979B0] flex items-center justify-center text-white shadow-sm font-serif font-black text-base">
-                  3S
+                <div className="p-1 rounded-xl bg-white shadow-sm border border-slate-200/80 flex items-center justify-center">
+                  <Logo height={32} showText={false} alt="3S Corretora de Seguros" />
                 </div>
                 <div className="flex flex-col">
                   <span className="font-serif font-bold text-sm leading-tight text-[#004173]">
