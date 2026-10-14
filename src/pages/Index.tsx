@@ -14,7 +14,6 @@ import {
   Umbrella,
   Cross,
 } from 'lucide-react'
-import logoSrc from '@/assets/logo3s-v2-removebg-preview-d36a8.png'
 import { Button } from '@/components/ui/button'
 import { ServicesGrid } from '@/components/ServicesGrid'
 import { ContactForm } from '@/components/ContactForm'
@@ -112,103 +111,253 @@ export default function Index() {
                 {/* Círculo com gradiente suave */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-100/60 via-blue-50/40 to-slate-100/40 border border-sky-100 shadow-inner" />
 
-                {/* Ilustração do Escudo com gradiente e logo oficial 3S */}
-                <div className="relative z-10 w-64 h-72 sm:w-72 sm:h-80 flex items-center justify-center">
-                  {/* Escudo SVG em camadas com gradientes corporativos */}
+                {/* Ilustração do Escudo com texto integrado "CUIDADO & PROTEÇÃO" */}
+                <div className="relative z-10 w-64 h-72 sm:w-72 sm:h-80 flex items-center justify-center select-none">
+                  {/* Escudo SVG em camadas com gradientes corporativos (#004173, #0979B0, #0CB7F2) */}
                   <svg
                     viewBox="0 0 240 280"
-                    className="w-full h-full drop-shadow-[0_20px_35px_rgba(0,65,115,0.28)]"
+                    className="w-full h-full drop-shadow-[0_20px_35px_rgba(0,65,115,0.30)]"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
+                    role="img"
+                    aria-label="Escudo de proteção 3S Corretora: Cuidado e Proteção"
                   >
                     <defs>
-                      {/* Gradiente exterior do escudo */}
+                      {/* Borda externa com gradiente da marca */}
                       <linearGradient
-                        id="shieldGradOuter"
+                        id="shieldOuterGlow"
                         x1="120"
-                        y1="0"
+                        y1="4"
                         x2="120"
-                        y2="280"
+                        y2="276"
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0%" stopColor="#0CB7F2" />
-                        <stop offset="45%" stopColor="#0979B0" />
+                        <stop offset="50%" stopColor="#0979B0" />
                         <stop offset="100%" stopColor="#004173" />
                       </linearGradient>
 
-                      {/* Gradiente interno do escudo */}
+                      {/* Corpo do escudo: azul nobre e profundo para contraste de texto */}
                       <linearGradient
-                        id="shieldGradInner"
+                        id="shieldBodyGrad"
                         x1="40"
-                        y1="20"
+                        y1="16"
                         x2="200"
-                        y2="260"
+                        y2="265"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop offset="0%" stopColor="#FFFFFF" />
-                        <stop offset="25%" stopColor="#F5F9FD" />
-                        <stop offset="100%" stopColor="#E2EEF8" />
+                        <stop offset="0%" stopColor="#004f8c" />
+                        <stop offset="55%" stopColor="#004173" />
+                        <stop offset="100%" stopColor="#002b4d" />
                       </linearGradient>
 
-                      {/* Brilho decorativo no topo */}
+                      {/* Brilho superior suave sem ofuscar texto */}
                       <linearGradient
-                        id="shieldSheen"
+                        id="shieldHighlight"
                         x1="120"
-                        y1="12"
+                        y1="16"
                         x2="120"
-                        y2="140"
+                        y2="100"
                         gradientUnits="userSpaceOnUse"
                       >
-                        <stop offset="0%" stopColor="#0CB7F2" stopOpacity="0.35" />
-                        <stop offset="100%" stopColor="#0CB7F2" stopOpacity="0" />
+                        <stop offset="0%" stopColor="#0CB7F2" stopOpacity="0.4" />
+                        <stop offset="100%" stopColor="#0979B0" stopOpacity="0" />
+                      </linearGradient>
+
+                      {/* Gradiente da insígnia/emblema central */}
+                      <linearGradient
+                        id="emblemGrad"
+                        x1="120"
+                        y1="40"
+                        x2="120"
+                        y2="95"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stopColor="#0CB7F2" />
+                        <stop offset="100%" stopColor="#0979B0" />
+                      </linearGradient>
+
+                      {/* Gradiente da faixa de destaque onde apoia o texto */}
+                      <linearGradient
+                        id="bannerGrad"
+                        x1="120"
+                        y1="125"
+                        x2="120"
+                        y2="225"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stopColor="#00355e" />
+                        <stop offset="100%" stopColor="#00223d" />
                       </linearGradient>
                     </defs>
 
-                    {/* Contorno externo com borda suave */}
+                    {/* Camada 1: Moldura externa com brilho nas cores oficiais */}
                     <path
-                      d="M120 8 L218 36 C218 132 186 214 120 270 C54 214 22 132 22 36 L120 8 Z"
-                      fill="url(#shieldGradOuter)"
+                      d="M120 6 L220 36 C220 134 188 218 120 274 C52 218 20 134 20 36 L120 6 Z"
+                      fill="url(#shieldOuterGlow)"
                     />
 
-                    {/* Corpo interno branco/perolado com borda sutil */}
+                    {/* Camada 2: Contorno intermediário ciano sutil */}
                     <path
-                      d="M120 20 L204 44 C204 126 176 198 120 248 C64 198 36 126 36 44 L120 20 Z"
-                      fill="url(#shieldGradInner)"
+                      d="M120 12 L212 39 C212 130 182 210 120 264 C58 210 28 130 28 39 L120 12 Z"
+                      fill="#0CB7F2"
+                      fillOpacity="0.35"
+                    />
+
+                    {/* Camada 3: Corpo principal do escudo azul escuro corporativo */}
+                    <path
+                      d="M120 16 L206 43 C206 128 178 204 120 256 C62 204 34 128 34 43 L120 16 Z"
+                      fill="url(#shieldBodyGrad)"
                       stroke="#0CB7F2"
                       strokeWidth="1.5"
-                      strokeOpacity="0.4"
+                      strokeOpacity="0.6"
                     />
 
-                    {/* Sheen/reflexo superior */}
+                    {/* Camada 4: Brilho/reflexo na cúpula do escudo */}
                     <path
-                      d="M120 23 L198 46 C198 100 176 148 120 178 C64 148 42 100 42 46 L120 23 Z"
-                      fill="url(#shieldSheen)"
+                      d="M120 18 L200 45 C190 90 160 110 120 110 C80 110 50 90 40 45 L120 18 Z"
+                      fill="url(#shieldHighlight)"
                     />
 
-                    {/* Anel de destaque central */}
+                    {/* Camada 5: Emblema / Brasão Superior de Proteção */}
                     <circle
                       cx="120"
-                      cy="128"
-                      r="56"
-                      fill="#FFFFFF"
-                      stroke="#0979B0"
+                      cy="66"
+                      r="26"
+                      fill="#002b4d"
+                      stroke="#0CB7F2"
                       strokeWidth="2"
-                      strokeOpacity="0.2"
-                      className="filter drop-shadow-sm"
                     />
-                  </svg>
+                    <circle cx="120" cy="66" r="21" fill="url(#emblemGrad)" fillOpacity="0.25" />
+                    {/* Ícone clássico de escudo + check de proteção no brasão */}
+                    <path
+                      d="M120 50 L134 56 C134 68 128 77 120 82 C112 77 106 68 106 56 L120 50 Z"
+                      fill="#0CB7F2"
+                    />
+                    <path
+                      d="M114 65 L118.5 69.5 L127 60"
+                      stroke="#FFFFFF"
+                      strokeWidth="2.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
 
-                  {/* Logo 3S perfeitamente posicionado e centralizado */}
-                  <div className="absolute inset-0 flex flex-col items-center justify-center pt-2 pointer-events-none select-none">
-                    <img
-                      src={logoSrc}
-                      alt="3S Corretora de Seguros"
-                      className="w-24 h-24 sm:w-28 sm:h-28 object-contain filter drop-shadow-md"
+                    {/* Linha divisória de luz sob o emblema */}
+                    <line
+                      x1="65"
+                      y1="108"
+                      x2="175"
+                      y2="108"
+                      stroke="#0CB7F2"
+                      strokeWidth="1"
+                      strokeOpacity="0.4"
                     />
-                    <span className="font-serif font-black text-xs sm:text-sm tracking-wider text-[#004173] uppercase mt-1">
-                      Cuidado & Proteção
-                    </span>
-                  </div>
+                    <circle cx="120" cy="108" r="3" fill="#0CB7F2" />
+
+                    {/* Bloco de Fundo de Alto Contraste para o Texto */}
+                    <rect
+                      x="48"
+                      y="124"
+                      width="144"
+                      height="92"
+                      rx="12"
+                      fill="url(#bannerGrad)"
+                      stroke="#0979B0"
+                      strokeWidth="1.2"
+                      strokeOpacity="0.8"
+                    />
+
+                    {/* Filete ciano decorativo na barra */}
+                    <line
+                      x1="62"
+                      y1="126"
+                      x2="178"
+                      y2="126"
+                      stroke="#0CB7F2"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+
+                    {/* TEXTO INTEGRADO: CUIDADO (topo) */}
+                    <text
+                      x="120"
+                      y="156"
+                      textAnchor="middle"
+                      fill="#FFFFFF"
+                      fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+                      fontWeight="900"
+                      fontSize="17"
+                      letterSpacing="2.5"
+                    >
+                      CUIDADO
+                    </text>
+
+                    {/* Divisor com o caractere & em destaque ciano */}
+                    <line
+                      x1="60"
+                      y1="172"
+                      x2="100"
+                      y2="172"
+                      stroke="#0CB7F2"
+                      strokeWidth="1.5"
+                      strokeOpacity="0.6"
+                    />
+                    <circle
+                      cx="120"
+                      cy="172"
+                      r="10"
+                      fill="#004173"
+                      stroke="#0CB7F2"
+                      strokeWidth="1.5"
+                    />
+                    <text
+                      x="120"
+                      y="176.5"
+                      textAnchor="middle"
+                      fill="#0CB7F2"
+                      fontFamily="Georgia, serif"
+                      fontWeight="700"
+                      fontSize="13"
+                    >
+                      &amp;
+                    </text>
+                    <line
+                      x1="140"
+                      y1="172"
+                      x2="180"
+                      y2="172"
+                      stroke="#0CB7F2"
+                      strokeWidth="1.5"
+                      strokeOpacity="0.6"
+                    />
+
+                    {/* TEXTO INTEGRADO: PROTEÇÃO (base) */}
+                    <text
+                      x="120"
+                      y="202"
+                      textAnchor="middle"
+                      fill="#FFFFFF"
+                      fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
+                      fontWeight="900"
+                      fontSize="17"
+                      letterSpacing="2.5"
+                    >
+                      PROTEÇÃO
+                    </text>
+
+                    {/* 3 estrelas na ponta inferior simbolizando a 3S */}
+                    <g fill="#0CB7F2">
+                      <polygon points="120,226 122,231 127,231 123,234 125,239 120,236 115,239 117,234 113,231 118,231" />
+                      <polygon
+                        points="104,223 105.5,227 109.5,227 106.5,229 108,233 104,231 100,233 101.5,229 98.5,227 102.5,227"
+                        opacity="0.75"
+                      />
+                      <polygon
+                        points="136,223 137.5,227 141.5,227 138.5,229 140,233 136,231 132,233 133.5,229 130.5,227 134.5,227"
+                        opacity="0.75"
+                      />
+                    </g>
+                  </svg>
                 </div>
 
                 {/* Floating Badges */}

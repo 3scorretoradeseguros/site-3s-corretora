@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ShieldCheck, Menu, X, Phone, Lock, ChevronRight, ExternalLink } from 'lucide-react'
+import { ShieldCheck, Menu, X, Phone, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { COMPANY_INFO } from '@/types'
-import { useAuth } from '@/contexts/AuthContext'
 import { Logo } from '@/components/Logo'
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
-  const { isAuthenticated } = useAuth()
 
   const isHome = location.pathname === '/'
 
@@ -135,15 +133,6 @@ export const Header: React.FC = () => {
                 <span>Falar com Corretor</span>
               </a>
             </Button>
-
-            <Link
-              to={isAuthenticated ? '/painel/contatos' : '/painel'}
-              className="inline-flex items-center justify-center w-10 h-10 rounded-xl text-slate-600 hover:text-[#004173] hover:bg-slate-100 transition-colors"
-              title={isAuthenticated ? 'Painel de Contatos' : 'Acesso da Corretora'}
-              aria-label="Acesso ao Painel"
-            >
-              <Lock className="w-4 h-4" />
-            </Link>
           </div>
 
           {/* Mobile hamburger */}
@@ -233,15 +222,6 @@ export const Header: React.FC = () => {
                 <span>Falar no WhatsApp</span>
               </a>
             </Button>
-
-            <Link
-              to={isAuthenticated ? '/painel/contatos' : '/painel'}
-              onClick={() => setMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 py-2 text-sm text-slate-600 hover:text-[#004173] font-medium"
-            >
-              <Lock className="w-4 h-4" />
-              <span>{isAuthenticated ? 'Painel de Contatos' : 'Acesso da Corretora'}</span>
-            </Link>
           </div>
         </div>
       )}
