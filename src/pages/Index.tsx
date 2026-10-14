@@ -295,7 +295,8 @@ export default function Index() {
               Coberturas que se adaptam à sua vida
             </h2>
             <p className="text-base text-slate-600 leading-relaxed">
-              Do carro à vida, da sua casa à sua empresa, encontramos a proteção ideal para você.
+              Do seu carro à sua vida, da sua casa à sua empresa, encontramos a proteção ideal para
+              você.
             </p>
           </div>
 
