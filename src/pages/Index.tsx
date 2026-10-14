@@ -2,8 +2,6 @@ import React from 'react'
 import {
   ShieldCheck,
   Star,
-  Users,
-  Clock,
   Award,
   ArrowRight,
   Phone,
@@ -13,7 +11,10 @@ import {
   Zap,
   MapPin,
   Mail,
+  Umbrella,
+  Cross,
 } from 'lucide-react'
+import logoSrc from '@/assets/logo3s-v2-removebg-preview-d36a8.png'
 import { Button } from '@/components/ui/button'
 import { ServicesGrid } from '@/components/ServicesGrid'
 import { ContactForm } from '@/components/ContactForm'
@@ -52,7 +53,7 @@ export default function Index() {
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-sky-50 border border-sky-100/80 text-xs font-semibold text-[#004173] shadow-sm">
                 <span className="w-2 h-2 rounded-full bg-[#0CB7F2] animate-pulse" />
-                Corretora de Seguros • Belenzinho, São Paulo
+                Corretora de Seguros e Planos de Saúde
               </div>
 
               <h1 className="font-serif font-black text-4xl sm:text-5xl lg:text-6xl text-[#004173] tracking-tight leading-[1.15]">
@@ -100,7 +101,7 @@ export default function Index() {
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle className="w-4 h-4 text-emerald-600" />
-                  <span>Assessoria completa em sinistros</span>
+                  <span>Assessoria completa em todas as etapas</span>
                 </div>
               </div>
             </div>
@@ -111,14 +112,100 @@ export default function Index() {
                 {/* Círculo com gradiente suave */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-100/60 via-blue-50/40 to-slate-100/40 border border-sky-100 shadow-inner" />
 
-                {/* Ícone Escudo / Coração Central */}
-                <div className="relative z-10 w-48 h-48 rounded-3xl bg-gradient-to-br from-[#004173] via-[#0979B0] to-[#0CB7F2] p-1 shadow-2xl shadow-[#004173]/30 flex items-center justify-center text-white">
-                  <div className="w-full h-full rounded-[22px] bg-[#003660]/40 backdrop-blur-sm flex flex-col items-center justify-center p-6 text-center border border-white/20">
-                    <ShieldCheck className="w-16 h-16 text-white mb-2" />
-                    <span className="font-serif font-black text-2xl tracking-tight text-white">
-                      3S Seguros
-                    </span>
-                    <span className="text-[11px] text-sky-200 uppercase tracking-widest font-semibold mt-1">
+                {/* Ilustração do Escudo com gradiente e logo oficial 3S */}
+                <div className="relative z-10 w-64 h-72 sm:w-72 sm:h-80 flex items-center justify-center">
+                  {/* Escudo SVG em camadas com gradientes corporativos */}
+                  <svg
+                    viewBox="0 0 240 280"
+                    className="w-full h-full drop-shadow-[0_20px_35px_rgba(0,65,115,0.28)]"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <defs>
+                      {/* Gradiente exterior do escudo */}
+                      <linearGradient
+                        id="shieldGradOuter"
+                        x1="120"
+                        y1="0"
+                        x2="120"
+                        y2="280"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stopColor="#0CB7F2" />
+                        <stop offset="45%" stopColor="#0979B0" />
+                        <stop offset="100%" stopColor="#004173" />
+                      </linearGradient>
+
+                      {/* Gradiente interno do escudo */}
+                      <linearGradient
+                        id="shieldGradInner"
+                        x1="40"
+                        y1="20"
+                        x2="200"
+                        y2="260"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stopColor="#FFFFFF" />
+                        <stop offset="25%" stopColor="#F5F9FD" />
+                        <stop offset="100%" stopColor="#E2EEF8" />
+                      </linearGradient>
+
+                      {/* Brilho decorativo no topo */}
+                      <linearGradient
+                        id="shieldSheen"
+                        x1="120"
+                        y1="12"
+                        x2="120"
+                        y2="140"
+                        gradientUnits="userSpaceOnUse"
+                      >
+                        <stop offset="0%" stopColor="#0CB7F2" stopOpacity="0.35" />
+                        <stop offset="100%" stopColor="#0CB7F2" stopOpacity="0" />
+                      </linearGradient>
+                    </defs>
+
+                    {/* Contorno externo com borda suave */}
+                    <path
+                      d="M120 8 L218 36 C218 132 186 214 120 270 C54 214 22 132 22 36 L120 8 Z"
+                      fill="url(#shieldGradOuter)"
+                    />
+
+                    {/* Corpo interno branco/perolado com borda sutil */}
+                    <path
+                      d="M120 20 L204 44 C204 126 176 198 120 248 C64 198 36 126 36 44 L120 20 Z"
+                      fill="url(#shieldGradInner)"
+                      stroke="#0CB7F2"
+                      strokeWidth="1.5"
+                      strokeOpacity="0.4"
+                    />
+
+                    {/* Sheen/reflexo superior */}
+                    <path
+                      d="M120 23 L198 46 C198 100 176 148 120 178 C64 148 42 100 42 46 L120 23 Z"
+                      fill="url(#shieldSheen)"
+                    />
+
+                    {/* Anel de destaque central */}
+                    <circle
+                      cx="120"
+                      cy="128"
+                      r="56"
+                      fill="#FFFFFF"
+                      stroke="#0979B0"
+                      strokeWidth="2"
+                      strokeOpacity="0.2"
+                      className="filter drop-shadow-sm"
+                    />
+                  </svg>
+
+                  {/* Logo 3S perfeitamente posicionado e centralizado */}
+                  <div className="absolute inset-0 flex flex-col items-center justify-center pt-2 pointer-events-none select-none">
+                    <img
+                      src={logoSrc}
+                      alt="3S Corretora de Seguros"
+                      className="w-24 h-24 sm:w-28 sm:h-28 object-contain filter drop-shadow-md"
+                    />
+                    <span className="font-serif font-black text-xs sm:text-sm tracking-wider text-[#004173] uppercase mt-1">
                       Cuidado & Proteção
                     </span>
                   </div>
@@ -141,7 +228,7 @@ export default function Index() {
                   </div>
                   <div>
                     <span className="text-xs font-bold text-slate-800 block">
-                      Cotação Automática
+                      Cotação Simplificada
                     </span>
                     <span className="text-[10px] text-slate-500">Parcerias com seguradoras</span>
                   </div>
@@ -171,26 +258,24 @@ export default function Index() {
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
               <ShieldCheck className="w-4 h-4 text-[#0979B0]" />
               <span>
-                SUSEP Corretora:{' '}
+                Corretora licenciada pela SUSEP:{' '}
                 <strong className="text-slate-800">{COMPANY_INFO.susepBroker}</strong>
               </span>
             </div>
 
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
-              <Building2 className="w-4 h-4 text-[#0979B0]" />
-              <span>
-                CNPJ: <strong className="text-slate-800">{COMPANY_INFO.cnpj}</strong>
-              </span>
+              <Umbrella className="w-4 h-4 text-[#0979B0]" />
+              <span>Seguros</span>
+            </div>
+
+            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
+              <Cross className="w-4 h-4 text-[#0979B0]" />
+              <span>Planos de Saúde</span>
             </div>
 
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
               <MapPin className="w-4 h-4 text-[#0979B0]" />
               <span>Atendimento em todo o Brasil (Sede em SP)</span>
-            </div>
-
-            <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-50 border border-slate-200/80">
-              <HeartHandshake className="w-4 h-4 text-[#0979B0]" />
-              <span>Planos de Saúde & Seguros de Ramos Variados</span>
             </div>
           </div>
         </div>
@@ -210,8 +295,7 @@ export default function Index() {
               Coberturas que se adaptam à sua vida
             </h2>
             <p className="text-base text-slate-600 leading-relaxed">
-              Do carro ao condomínio, da sua casa à sua empresa — encontre a proteção ideal com a
-              comodidade de cotações ágeis e atendimento dedicado.
+              Do carro à vida, da sua casa à sua empresa, encontramos a proteção ideal para você.
             </p>
           </div>
 
@@ -268,11 +352,11 @@ export default function Index() {
                 <Zap className="w-7 h-7 text-white" />
               </div>
               <h3 className="font-serif font-bold text-xl text-[#004173] mb-3">
-                Cotação Automática e Ágil
+                Cotação Simplificada
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
                 Formulários digitais integrados com as principais seguradoras do mercado para
-                simular o melhor custo-benefício em poucos minutos, sem burocracia.
+                simular o melhor custo-benefício, sem burocracia.
               </p>
             </div>
 
