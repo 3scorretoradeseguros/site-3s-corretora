@@ -111,11 +111,11 @@ export default function Index() {
                 {/* Círculo com gradiente suave */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-100/60 via-blue-50/40 to-slate-100/40 border border-sky-100 shadow-inner" />
                 {/* Ilustração do Escudo Minimalista com texto integrado "CUIDADO & PROTEÇÃO" */}
-                <div className="relative z-10 w-64 h-72 sm:w-80 sm:h-96 flex items-center justify-center select-none">
+                <div className="relative z-10 w-60 h-64 sm:w-72 sm:h-80 flex items-center justify-center select-none">
                   {/* Escudo SVG minimalista flat com gradiente azul corporativo e contorno branco interno fino */}
                   <svg
-                    viewBox="0 0 400 480"
-                    className="w-full h-full drop-shadow-[0_20px_35px_rgba(0,65,115,0.28)]"
+                    viewBox="0 0 360 380"
+                    className="w-full h-full drop-shadow-[0_16px_30px_rgba(0,65,115,0.25)]"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     role="img"
@@ -125,10 +125,10 @@ export default function Index() {
                       {/* Gradiente da borda externa: ciano no topo direito até azul corporativo */}
                       <linearGradient
                         id="shieldOuterGradient"
-                        x1="320"
-                        y1="20"
-                        x2="80"
-                        y2="460"
+                        x1="290"
+                        y1="16"
+                        x2="70"
+                        y2="364"
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0%" stopColor="#0CB7F2" />
@@ -139,10 +139,10 @@ export default function Index() {
                       {/* Gradiente do corpo interno do escudo: transição suave e com profundidade no miolo para legibilidade do texto */}
                       <linearGradient
                         id="shieldInnerGradient"
-                        x1="300"
-                        y1="40"
-                        x2="100"
-                        y2="440"
+                        x1="270"
+                        y1="30"
+                        x2="90"
+                        y2="350"
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0%" stopColor="#0CB7F2" />
@@ -163,50 +163,32 @@ export default function Index() {
                       </filter>
                     </defs>
 
-                    {/* Camada 1: Corpo exterior do escudo clássico com gradiente */}
+                    {/* Camada 1: Corpo exterior do escudo clássico com proporção mais compacta */}
                     <path
-                      d="M 200 12 L 368 76 C 368 284 290 416 200 464 C 110 416 32 284 32 76 Z"
+                      d="M 180 16 L 332 72 C 332 236 262 332 180 364 C 98 332 28 236 28 72 Z"
                       fill="url(#shieldOuterGradient)"
                     />
 
                     {/* Camada 2: Contorno branco interno fino acompanhando a borda (estilo minimalista) */}
                     <path
-                      d="M 200 34 L 344 90 C 344 266 274 388 200 436 C 126 388 56 266 56 90 Z"
+                      d="M 180 34 L 312 83 C 312 222 248 310 180 340 C 112 310 48 222 48 83 Z"
                       stroke="#FFFFFF"
-                      strokeWidth="5"
+                      strokeWidth="4"
                       strokeLinejoin="round"
                       fill="url(#shieldInnerGradient)"
                     />
 
                     {/* Camada 3: Leve realce interno sutil na borda superior para acabamento refinado */}
                     <path
-                      d="M 200 46 L 332 98 C 332 140 326 190 310 240 C 280 200 240 180 200 180 C 160 180 120 200 90 240 C 74 190 68 140 68 98 Z"
+                      d="M 180 44 L 300 90 C 300 130 292 170 278 200 C 248 170 215 155 180 155 C 145 155 112 170 82 200 C 68 170 60 130 60 90 Z"
                       fill="#FFFFFF"
                       fillOpacity="0.06"
                     />
 
-                    {/* Ícone de escudo/segurança minimalista no topo do brasão */}
-                    <g opacity="0.95">
-                      <path
-                        d="M 200 120 L 226 132 C 226 160 216 178 200 188 C 184 178 174 160 174 132 Z"
-                        fill="#002b4d"
-                        stroke="#0CB7F2"
-                        strokeWidth="2.5"
-                        strokeLinejoin="round"
-                      />
-                      <path
-                        d="M 191 149 L 197 155 L 210 142"
-                        stroke="#FFFFFF"
-                        strokeWidth="3"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </g>
-
-                    {/* TEXTO INTEGRADO CENTRAL: CUIDADO */}
+                    {/* TEXTO INTEGRADO CENTRAL: CUIDADO (perfeitamente centralizado verticalmente com o & e PROTEÇÃO) */}
                     <text
-                      x="200"
-                      y="238"
+                      x="180"
+                      y="152"
                       textAnchor="middle"
                       fill="#FFFFFF"
                       filter="url(#textGlow)"
@@ -220,26 +202,26 @@ export default function Index() {
 
                     {/* Divisor central com o & em destaque ciano */}
                     <line
-                      x1="108"
-                      y1="262"
-                      x2="168"
-                      y2="262"
+                      x1="94"
+                      y1="190"
+                      x2="150"
+                      y2="190"
                       stroke="#0CB7F2"
                       strokeWidth="2"
                       strokeLinecap="round"
                       opacity="0.85"
                     />
                     <circle
-                      cx="200"
-                      cy="262"
+                      cx="180"
+                      cy="190"
                       r="16"
                       fill="#00223d"
                       stroke="#0CB7F2"
                       strokeWidth="2"
                     />
                     <text
-                      x="200"
-                      y="268.5"
+                      x="180"
+                      y="196.5"
                       textAnchor="middle"
                       fill="#0CB7F2"
                       fontFamily="Georgia, serif"
@@ -249,10 +231,10 @@ export default function Index() {
                       &amp;
                     </text>
                     <line
-                      x1="232"
-                      y1="262"
-                      x2="292"
-                      y2="262"
+                      x1="210"
+                      y1="190"
+                      x2="266"
+                      y2="190"
                       stroke="#0CB7F2"
                       strokeWidth="2"
                       strokeLinecap="round"
@@ -261,8 +243,8 @@ export default function Index() {
 
                     {/* TEXTO INTEGRADO CENTRAL: PROTEÇÃO */}
                     <text
-                      x="200"
-                      y="312"
+                      x="180"
+                      y="238"
                       textAnchor="middle"
                       fill="#FFFFFF"
                       filter="url(#textGlow)"
@@ -273,21 +255,8 @@ export default function Index() {
                     >
                       PROTEÇÃO
                     </text>
-
-                    {/* Pequena insígnia de 3 estrelas minimalistas na base para equilíbrio estético */}
-                    <g fill="#0CB7F2" opacity="0.85">
-                      <polygon points="200,344 202.5,350 209,350 204,354 206,360 200,356 194,360 196,354 191,350 197.5,350" />
-                      <polygon
-                        points="178,338 180,343 185,343 181,346 182.5,351 178,348 173.5,351 175,346 171,343 176,343"
-                        opacity="0.6"
-                      />
-                      <polygon
-                        points="222,338 224,343 229,343 225,346 226.5,351 222,348 217.5,351 219,346 215,343 220,343"
-                        opacity="0.6"
-                      />
-                    </g>
                   </svg>
-                </div>
+                </div>{' '}
                 {/* Floating Badges - Reposicionados nas bordas para NUNCA cobrir o texto central */}
                 {/* Topo / Lateral esquerda alta */}
                 <div className="absolute -top-3 -left-3 sm:-top-2 sm:-left-6 z-20 animate-float bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
