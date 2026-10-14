@@ -15,22 +15,119 @@ import { toast } from '@/hooks/use-toast'
 import { createContact } from '@/services/contacts'
 import { CONTACT_NEED_LABELS, type ContactNeed, type CreateContactInput } from '@/types'
 
+// Lista de DDDs válidos no Brasil
+const VALID_DDDS = new Set([
+  '11',
+  '12',
+  '13',
+  '14',
+  '15',
+  '16',
+  '17',
+  '18',
+  '19',
+  '21',
+  '22',
+  '24',
+  '27',
+  '28',
+  '31',
+  '32',
+  '33',
+  '34',
+  '35',
+  '37',
+  '38',
+  '41',
+  '42',
+  '43',
+  '44',
+  '45',
+  '46',
+  '47',
+  '48',
+  '49',
+  '51',
+  '53',
+  '54',
+  '55',
+  '61',
+  '62',
+  '63',
+  '64',
+  '65',
+  '66',
+  '67',
+  '68',
+  '69',
+  '71',
+  '73',
+  '74',
+  '75',
+  '77',
+  '79',
+  '81',
+  '82',
+  '83',
+  '84',
+  '85',
+  '86',
+  '87',
+  '88',
+  '89',
+  '91',
+  '92',
+  '93',
+  '94',
+  '95',
+  '96',
+  '97',
+  '98',
+  '99',
+])
+
 interface FormErrors {
   name?: string
-  contact?: string
+  whatsapp?: string
+  email?: string
   need?: string
   message?: string
 }
 
 export const ContactForm: React.FC = () => {
   const [name, setName] = useState('')
-  const [contact, setContact] = useState('')
+  const [whatsapp, setWhatsapp] = useState('')
+  const [email, setEmail] = useState('')
   const [need, setNeed] = useState<ContactNeed | ''>('')
   const [message, setMessage] = useState('')
 
   const [errors, setErrors] = useState<FormErrors>({})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
+
+  // Manipulador para o campo WhatsApp: aceita somente números (e formata para (XX) XXXXX-XXXX)
+  const handleWhatsappChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // Manter apenas dígitos
+    const digits = e.target.value.replace(/\D/g, '').slice(0, 11)
+
+    // Formatação visual amigável
+    let formatted = digits
+    if (digits.length > 2) {
+      formatted = `(${digits.slice(0, 2)}) ${digits.slice(2)}`
+    }
+    if (digits.length > 6) {
+      if (digits.length === 11) {
+        // Celular com 9 dígitos
+        formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`
+      } else if (digits.length === 10) {
+        // Fixo ou celular com 8 dígitos
+        formatted = `(${digits.slice(0, 2)}) ${digits.slice(2, 6)}-${digits.slice(6)}`
+      }
+    }
+
+    setWhatsapp(formatted)
+    if (errors.whatsapp) setErrors((prev) => ({ ...prev, whatsapp: undefined }))
+  }
 
   const validate = (): boolean => {
     const errs: FormErrors = {}
@@ -40,10 +137,25 @@ export const ContactForm: React.FC = () => {
       errs.name = 'O nome deve ter pelo menos 3 caracteres.'
     }
 
-    if (!contact.trim()) {
-      errs.contact = 'Informe seu telefone WhatsApp ou e-mail.'
-    } else if (contact.trim().length < 5) {
-      errs.contact = 'Contato inválido. Informe um telefone ou e-mail válido.'
+    // Validação WhatsApp: apenas dígitos extraídos, 10 ou 11 dígitos, DDD válido
+    const digitsOnly = whatsapp.replace(/\D/g, '')
+    if (!digitsOnly) {
+      errs.whatsapp = 'Por favor, informe seu número de WhatsApp.'
+    } else if (digitsOnly.length < 10 || digitsOnly.length > 11) {
+      errs.whatsapp = 'Informe um número válido com DDD (10 ou 11 dígitos numéricos).'
+    } else {
+      const ddd = digitsOnly.slice(0, 2)
+      if (!VALID_DDDS.has(ddd)) {
+        errs.whatsapp = `DDD "${ddd}" inválido. Informe um DDD brasileiro válido.`
+      }
+    }
+
+    // Validação E-mail
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+    if (!email.trim()) {
+      errs.email = 'Por favor, informe seu e-mail.'
+    } else if (!emailRegex.test(email.trim())) {
+      errs.email = 'Por favor, informe um endereço de e-mail válido.'
     }
 
     if (!need) {
@@ -64,8 +176,9 @@ export const ContactForm: React.FC = () => {
 
     try {
       const input: CreateContactInput = {
-        name,
-        contact,
+        name: name.trim(),
+        whatsapp: whatsapp.trim(),
+        email: email.trim(),
         need: need as ContactNeed,
         message: message.trim() ? message : undefined,
       }
@@ -84,7 +197,8 @@ export const ContactForm: React.FC = () => {
         const serverErrors: FormErrors = {}
         const dataErrors = error.data.data
         if (dataErrors.name) serverErrors.name = dataErrors.name.message
-        if (dataErrors.contact) serverErrors.contact = dataErrors.contact.message
+        if (dataErrors.whatsapp) serverErrors.whatsapp = dataErrors.whatsapp.message
+        if (dataErrors.email) serverErrors.email = dataErrors.email.message
         if (dataErrors.need) serverErrors.need = dataErrors.need.message
         if (dataErrors.message) serverErrors.message = dataErrors.message.message
         setErrors(serverErrors)
@@ -103,7 +217,8 @@ export const ContactForm: React.FC = () => {
 
   const handleReset = () => {
     setName('')
-    setContact('')
+    setWhatsapp('')
+    setEmail('')
     setNeed('')
     setMessage('')
     setErrors({})
@@ -181,35 +296,67 @@ export const ContactForm: React.FC = () => {
           )}
         </div>
 
-        {/* Contato */}
-        <div className="space-y-1.5">
-          <Label
-            htmlFor="lead-contact"
-            className="text-xs font-semibold text-slate-700 uppercase tracking-wide"
-          >
-            WhatsApp ou E-mail <span className="text-red-500">*</span>
-          </Label>
-          <Input
-            id="lead-contact"
-            type="text"
-            placeholder="(11) 99999-9999 ou seu@email.com"
-            value={contact}
-            onChange={(e) => {
-              setContact(e.target.value)
-              if (errors.contact) setErrors((prev) => ({ ...prev, contact: undefined }))
-            }}
-            className={`rounded-xl h-11 border-slate-200 focus-visible:ring-[#004173] ${
-              errors.contact ? 'border-red-400 focus-visible:ring-red-400' : ''
-            }`}
-            disabled={isSubmitting}
-            maxLength={180}
-          />
-          {errors.contact && (
-            <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
-              <AlertCircle className="w-3.5 h-3.5" />
-              {errors.contact}
-            </p>
-          )}
+        {/* Grade com WhatsApp e E-mail separados */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {/* WhatsApp */}
+          <div className="space-y-1.5">
+            <Label
+              htmlFor="lead-whatsapp"
+              className="text-xs font-semibold text-slate-700 uppercase tracking-wide"
+            >
+              WhatsApp <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              id="lead-whatsapp"
+              type="tel"
+              inputMode="numeric"
+              placeholder="(11) 99999-9999"
+              value={whatsapp}
+              onChange={handleWhatsappChange}
+              className={`rounded-xl h-11 border-slate-200 focus-visible:ring-[#004173] ${
+                errors.whatsapp ? 'border-red-400 focus-visible:ring-red-400' : ''
+              }`}
+              disabled={isSubmitting}
+              maxLength={15}
+            />
+            {errors.whatsapp && (
+              <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
+                <AlertCircle className="w-3.5 h-3.5" />
+                {errors.whatsapp}
+              </p>
+            )}
+          </div>
+
+          {/* E-mail */}
+          <div className="space-y-1.5">
+            <Label
+              htmlFor="lead-email"
+              className="text-xs font-semibold text-slate-700 uppercase tracking-wide"
+            >
+              E-mail <span className="text-red-500">*</span>
+            </Label>
+            <Input
+              id="lead-email"
+              type="email"
+              placeholder="seu@email.com"
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value)
+                if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }))
+              }}
+              className={`rounded-xl h-11 border-slate-200 focus-visible:ring-[#004173] ${
+                errors.email ? 'border-red-400 focus-visible:ring-red-400' : ''
+              }`}
+              disabled={isSubmitting}
+              maxLength={150}
+            />
+            {errors.email && (
+              <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
+                <AlertCircle className="w-3.5 h-3.5" />
+                {errors.email}
+              </p>
+            )}
+          </div>
         </div>
 
         {/* O que você precisa? */}

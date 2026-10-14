@@ -168,14 +168,23 @@ export default function ContactsDashboard() {
         return false
       }
 
-      // Busca por nome ou contato
+      // Busca por nome, whatsapp, email, contact antigo ou necessidade
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase().trim()
         const matchesName = c.name.toLowerCase().includes(query)
-        const matchesContact = c.contact.toLowerCase().includes(query)
+        const matchesWhatsapp = (c.whatsapp || '').toLowerCase().includes(query)
+        const matchesEmail = (c.email || '').toLowerCase().includes(query)
+        const matchesContact = (c.contact || '').toLowerCase().includes(query)
         const matchesNeed = (CONTACT_NEED_LABELS[c.need] || '').toLowerCase().includes(query)
         const matchesMessage = (c.message || '').toLowerCase().includes(query)
-        if (!matchesName && !matchesContact && !matchesNeed && !matchesMessage) {
+        if (
+          !matchesName &&
+          !matchesWhatsapp &&
+          !matchesEmail &&
+          !matchesContact &&
+          !matchesNeed &&
+          !matchesMessage
+        ) {
           return false
         }
       }
@@ -460,7 +469,8 @@ export default function ContactsDashboard() {
                   <thead className="bg-slate-50 border-b border-slate-200 text-slate-700 font-semibold uppercase tracking-wider text-[11px]">
                     <tr>
                       <th className="py-3.5 px-4">Nome do Lead</th>
-                      <th className="py-3.5 px-4">Contato</th>
+                      <th className="py-3.5 px-4">WhatsApp</th>
+                      <th className="py-3.5 px-4">E-mail</th>
                       <th className="py-3.5 px-4">Necessidade</th>
                       <th className="py-3.5 px-4">Mensagem</th>
                       <th className="py-3.5 px-4">Recebido em</th>
@@ -471,7 +481,12 @@ export default function ContactsDashboard() {
                   <tbody className="divide-y divide-slate-100">
                     {filteredContacts.map((contact) => {
                       const isExpanded = !!expandedMessages[contact.id]
-                      const isEmail = contact.contact.includes('@')
+                      // Resolver whatsapp e email considerando fallback para legado em contact
+                      const whatsappValue =
+                        contact.whatsapp || (!contact.contact?.includes('@') ? contact.contact : '')
+                      const emailValue =
+                        contact.email || (contact.contact?.includes('@') ? contact.contact : '')
+                      const whatsappDigits = whatsappValue.replace(/\D/g, '')
 
                       return (
                         <tr
@@ -485,35 +500,44 @@ export default function ContactsDashboard() {
                             </span>
                           </td>
 
-                          {/* Contato (Link WhatsApp ou Email) */}
+                          {/* WhatsApp */}
                           <td className="py-3.5 px-4">
                             <div className="flex items-center gap-1.5 font-medium text-slate-800">
-                              {isEmail ? (
-                                <>
-                                  <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
-                                  <a
-                                    href={`mailto:${contact.contact}`}
-                                    className="hover:text-[#004173] hover:underline"
-                                  >
-                                    {contact.contact}
-                                  </a>
-                                </>
-                              ) : (
+                              {whatsappDigits ? (
                                 <>
                                   <Phone className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
                                   <a
-                                    href={`https://api.whatsapp.com/send?phone=55${contact.contact.replace(
-                                      /\D/g,
-                                      '',
-                                    )}`}
+                                    href={`https://api.whatsapp.com/send?phone=55${whatsappDigits}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
-                                    className="hover:text-[#004173] hover:underline"
+                                    className="hover:text-[#004173] hover:underline text-emerald-700 font-semibold"
                                     title="Chamar no WhatsApp"
                                   >
-                                    {contact.contact}
+                                    {whatsappValue}
                                   </a>
                                 </>
+                              ) : (
+                                <span className="text-slate-400 italic">—</span>
+                              )}
+                            </div>
+                          </td>
+
+                          {/* E-mail */}
+                          <td className="py-3.5 px-4">
+                            <div className="flex items-center gap-1.5 font-medium text-slate-800">
+                              {emailValue ? (
+                                <>
+                                  <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                                  <a
+                                    href={`mailto:${emailValue}`}
+                                    className="hover:text-[#004173] hover:underline text-slate-700"
+                                    title="Enviar e-mail"
+                                  >
+                                    {emailValue}
+                                  </a>
+                                </>
+                              ) : (
+                                <span className="text-slate-400 italic">—</span>
                               )}
                             </div>
                           </td>
@@ -610,7 +634,11 @@ export default function ContactsDashboard() {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-4">
               {filteredContacts.map((contact) => {
                 const isExpanded = !!expandedMessages[contact.id]
-                const isEmail = contact.contact.includes('@')
+                const whatsappValue =
+                  contact.whatsapp || (!contact.contact?.includes('@') ? contact.contact : '')
+                const emailValue =
+                  contact.email || (contact.contact?.includes('@') ? contact.contact : '')
+                const whatsappDigits = whatsappValue.replace(/\D/g, '')
 
                 return (
                   <div
@@ -663,30 +691,35 @@ export default function ContactsDashboard() {
                         </Badge>
                       </div>
 
-                      {/* Contato Clickable */}
-                      <div className="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between">
-                        <span className="text-xs text-slate-500">Contato:</span>
-                        {isEmail ? (
-                          <a
-                            href={`mailto:${contact.contact}`}
-                            className="text-xs font-semibold text-[#004173] hover:underline flex items-center gap-1.5"
-                          >
-                            <Mail className="w-3.5 h-3.5" />
-                            {contact.contact}
-                          </a>
-                        ) : (
-                          <a
-                            href={`https://api.whatsapp.com/send?phone=55${contact.contact.replace(
-                              /\D/g,
-                              '',
-                            )}`}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="text-xs font-semibold text-emerald-700 hover:underline flex items-center gap-1.5"
-                          >
-                            <Phone className="w-3.5 h-3.5 text-emerald-600" />
-                            {contact.contact}
-                          </a>
+                      {/* Contatos Separados: WhatsApp e E-mail */}
+                      <div className="space-y-2">
+                        {whatsappValue && (
+                          <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs">
+                            <span className="text-slate-500 font-medium">WhatsApp:</span>
+                            <a
+                              href={`https://api.whatsapp.com/send?phone=55${whatsappDigits}`}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="font-semibold text-emerald-700 hover:underline flex items-center gap-1.5"
+                            >
+                              <Phone className="w-3.5 h-3.5 text-emerald-600" />
+                              {whatsappValue}
+                            </a>
+                          </div>
+                        )}
+
+                        {emailValue && (
+                          <div className="p-2.5 rounded-xl bg-slate-50 border border-slate-100 flex items-center justify-between text-xs">
+                            <span className="text-slate-500 font-medium">E-mail:</span>
+                            <a
+                              href={`mailto:${emailValue}`}
+                              className="font-semibold text-[#004173] hover:underline flex items-center gap-1.5 truncate max-w-[200px]"
+                              title={emailValue}
+                            >
+                              <Mail className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                              <span className="truncate">{emailValue}</span>
+                            </a>
+                          </div>
                         )}
                       </div>
 

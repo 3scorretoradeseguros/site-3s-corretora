@@ -19,7 +19,9 @@ export interface ContactRecord {
   collectionId: string
   collectionName: string
   name: string
-  contact: string
+  whatsapp: string
+  email: string
+  contact?: string
   need: ContactNeed
   message?: string
   status: ContactStatus
@@ -29,7 +31,9 @@ export interface ContactRecord {
 
 export interface CreateContactInput {
   name: string
-  contact: string
+  whatsapp: string
+  email: string
+  contact?: string
   need: ContactNeed
   message?: string
 }

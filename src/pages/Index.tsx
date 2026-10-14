@@ -71,7 +71,7 @@ export default function Index() {
               {/* Botões de Ação */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 sm:gap-4 pt-2">
                 <Button
-                  onClick={scrollToContact}
+                  onClick={scrollToServices}
                   size="lg"
                   className="w-full sm:w-auto h-12 px-7 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white font-semibold shadow-lg shadow-[#004173]/25 hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center justify-center gap-2"
                 >
@@ -80,23 +80,14 @@ export default function Index() {
                 </Button>
 
                 <Button
-                  onClick={scrollToServices}
+                  asChild
                   variant="outline"
                   size="lg"
                   className="w-full sm:w-auto h-12 px-6 rounded-xl border-slate-300 hover:border-[#0979B0] hover:text-[#004173] hover:bg-sky-50/50 font-medium transition-all"
                 >
-                  Conhecer Coberturas
-                </Button>
-
-                <Button
-                  asChild
-                  variant="ghost"
-                  size="lg"
-                  className="w-full sm:w-auto h-12 px-4 rounded-xl text-slate-700 hover:text-[#004173] hover:bg-slate-100 font-medium"
-                >
                   <a href={COMPANY_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer">
                     <Phone className="w-4 h-4 text-[#0979B0] mr-2" />
-                    <span>WhatsApp</span>
+                    <span>Falar com o Corretor</span>
                   </a>
                 </Button>
               </div>

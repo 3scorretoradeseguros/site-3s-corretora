@@ -2,9 +2,15 @@ import pb from '@/lib/pocketbase/client'
 import type { ContactRecord, CreateContactInput, ContactStatus } from '@/types'
 
 export async function createContact(input: CreateContactInput): Promise<ContactRecord> {
+  const whatsappClean = input.whatsapp.trim()
+  const emailClean = input.email.trim()
+
   const payload = {
     name: input.name.trim(),
-    contact: input.contact.trim(),
+    whatsapp: whatsappClean,
+    email: emailClean,
+    // Mantemos contact preenchido com WhatsApp / E-mail para compatibilidade
+    contact: `${whatsappClean} | ${emailClean}`,
     need: input.need,
     message: input.message?.trim() || '',
     status: 'novo' as ContactStatus,

@@ -1,5 +1,5 @@
 import React from 'react'
-import logoSrc from '@/assets/logo3s-v2-transparente-38ef7.png'
+import logoSrc from '@/assets/logo3s-v2-removebg-preview-d36a8.png'
 
 interface LogoProps {
   /**
