@@ -110,26 +110,25 @@ export default function Index() {
               <div className="relative w-full max-w-[420px] aspect-square flex items-center justify-center">
                 {/* Círculo com gradiente suave */}
                 <div className="absolute inset-0 rounded-full bg-gradient-to-br from-sky-100/60 via-blue-50/40 to-slate-100/40 border border-sky-100 shadow-inner" />
-
-                {/* Ilustração do Escudo com texto integrado "CUIDADO & PROTEÇÃO" */}
-                <div className="relative z-10 w-64 h-72 sm:w-72 sm:h-80 flex items-center justify-center select-none">
-                  {/* Escudo SVG em camadas com gradientes corporativos (#004173, #0979B0, #0CB7F2) */}
+                {/* Ilustração do Escudo Minimalista com texto integrado "CUIDADO & PROTEÇÃO" */}
+                <div className="relative z-10 w-64 h-72 sm:w-80 sm:h-96 flex items-center justify-center select-none">
+                  {/* Escudo SVG minimalista flat com gradiente azul corporativo e contorno branco interno fino */}
                   <svg
-                    viewBox="0 0 240 280"
-                    className="w-full h-full drop-shadow-[0_20px_35px_rgba(0,65,115,0.30)]"
+                    viewBox="0 0 400 480"
+                    className="w-full h-full drop-shadow-[0_20px_35px_rgba(0,65,115,0.28)]"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                     role="img"
-                    aria-label="Escudo de proteção 3S Corretora: Cuidado e Proteção"
+                    aria-label="Escudo de proteção 3S Corretora: Cuidado & Proteção"
                   >
                     <defs>
-                      {/* Borda externa com gradiente da marca */}
+                      {/* Gradiente da borda externa: ciano no topo direito até azul corporativo */}
                       <linearGradient
-                        id="shieldOuterGlow"
-                        x1="120"
-                        y1="4"
-                        x2="120"
-                        y2="276"
+                        id="shieldOuterGradient"
+                        x1="320"
+                        y1="20"
+                        x2="80"
+                        y2="460"
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0%" stopColor="#0CB7F2" />
@@ -137,263 +136,201 @@ export default function Index() {
                         <stop offset="100%" stopColor="#004173" />
                       </linearGradient>
 
-                      {/* Corpo do escudo: azul nobre e profundo para contraste de texto */}
+                      {/* Gradiente do corpo interno do escudo: transição suave e com profundidade no miolo para legibilidade do texto */}
                       <linearGradient
-                        id="shieldBodyGrad"
-                        x1="40"
-                        y1="16"
-                        x2="200"
-                        y2="265"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop offset="0%" stopColor="#004f8c" />
-                        <stop offset="55%" stopColor="#004173" />
-                        <stop offset="100%" stopColor="#002b4d" />
-                      </linearGradient>
-
-                      {/* Brilho superior suave sem ofuscar texto */}
-                      <linearGradient
-                        id="shieldHighlight"
-                        x1="120"
-                        y1="16"
-                        x2="120"
-                        y2="100"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop offset="0%" stopColor="#0CB7F2" stopOpacity="0.4" />
-                        <stop offset="100%" stopColor="#0979B0" stopOpacity="0" />
-                      </linearGradient>
-
-                      {/* Gradiente da insígnia/emblema central */}
-                      <linearGradient
-                        id="emblemGrad"
-                        x1="120"
+                        id="shieldInnerGradient"
+                        x1="300"
                         y1="40"
-                        x2="120"
-                        y2="95"
+                        x2="100"
+                        y2="440"
                         gradientUnits="userSpaceOnUse"
                       >
                         <stop offset="0%" stopColor="#0CB7F2" />
-                        <stop offset="100%" stopColor="#0979B0" />
+                        <stop offset="35%" stopColor="#0979B0" />
+                        <stop offset="70%" stopColor="#004173" />
+                        <stop offset="100%" stopColor="#002b4d" />
                       </linearGradient>
 
-                      {/* Gradiente da faixa de destaque onde apoia o texto */}
-                      <linearGradient
-                        id="bannerGrad"
-                        x1="120"
-                        y1="125"
-                        x2="120"
-                        y2="225"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop offset="0%" stopColor="#00355e" />
-                        <stop offset="100%" stopColor="#00223d" />
-                      </linearGradient>
+                      {/* Filtro sutil para garantir legibilidade máxima das letras brancas */}
+                      <filter id="textGlow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow
+                          dx="0"
+                          dy="2"
+                          stdDeviation="3"
+                          floodColor="#001830"
+                          floodOpacity="0.7"
+                        />
+                      </filter>
                     </defs>
 
-                    {/* Camada 1: Moldura externa com brilho nas cores oficiais */}
+                    {/* Camada 1: Corpo exterior do escudo clássico com gradiente */}
                     <path
-                      d="M120 6 L220 36 C220 134 188 218 120 274 C52 218 20 134 20 36 L120 6 Z"
-                      fill="url(#shieldOuterGlow)"
+                      d="M 200 12 L 368 76 C 368 284 290 416 200 464 C 110 416 32 284 32 76 Z"
+                      fill="url(#shieldOuterGradient)"
                     />
 
-                    {/* Camada 2: Contorno intermediário ciano sutil */}
+                    {/* Camada 2: Contorno branco interno fino acompanhando a borda (estilo minimalista) */}
                     <path
-                      d="M120 12 L212 39 C212 130 182 210 120 264 C58 210 28 130 28 39 L120 12 Z"
-                      fill="#0CB7F2"
-                      fillOpacity="0.35"
-                    />
-
-                    {/* Camada 3: Corpo principal do escudo azul escuro corporativo */}
-                    <path
-                      d="M120 16 L206 43 C206 128 178 204 120 256 C62 204 34 128 34 43 L120 16 Z"
-                      fill="url(#shieldBodyGrad)"
-                      stroke="#0CB7F2"
-                      strokeWidth="1.5"
-                      strokeOpacity="0.6"
-                    />
-
-                    {/* Camada 4: Brilho/reflexo na cúpula do escudo */}
-                    <path
-                      d="M120 18 L200 45 C190 90 160 110 120 110 C80 110 50 90 40 45 L120 18 Z"
-                      fill="url(#shieldHighlight)"
-                    />
-
-                    {/* Camada 5: Emblema / Brasão Superior de Proteção */}
-                    <circle
-                      cx="120"
-                      cy="66"
-                      r="26"
-                      fill="#002b4d"
-                      stroke="#0CB7F2"
-                      strokeWidth="2"
-                    />
-                    <circle cx="120" cy="66" r="21" fill="url(#emblemGrad)" fillOpacity="0.25" />
-                    {/* Ícone clássico de escudo + check de proteção no brasão */}
-                    <path
-                      d="M120 50 L134 56 C134 68 128 77 120 82 C112 77 106 68 106 56 L120 50 Z"
-                      fill="#0CB7F2"
-                    />
-                    <path
-                      d="M114 65 L118.5 69.5 L127 60"
+                      d="M 200 34 L 344 90 C 344 266 274 388 200 436 C 126 388 56 266 56 90 Z"
                       stroke="#FFFFFF"
-                      strokeWidth="2.5"
-                      strokeLinecap="round"
+                      strokeWidth="5"
                       strokeLinejoin="round"
+                      fill="url(#shieldInnerGradient)"
                     />
 
-                    {/* Linha divisória de luz sob o emblema */}
-                    <line
-                      x1="65"
-                      y1="108"
-                      x2="175"
-                      y2="108"
-                      stroke="#0CB7F2"
-                      strokeWidth="1"
-                      strokeOpacity="0.4"
-                    />
-                    <circle cx="120" cy="108" r="3" fill="#0CB7F2" />
-
-                    {/* Bloco de Fundo de Alto Contraste para o Texto */}
-                    <rect
-                      x="48"
-                      y="124"
-                      width="144"
-                      height="92"
-                      rx="12"
-                      fill="url(#bannerGrad)"
-                      stroke="#0979B0"
-                      strokeWidth="1.2"
-                      strokeOpacity="0.8"
+                    {/* Camada 3: Leve realce interno sutil na borda superior para acabamento refinado */}
+                    <path
+                      d="M 200 46 L 332 98 C 332 140 326 190 310 240 C 280 200 240 180 200 180 C 160 180 120 200 90 240 C 74 190 68 140 68 98 Z"
+                      fill="#FFFFFF"
+                      fillOpacity="0.06"
                     />
 
-                    {/* Filete ciano decorativo na barra */}
-                    <line
-                      x1="62"
-                      y1="126"
-                      x2="178"
-                      y2="126"
-                      stroke="#0CB7F2"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                    />
+                    {/* Ícone de escudo/segurança minimalista no topo do brasão */}
+                    <g opacity="0.95">
+                      <path
+                        d="M 200 120 L 226 132 C 226 160 216 178 200 188 C 184 178 174 160 174 132 Z"
+                        fill="#002b4d"
+                        stroke="#0CB7F2"
+                        strokeWidth="2.5"
+                        strokeLinejoin="round"
+                      />
+                      <path
+                        d="M 191 149 L 197 155 L 210 142"
+                        stroke="#FFFFFF"
+                        strokeWidth="3"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </g>
 
-                    {/* TEXTO INTEGRADO: CUIDADO (topo) */}
+                    {/* TEXTO INTEGRADO CENTRAL: CUIDADO */}
                     <text
-                      x="120"
-                      y="156"
+                      x="200"
+                      y="238"
                       textAnchor="middle"
                       fill="#FFFFFF"
+                      filter="url(#textGlow)"
                       fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
                       fontWeight="900"
-                      fontSize="17"
-                      letterSpacing="2.5"
+                      fontSize="24"
+                      letterSpacing="3.5"
                     >
                       CUIDADO
                     </text>
 
-                    {/* Divisor com o caractere & em destaque ciano */}
+                    {/* Divisor central com o & em destaque ciano */}
                     <line
-                      x1="60"
-                      y1="172"
-                      x2="100"
-                      y2="172"
+                      x1="108"
+                      y1="262"
+                      x2="168"
+                      y2="262"
                       stroke="#0CB7F2"
-                      strokeWidth="1.5"
-                      strokeOpacity="0.6"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.85"
                     />
                     <circle
-                      cx="120"
-                      cy="172"
-                      r="10"
-                      fill="#004173"
+                      cx="200"
+                      cy="262"
+                      r="16"
+                      fill="#00223d"
                       stroke="#0CB7F2"
-                      strokeWidth="1.5"
+                      strokeWidth="2"
                     />
                     <text
-                      x="120"
-                      y="176.5"
+                      x="200"
+                      y="268.5"
                       textAnchor="middle"
                       fill="#0CB7F2"
                       fontFamily="Georgia, serif"
                       fontWeight="700"
-                      fontSize="13"
+                      fontSize="18"
                     >
                       &amp;
                     </text>
                     <line
-                      x1="140"
-                      y1="172"
-                      x2="180"
-                      y2="172"
+                      x1="232"
+                      y1="262"
+                      x2="292"
+                      y2="262"
                       stroke="#0CB7F2"
-                      strokeWidth="1.5"
-                      strokeOpacity="0.6"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.85"
                     />
 
-                    {/* TEXTO INTEGRADO: PROTEÇÃO (base) */}
+                    {/* TEXTO INTEGRADO CENTRAL: PROTEÇÃO */}
                     <text
-                      x="120"
-                      y="202"
+                      x="200"
+                      y="312"
                       textAnchor="middle"
                       fill="#FFFFFF"
+                      filter="url(#textGlow)"
                       fontFamily="system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif"
                       fontWeight="900"
-                      fontSize="17"
-                      letterSpacing="2.5"
+                      fontSize="24"
+                      letterSpacing="3.5"
                     >
                       PROTEÇÃO
                     </text>
 
-                    {/* 3 estrelas na ponta inferior simbolizando a 3S */}
-                    <g fill="#0CB7F2">
-                      <polygon points="120,226 122,231 127,231 123,234 125,239 120,236 115,239 117,234 113,231 118,231" />
+                    {/* Pequena insígnia de 3 estrelas minimalistas na base para equilíbrio estético */}
+                    <g fill="#0CB7F2" opacity="0.85">
+                      <polygon points="200,344 202.5,350 209,350 204,354 206,360 200,356 194,360 196,354 191,350 197.5,350" />
                       <polygon
-                        points="104,223 105.5,227 109.5,227 106.5,229 108,233 104,231 100,233 101.5,229 98.5,227 102.5,227"
-                        opacity="0.75"
+                        points="178,338 180,343 185,343 181,346 182.5,351 178,348 173.5,351 175,346 171,343 176,343"
+                        opacity="0.6"
                       />
                       <polygon
-                        points="136,223 137.5,227 141.5,227 138.5,229 140,233 136,231 132,233 133.5,229 130.5,227 134.5,227"
-                        opacity="0.75"
+                        points="222,338 224,343 229,343 225,346 226.5,351 222,348 217.5,351 219,346 215,343 220,343"
+                        opacity="0.6"
                       />
                     </g>
                   </svg>
                 </div>
-
-                {/* Floating Badges */}
-                <div className="absolute -top-2 -left-2 sm:top-4 sm:left-0 z-20 animate-float bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center">
-                    <Zap className="w-4 h-4" />
+                {/* Floating Badges - Reposicionados nas bordas para NUNCA cobrir o texto central */}
+                {/* Topo / Lateral esquerda alta */}
+                <div className="absolute -top-3 -left-3 sm:-top-2 sm:-left-6 z-20 animate-float bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-800 block">Atendimento Ágil</span>
-                    <span className="text-[10px] text-slate-500">Resposta humanizada</span>
+                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
+                      Atendimento Ágil
+                    </span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
+                      Resposta humanizada
+                    </span>
                   </div>
                 </div>
-
-                <div className="absolute top-1/2 -right-4 sm:-right-6 -translate-y-1/2 z-20 animate-float [animation-delay:1.5s] bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center">
-                    <Award className="w-4 h-4" />
+                {/* Lateral direita alta (acima da linha do texto central) */}
+                <div className="absolute top-2 -right-3 sm:top-6 sm:-right-8 z-20 animate-float [animation-delay:1.5s] bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-800 block">
+                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
                       Cotação Simplificada
                     </span>
-                    <span className="text-[10px] text-slate-500">Parcerias com seguradoras</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
+                      Parcerias com seguradoras
+                    </span>
                   </div>
                 </div>
-
-                <div className="absolute -bottom-3 sm:bottom-2 left-6 z-20 animate-float [animation-delay:3s] bg-white/95 backdrop-blur-md rounded-2xl px-4 py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center">
-                    <Building2 className="w-4 h-4" />
+                {/* Base / Lateral esquerda baixa (abaixo do escudo, sem cobrir o texto) */}
+                <div className="absolute -bottom-4 left-2 sm:-bottom-4 sm:left-4 z-20 animate-float [animation-delay:3s] bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <span className="text-xs font-bold text-slate-800 block">
+                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
                       Atendemos PJ e PF
                     </span>
-                    <span className="text-[10px] text-slate-500">Planos e seguros sob medida</span>
+                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
+                      Planos e seguros sob medida
+                    </span>
                   </div>
-                </div>
+                </div>{' '}
               </div>
             </div>
           </div>
