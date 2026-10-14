@@ -153,20 +153,20 @@ export const SERVICES_CATALOG: ServiceItem[] = [
     title: 'Planos de Saúde',
     shortDescription: 'Encontre o plano ideal para você ou sua empresa, com atendimento próximo.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
-    badge: 'Fale via WhatsApp',
+    badge: 'WHATSAPP',
   },
   {
     id: 'responsabilidade_civil',
     title: 'Responsabilidade Civil',
     shortDescription: 'Proteção financeira para danos causados a terceiros.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
-    badge: 'Fale via WhatsApp',
+    badge: 'WHATSAPP',
   },
   {
     id: 'outros',
     title: 'Outros Seguros',
     shortDescription: 'Não encontrou o que precisa? Fale com a gente e encontramos a solução.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
-    badge: 'Fale via WhatsApp',
+    badge: 'WHATSAPP',
   },
 ]

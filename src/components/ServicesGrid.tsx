@@ -73,7 +73,7 @@ export const ServicesGrid: React.FC = () => {
                   </span>
                 ) : (
                   <span className="text-[11px] font-semibold tracking-wide uppercase px-2.5 py-0.5 rounded-full bg-sky-50 text-[#0979B0] border border-sky-100">
-                    Cotação Ágil
+                    FORMULÁRIO
                   </span>
                 )}
               </div>
@@ -95,7 +95,7 @@ export const ServicesGrid: React.FC = () => {
                 className="inline-flex items-center gap-2 text-sm font-semibold text-[#0979B0] group-hover:text-[#004173] transition-colors focus:outline-none focus-visible:underline"
                 title={`Cotar agora ${service.title}`}
               >
-                <span>{isWhatsapp ? 'Falar no WhatsApp' : 'Cotar agora'}</span>
+                <span>{isWhatsapp ? 'Fale com Corretor' : 'Cotar agora'}</span>
                 {isWhatsapp ? (
                   <Phone className="w-4 h-4 text-[#0CB7F2] group-hover:translate-x-0.5 transition-transform" />
                 ) : (
