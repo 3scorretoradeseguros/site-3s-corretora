@@ -670,17 +670,16 @@ export default function Index() {
             Pronto para proteger o que é seu?
           </h2>
           <p className="text-sky-100 text-base sm:text-lg mb-8 max-w-2xl mx-auto font-normal">
-            Converse agora mesmo com nossa equipe e receba um atendimento consultivo e sob medida.
+            Solicite agora o seu plano de proteção personalizado e receba um atendimento consultivo
+            e sob medida.
           </p>
           <Button
-            asChild
+            onClick={scrollToServices}
             size="lg"
-            className="h-14 px-8 rounded-2xl bg-white hover:bg-slate-100 text-[#004173] font-bold text-base shadow-xl hover:scale-105 active:scale-95 transition-all"
+            className="h-14 px-8 rounded-2xl bg-white hover:bg-slate-100 text-[#004173] font-bold text-base shadow-xl hover:scale-105 active:scale-95 transition-all inline-flex items-center gap-2"
           >
-            <a href={COMPANY_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer">
-              <Phone className="w-5 h-5 text-emerald-600 mr-2" />
-              <span>Falar no WhatsApp</span>
-            </a>
+            <ShieldCheck className="w-5 h-5 text-[#0CB7F2]" />
+            <span>Solicitar plano de proteção</span>
           </Button>
         </div>
       </section>
