@@ -461,9 +461,11 @@ export default function Index() {
 
             <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm text-center">
               <span className="font-serif font-black text-3xl sm:text-4xl text-[#004173] block mb-1">
-                Minutos
+                Cotação
               </span>
-              <span className="text-xs sm:text-sm font-medium text-slate-600">Cotação Rápida</span>
+              <span className="text-xs sm:text-sm font-medium text-slate-600">
+                Rápida e Consultiva
+              </span>
             </div>
 
             <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm text-center">
