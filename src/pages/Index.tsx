@@ -455,7 +455,7 @@ export default function Index() {
                 12
               </span>
               <span className="text-xs sm:text-sm font-medium text-slate-600">
-                Tipos de Cobertura
+                Tipos de Seguros
               </span>
             </div>
 
