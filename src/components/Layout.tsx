@@ -20,7 +20,7 @@ export default function Layout() {
     location.pathname === '/seguro-de-vida' ||
     location.pathname === '/seguro-viagem' ||
     location.pathname === '/seguro-celular' ||
-    location.pathname === '/seguro-RC-profissional' ||
+    location.pathname === '/seguro-rc-profissional' ||
     location.pathname === '/planos-de-saude'
 
   if (isLandingPageRoute) {

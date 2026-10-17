@@ -997,8 +997,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     },
   },
 
-  '/seguro-RC-profissional': {
-    slug: '/seguro-RC-profissional',
+  '/seguro-rc-profissional': {
+    slug: '/seguro-rc-profissional',
     productName: 'Seguro RC Profissional',
     tagline: 'A segurança da sua reputação e do seu patrimônio',
     heroTitle: 'Proteja a sua carreira contra erros e omissões',

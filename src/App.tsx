@@ -34,18 +34,18 @@ const App = () => (
             <Route path="/seguro-de-vida" element={<LandingPageTemplate />} />
             <Route path="/seguro-viagem" element={<LandingPageTemplate />} />
             <Route path="/seguro-celular" element={<LandingPageTemplate />} />
-            <Route path="/seguro-RC-profissional" element={<LandingPageTemplate />} />
+            <Route path="/seguro-rc-profissional" element={<LandingPageTemplate />} />
             <Route path="/planos-de-saude" element={<LandingPageTemplate />} />
 
-            {/* Redirecionamentos para erros comuns de digitação previstos no briefing */}
+            {/* Redirecionamentos para erros comuns de digitação ou URLs legadas em caixa mista */}
             <Route
               path="/seguro-auto-caminhhao"
               element={<Navigate to="/seguro-auto-caminhao" replace />}
             />
             <Route path="/planos-de-saúde" element={<Navigate to="/planos-de-saude" replace />} />
             <Route
-              path="/seguro-rc-profissional"
-              element={<Navigate to="/seguro-RC-profissional" replace />}
+              path="/seguro-RC-profissional"
+              element={<Navigate to="/seguro-rc-profissional" replace />}
             />
 
             <Route path="/painel" element={<Login />} />
