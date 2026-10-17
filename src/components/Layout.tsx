@@ -10,6 +10,28 @@ import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
 export default function Layout() {
   const location = useLocation()
   const isDashboardRoute = location.pathname.startsWith('/painel/contatos')
+  const isLandingPageRoute =
+    location.pathname === '/seguro-auto-carro' ||
+    location.pathname === '/seguro-auto-moto' ||
+    location.pathname === '/seguro-auto-caminhao' ||
+    location.pathname === '/seguro-residencial' ||
+    location.pathname === '/seguro-empresarial' ||
+    location.pathname === '/seguro-condominio' ||
+    location.pathname === '/seguro-de-vida' ||
+    location.pathname === '/seguro-viagem' ||
+    location.pathname === '/seguro-celular' ||
+    location.pathname === '/seguro-RC-profissional' ||
+    location.pathname === '/planos-de-saude'
+
+  if (isLandingPageRoute) {
+    return (
+      <div className="flex flex-col min-h-screen bg-white text-slate-900 relative">
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+      </div>
+    )
+  }
 
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900 relative">
@@ -18,7 +40,7 @@ export default function Layout() {
         <Outlet />
       </main>
       {!isDashboardRoute && <Footer />}
-      {/* Botão flutuante de WhatsApp fixo em todas as telas públicas */}
+      {/* Botão flutuante de WhatsApp fixo em todas as telas públicas exceto LPs e Dashboard */}
       {!isDashboardRoute && <WhatsAppFloatingButton />}
     </div>
   )

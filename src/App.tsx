@@ -12,6 +12,7 @@ import ContactsDashboard from '@/pages/ContactsDashboard'
 import ForgotPassword from '@/pages/ForgotPassword'
 import ResetPassword from '@/pages/ResetPassword'
 import NotFound from '@/pages/NotFound'
+import LandingPageTemplate from '@/pages/LandingPageTemplate'
 
 const App = () => (
   <BrowserRouter>
@@ -22,6 +23,31 @@ const App = () => (
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Index />} />
+
+            {/* As 11 Landing Pages dedicadas com escape único */}
+            <Route path="/seguro-auto-carro" element={<LandingPageTemplate />} />
+            <Route path="/seguro-auto-moto" element={<LandingPageTemplate />} />
+            <Route path="/seguro-auto-caminhao" element={<LandingPageTemplate />} />
+            <Route path="/seguro-residencial" element={<LandingPageTemplate />} />
+            <Route path="/seguro-empresarial" element={<LandingPageTemplate />} />
+            <Route path="/seguro-condominio" element={<LandingPageTemplate />} />
+            <Route path="/seguro-de-vida" element={<LandingPageTemplate />} />
+            <Route path="/seguro-viagem" element={<LandingPageTemplate />} />
+            <Route path="/seguro-celular" element={<LandingPageTemplate />} />
+            <Route path="/seguro-RC-profissional" element={<LandingPageTemplate />} />
+            <Route path="/planos-de-saude" element={<LandingPageTemplate />} />
+
+            {/* Redirecionamentos para erros comuns de digitação previstos no briefing */}
+            <Route
+              path="/seguro-auto-caminhhao"
+              element={<Navigate to="/seguro-auto-caminhao" replace />}
+            />
+            <Route path="/planos-de-saúde" element={<Navigate to="/planos-de-saude" replace />} />
+            <Route
+              path="/seguro-rc-profissional"
+              element={<Navigate to="/seguro-RC-profissional" replace />}
+            />
+
             <Route path="/painel" element={<Login />} />
             <Route
               path="/painel/contatos"
