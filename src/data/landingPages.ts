@@ -39,6 +39,7 @@ export interface LandingPageData {
   heroSubtitle: string
   quoteUrl: string
   ctaText: string
+  protectItemName: string
   isWhatsApp: boolean
   heroIconType:
     | 'car'
@@ -73,6 +74,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Análise consultiva nas principais seguradoras do Brasil. Cobertura para colisão, roubo, terceiros e assistência 24 horas com a indicação ideal para o seu perfil.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/auto',
     ctaText: 'Fazer Cotação do Seguro Auto',
+    protectItemName: 'carro',
     isWhatsApp: false,
     heroIconType: 'car',
     coverages: [
@@ -177,6 +179,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Proteção especializada para motocicletas de uso pessoal, lazer ou trabalho. Roubo, furto, colisão e assistência 24h para você rodar sem medo.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/moto',
     ctaText: 'Fazer Cotação do Seguro Moto',
+    protectItemName: 'moto',
     isWhatsApp: false,
     heroIconType: 'moto',
     coverages: [
@@ -281,6 +284,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Soluções robustas para caminhoneiros autônomos e transportadoras. Cobertura para cavalo mecânico, carreta, baú, terceiros e assistência pesada 24h.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/caminhao',
     ctaText: 'Fazer Cotação do Seguro Caminhão',
+    protectItemName: 'caminhão',
     isWhatsApp: false,
     heroIconType: 'truck',
     coverages: [
@@ -383,6 +387,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Tranquilidade para quem mora em casa ou apartamento, próprio ou alugado. Cobertura contra incêndio, roubo, danos elétricos e serviços emergenciais gratuitos.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/residencial',
     ctaText: 'Fazer Cotação do Seguro Residencial',
+    protectItemName: 'casa',
     isWhatsApp: false,
     heroIconType: 'home',
     coverages: [
@@ -487,6 +492,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Soluções completas para escritórios, consultórios, comércios, indústrias e prestadores de serviços. Garanta as operações contra incêndio, roubo e processos civis.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/empresarial',
     ctaText: 'Fazer Cotação do Seguro Empresarial',
+    protectItemName: 'negócio',
     isWhatsApp: false,
     heroIconType: 'building',
     coverages: [
@@ -591,6 +597,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Cumprimento rigoroso do Art. 1.346 do Código Civil. Proteção para áreas comuns, estrutura predial, portões, elevadores e responsabilidade civil do síndico.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/condominio',
     ctaText: 'Fazer Cotação do Seguro Condomínio',
+    protectItemName: 'condomínio',
     isWhatsApp: false,
     heroIconType: 'condo',
     coverages: [
@@ -695,6 +702,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Esqueça o conceito antigo de que seguro de vida só serve na falta. Conte com coberturas para doenças graves, invalidez, diárias de incapacidade e auxílio funeral.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/vida',
     ctaText: 'Fazer Cotação do Seguro de Vida',
+    protectItemName: 'vida',
     isWhatsApp: false,
     heroIconType: 'life',
     coverages: [
@@ -799,6 +807,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Assistência médica internacional, cobertura para extravio de bagagem, cancelamento de voos e suporte 24 horas em português onde você estiver.',
     quoteUrl: 'http://www.porto.vc/VIAGEM_52R04J_1d42503f554f4613952f7754d4da35ce',
     ctaText: 'Cotar Seguro Viagem Porto Seguro',
+    protectItemName: 'viagem',
     isWhatsApp: false,
     heroIconType: 'travel',
     coverages: [
@@ -903,6 +912,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Proteção completa e descomplicada via Porto Seguro. Fique tranquilo para usar seu smartphone na rua, transporte ou viagens sem medo de prejuízo.',
     quoteUrl: 'http://www.porto.vc/SEGUROCELULAR_52R04J_7ded94f85d5542d499a77898d8c8c23a',
     ctaText: 'Cotar Seguro Celular Porto Seguro',
+    protectItemName: 'celular',
     isWhatsApp: false,
     heroIconType: 'phone',
     coverages: [
@@ -1007,6 +1017,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Seguro de Responsabilidade Civil Profissional para médicos, advogados, engenheiros, contadores e corretores. Custas de defesa jurídica e indenizações a terceiros.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
     ctaText: 'Falar com Corretor Especialista no WhatsApp',
+    protectItemName: 'reputação',
     isWhatsApp: true,
     heroIconType: 'rc',
     coverages: [
@@ -1111,6 +1122,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       'Individual, familiar ou empresarial (PJ a partir de 2 vidas). Comparamos Amil, Bradesco Saúde, SulAmérica, Notredame Intermédica e Porto Saúde com a melhor rede credenciada.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
     ctaText: 'Falar com Consultor de Saúde no WhatsApp',
+    protectItemName: 'saúde',
     isWhatsApp: true,
     heroIconType: 'health',
     coverages: [

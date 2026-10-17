@@ -211,7 +211,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
                   ) : (
                     <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
                   )}
-                  <span>{data.ctaText}</span>
+                  <span>Faça sua cotação</span>
                 </a>
               </div>
 
@@ -280,7 +280,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               ) : (
                 <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
               )}
-              <span>{data.ctaText}</span>
+              <span>Quero cotar meu seguro</span>
             </a>
           </div>
         </div>
@@ -329,7 +329,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               ) : (
                 <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
               )}
-              <span>{data.ctaText}</span>
+              <span>Receba sua cotação</span>
             </a>
           </div>
         </div>
@@ -388,7 +388,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               ) : (
                 <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
               )}
-              <span>{data.ctaText}</span>
+              <span>Proteja seu {data.protectItemName} agora</span>
             </a>
           </div>
         </div>
@@ -423,7 +423,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
                 ) : (
                   <ArrowRight className="w-5 h-5 text-[#0979B0]" />
                 )}
-                <span>{data.ctaText}</span>
+                <span>Encontre o seguro ideal</span>
               </a>
             </Button>
           </div>
