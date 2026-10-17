@@ -73,6 +73,7 @@ export const COMPANY_INFO = {
     facebook: 'https://www.facebook.com/seguros3scorretora/',
     google: 'https://share.google/sOEJ12p6LE92C1Mqm',
   },
+  siteUrl: 'https://3scorretoradeseguros.goskip.app',
 } as const
 
 export interface ServiceItem {

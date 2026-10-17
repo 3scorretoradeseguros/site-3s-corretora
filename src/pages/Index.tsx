@@ -17,6 +17,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { ServicesGrid } from '@/components/ServicesGrid'
 import { ContactForm } from '@/components/ContactForm'
+import { SEO } from '@/components/SEO'
 import { COMPANY_INFO } from '@/types'
 
 export default function Index() {
@@ -38,8 +39,117 @@ export default function Index() {
     }
   }
 
+  const origin = typeof window !== 'undefined' ? window.location.origin : COMPANY_INFO.siteUrl
+  const canonicalUrl = `${origin}/`
+
+  const homeJsonLd = {
+    '@context': 'https://schema.org',
+    '@type': ['LocalBusiness', 'InsuranceAgency'],
+    name: COMPANY_INFO.name,
+    legalName: COMPANY_INFO.corporateName,
+    alternateName: COMPANY_INFO.corporateName,
+    description:
+      'Proteja o que importa para você. Seguros e planos de saúde para pessoa física e jurídica.',
+    url: canonicalUrl,
+    telephone: COMPANY_INFO.phoneWhatsApp,
+    email: COMPANY_INFO.email,
+    taxID: COMPANY_INFO.cnpj,
+    identifier: [
+      {
+        '@type': 'PropertyValue',
+        name: 'CNPJ',
+        value: COMPANY_INFO.cnpj,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Registro SUSEP Corretora',
+        value: COMPANY_INFO.susepBroker,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SUSEP Responsável Técnica',
+        value: `${COMPANY_INFO.technicalManager} (SUSEP ${COMPANY_INFO.susepTechnical})`,
+      },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      postalCode: '03058-060',
+      addressCountry: 'BR',
+    },
+    areaServed: {
+      '@type': 'Country',
+      name: 'Brasil',
+    },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: COMPANY_INFO.phoneWhatsApp,
+        contactType: 'customer service',
+        availableLanguage: ['Portuguese'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: COMPANY_INFO.phoneLandline,
+        contactType: 'customer service',
+        availableLanguage: ['Portuguese'],
+      },
+    ],
+    sameAs: [
+      COMPANY_INFO.social.linkedin,
+      COMPANY_INFO.social.instagram,
+      COMPANY_INFO.social.facebook,
+      COMPANY_INFO.social.google,
+    ],
+  }
+
+  const homeKeywords = [
+    'Seguro',
+    'Seguro auto',
+    'Seguro automóvel',
+    'Seguro carro',
+    'Seguro moto',
+    'Seguro caminhão',
+    'Seguro residencial',
+    'Seguro para casa',
+    'Seguro para apartamento',
+    'Seguro empresarial',
+    'Seguro para empresa',
+    'Seguro para negócios',
+    'Seguro para escritório',
+    'Seguro para comércio',
+    'Seguro para clínica',
+    'Seguro para MEI',
+    'Seguro condomínio',
+    'Seguro de vida',
+    'Seguro pessoal',
+    'Seguro viagem',
+    'Seguro celular',
+    'Plano de saúde',
+    'Seguro saúde',
+    'Seguro RC',
+    'Seguro de responsabilidade civil',
+    'Seguro profissional',
+    'Seguro de responsabilidade civil profissional',
+    'Corretora de seguros',
+    'Corretora de planos de saúde',
+    'Corretor de seguros',
+    'Corretor de planos de saúde',
+    'Corretora de seguros e planos de saúde',
+    'Renovação de seguro',
+  ]
+
   return (
     <div className="flex flex-col min-h-screen">
+      <SEO
+        title="3S Corretora de Seguros"
+        description="Proteja o que importa para você. Seguros e planos de saúde para pessoa física e jurídica."
+        canonicalUrl={canonicalUrl}
+        keywords={homeKeywords}
+        jsonLd={homeJsonLd}
+      />
       {/* 1. HERO SECTION */}
       <section className="relative overflow-hidden bg-gradient-to-b from-[#F5F8FB] via-white to-white py-16 sm:py-20 lg:py-28 border-b border-slate-100">
         {/* Glow de fundo */}

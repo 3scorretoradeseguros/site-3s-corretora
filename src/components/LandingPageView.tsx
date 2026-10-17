@@ -128,8 +128,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
   }
 
   // Canonical URL
-  const origin =
-    typeof window !== 'undefined' ? window.location.origin : 'https://3s.seucorretor.digital'
+  const origin = typeof window !== 'undefined' ? window.location.origin : COMPANY_INFO.siteUrl
   const canonicalUrl = `${origin}${data.slug}`
 
   // JSON-LD estruturado (Schema.org)
@@ -147,7 +146,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
       email: COMPANY_INFO.email,
       address: {
         '@type': 'PostalAddress',
-        streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51',
+        streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51 - Belenzinho',
         addressLocality: 'São Paulo',
         addressRegion: 'SP',
         postalCode: '03058-060',
@@ -156,8 +155,8 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
       identifier: COMPANY_INFO.cnpj,
     },
     areaServed: {
-      '@type': 'State',
-      name: 'São Paulo',
+      '@type': 'AdministrativeArea',
+      name: 'Brasil',
     },
     url: canonicalUrl,
   }
