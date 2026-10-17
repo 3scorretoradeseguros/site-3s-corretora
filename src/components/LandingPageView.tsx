@@ -23,6 +23,7 @@ import {
   Phone,
   ShieldCheck,
   Check,
+  HelpCircle,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { SEO } from '@/components/SEO'
@@ -131,34 +132,81 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
   const origin = typeof window !== 'undefined' ? window.location.origin : COMPANY_INFO.siteUrl
   const canonicalUrl = `${origin}${data.slug}`
 
-  // JSON-LD estruturado (Schema.org)
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    serviceType: data.productName,
-    name: `${data.productName} — 3S Corretora de Seguros`,
-    description: data.seo.description,
-    provider: {
-      '@type': 'InsuranceAgency',
-      name: COMPANY_INFO.corporateName,
-      alternateName: COMPANY_INFO.name,
-      telephone: COMPANY_INFO.phoneWhatsApp,
-      email: COMPANY_INFO.email,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51 - Belenzinho',
-        addressLocality: 'São Paulo',
-        addressRegion: 'SP',
-        postalCode: '03058-060',
-        addressCountry: 'BR',
+  // Organização completa da 3S Corretora para herança em todas as LPs
+  const organizationEntity = {
+    '@type': 'InsuranceAgency',
+    '@id': `${COMPANY_INFO.siteUrl}/#organization`,
+    name: COMPANY_INFO.name,
+    legalName: COMPANY_INFO.corporateName,
+    alternateName: COMPANY_INFO.corporateName,
+    url: COMPANY_INFO.siteUrl,
+    telephone: COMPANY_INFO.phoneWhatsApp,
+    email: COMPANY_INFO.email,
+    taxID: COMPANY_INFO.cnpj,
+    identifier: [
+      {
+        '@type': 'PropertyValue',
+        name: 'CNPJ',
+        value: COMPANY_INFO.cnpj,
       },
-      identifier: COMPANY_INFO.cnpj,
+      {
+        '@type': 'PropertyValue',
+        name: 'Registro SUSEP Corretora',
+        value: COMPANY_INFO.susepBroker,
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'SUSEP Responsável Técnica',
+        value: `${COMPANY_INFO.technicalManager} (SUSEP ${COMPANY_INFO.susepTechnical})`,
+      },
+    ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51',
+      addressLocality: 'São Paulo',
+      addressRegion: 'SP',
+      postalCode: '03058-060',
+      addressCountry: 'BR',
     },
     areaServed: {
-      '@type': 'AdministrativeArea',
+      '@type': 'Country',
       name: 'Brasil',
     },
-    url: canonicalUrl,
+  }
+
+  // JSON-LD estruturado (Schema.org) com @graph contendo Service e FAQPage
+  const jsonLdGraph = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Service',
+        serviceType: data.productName,
+        name: `${data.productName} — 3S Corretora de Seguros`,
+        description: data.seo.description,
+        provider: organizationEntity,
+        publisher: organizationEntity,
+        areaServed: {
+          '@type': 'Country',
+          name: 'Brasil',
+        },
+        url: canonicalUrl,
+      },
+      ...(data.faq && data.faq.length > 0
+        ? [
+            {
+              '@type': 'FAQPage',
+              mainEntity: data.faq.map((item) => ({
+                '@type': 'Question',
+                name: item.question,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: item.answer,
+                },
+              })),
+            },
+          ]
+        : []),
+    ],
   }
 
   return (
@@ -169,7 +217,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
         description={data.seo.description}
         canonicalUrl={canonicalUrl}
         keywords={data.seo.keywords}
-        jsonLd={jsonLd}
+        jsonLd={jsonLdGraph}
       />
 
       {/* 2. Header Mínimo (apenas logo e CTA) */}
@@ -196,6 +244,13 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
                 {data.heroSubtitle}
               </p>
+
+              {data.definition && (
+                <div className="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80 text-xs sm:text-sm text-slate-700 leading-relaxed text-left">
+                  <strong className="text-[#004173] font-semibold">O que é: </strong>
+                  <span>{data.definition}</span>
+                </div>
+              )}
 
               {/* CTA Principal Imediato */}
               <div className="pt-2">
@@ -392,6 +447,65 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
           </div>
         </div>
       </section>
+
+      {/* 6.1. SEÇÃO DE PERGUNTAS FREQUENTES (FAQ GEO) */}
+      {data.faq && data.faq.length > 0 && (
+        <section className="py-14 sm:py-16 bg-[#F5F8FB] border-b border-slate-200/70">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center max-w-2xl mx-auto mb-10">
+              <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
+                Dúvidas Comuns
+              </span>
+              <h2 className="font-serif font-black text-2xl sm:text-3xl text-[#004173] tracking-tight mb-3">
+                Perguntas Frequentes sobre {data.productName}
+              </h2>
+              <p className="text-sm sm:text-base text-slate-600">
+                Respostas diretas e factuais para esclarecer as principais questões sobre este
+                seguro.
+              </p>
+            </div>
+
+            <div className="space-y-4">
+              {data.faq.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-7 h-7 rounded-lg bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0 mt-0.5">
+                      <HelpCircle className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <h3 className="font-serif font-bold text-base text-[#004173] mb-2">
+                        {item.question}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                        {item.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <a
+                href={data.quoteUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-sm transition-colors"
+              >
+                {data.isWhatsApp ? (
+                  <Phone className="w-4 h-4 text-[#0CB7F2]" />
+                ) : (
+                  <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
+                )}
+                <span>Tirar dúvidas e cotar com o corretor</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* 7. CTA FINAL DE FECHAMENTO (Mesmo link de cotação) */}
       <section className="bg-gradient-to-r from-[#004173] via-[#0979B0] to-[#004173] py-14 text-white text-center">

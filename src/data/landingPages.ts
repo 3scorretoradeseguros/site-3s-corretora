@@ -30,6 +30,11 @@ export interface BenefitItem {
   description: string
 }
 
+export interface FAQItem {
+  question: string
+  answer: string
+}
+
 export interface LandingPageData {
   slug: string
   productName: string
@@ -53,9 +58,11 @@ export interface LandingPageData {
     | 'phone'
     | 'rc'
     | 'health'
+  definition?: string
   coverages: CoverageItem[]
   benefits: BenefitItem[]
   practicalExamples: PracticalExample[]
+  faq: FAQItem[]
   seo: {
     title: string
     description: string
@@ -72,6 +79,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'o seu carro e seu bolso',
     heroSubtitle:
       'Análise consultiva nas principais seguradoras do Brasil. Cobertura para colisão, roubo, terceiros e assistência 24 horas com a indicação ideal para o seu perfil.',
+    definition:
+      'O seguro auto carro é um contrato de proteção patrimonial que garante indenização financeira contra roubo, furto, colisões, danos a terceiros e assistência 24 horas para o condutor e o veículo.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/auto',
     ctaText: 'Fazer Cotação do Seguro Auto',
     protectItemName: 'carro',
@@ -155,6 +164,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'Com a cobertura de vidros, o agendamento foi feito para troca na mesma semana pagando apenas a franquia de vidros.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro de carro cobre?',
+        answer:
+          'A apólice compreensiva cobre colisão parcial ou perda total, roubo, furto, incêndio, danos materiais e corporais a terceiros (RCF-V) e assistência 24h com guincho e chaveiro.',
+      },
+      {
+        question: 'O seguro de carro cobre terceiros?',
+        answer:
+          'Sim. Com a cláusula de Responsabilidade Civil Facultativa de Veículos (RCF-V), a seguradora indeniza os danos materiais e corporais causados a outros veículos ou pedestres até o limite contratado.',
+      },
+      {
+        question: 'Como funciona a cotação com a 3S Corretora?',
+        answer:
+          'O corretor analisa o perfil de uso do veículo e compara as condições nas principais seguradoras (como Porto Seguro, Azul, Tokio Marine e Allianz), recomendando a melhor combinação de franquia e coberturas.',
+      },
+      {
+        question: 'Quanto custa um seguro de carro?',
+        answer:
+          'O valor varia conforme modelo, ano de fabricação, CEP de pernoite, perfil do condutor principal e coberturas contratadas, sendo calculado sob medida após a análise consultiva.',
+      },
+    ],
     seo: {
       title: 'Seguro Auto Carro em São Paulo | Consultoria Especializada — 3S Corretora',
       description:
@@ -177,6 +208,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'seguro completo para sua moto',
     heroSubtitle:
       'Proteção especializada para motocicletas de uso pessoal, lazer ou trabalho. Roubo, furto, colisão e assistência 24h para você rodar sem medo.',
+    definition:
+      'O seguro de moto é uma proteção securitária para motocicletas e scooters que cobre prejuízos com roubo, furto, quedas, colisões, danos a terceiros e socorro emergencial 24h em pistas urbanas e rodovias.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/moto',
     ctaText: 'Fazer Cotação do Seguro Moto',
     protectItemName: 'moto',
@@ -260,6 +293,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A cobertura para conserto em oficina autorizada restaurou as peças originais sem complicações.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro de moto cobre?',
+        answer:
+          'Cobre roubo e furto qualificado, colisões, queda acidental, danos materiais e corporais a terceiros e socorro com caminhão-plataforma específico para motocicletas.',
+      },
+      {
+        question: 'O seguro de moto aceita motos de baixa cilindrada?',
+        answer:
+          'Sim. A 3S Corretora pesquisa seguradoras parceiras com aceitação para scooters urbanas de 125cc a 160cc e também para modelos esportivos e touring de alta cilindrada.',
+      },
+      {
+        question: 'O guincho de moto funciona em rodovias?',
+        answer:
+          'Sim. A assistência 24h inclui reboque especializado para motocicletas com limites de quilometragem contratados, válido em vias urbanas e estradas em todo o país.',
+      },
+      {
+        question: 'Como cotar seguro para moto?',
+        answer:
+          'Basta preencher os dados do modelo da motocicleta e do piloto no formulário digital; nosso corretor analisa as opções e indica o plano com a franquia mais equilibrada.',
+      },
+    ],
     seo: {
       title: 'Seguro Auto Moto em São Paulo | Consultoria Especializada — 3S Corretora',
       description:
@@ -282,6 +337,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'ou frota de transporte',
     heroSubtitle:
       'Soluções robustas para caminhoneiros autônomos e transportadoras. Cobertura para cavalo mecânico, carreta, baú, terceiros e assistência pesada 24h.',
+    definition:
+      'O seguro auto caminhão é uma apólice de carga pesada voltada para caminhoneiros autônomos e frotistas, cobrindo colisão, capotamento, roubo do veículo, implementos rodoviários, danos a terceiros e socorro guincho pesado.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/caminhao',
     ctaText: 'Fazer Cotação do Seguro Caminhão',
     protectItemName: 'caminhão',
@@ -363,6 +420,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A cobertura de RCF a terceiros com limite ampliado indenizou os carros atingidos sem comprometer o patrimônio do transportador.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro de caminhão cobre?',
+        answer:
+          'Cobre colisão, capotamento, tombamento, roubo, furto, danos a terceiros (RCF), implementos rodoviários como baús ou caçambas e guincho pesado 24 horas.',
+      },
+      {
+        question: 'O seguro atende caminhoneiro autônomo e empresas?',
+        answer:
+          'Sim. A consultoria da 3S Corretora atende tanto o motorista proprietário de um único caminhão quanto empresas transportadoras com pequenas ou grandes frotas.',
+      },
+      {
+        question: 'Carreta e implemento podem ser segurados juntos?',
+        answer:
+          'Sim. É possível contratar a proteção para o cavalo mecânico e incluir na mesma apólice carretas, baús frigoríficos, siders, caçambas e tanques.',
+      },
+      {
+        question: 'O seguro de caminhão exige rastreador?',
+        answer:
+          'Em muitos modelos e faixas de valor, as seguradoras exigem ou integram rastreador homologado, o que reduz substancialmente o valor do prêmio do seguro.',
+      },
+    ],
     seo: {
       title: 'Seguro Caminhão e Frota em São Paulo | Cotação — 3S Corretora',
       description:
@@ -385,6 +464,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'com custo menor que você imagina',
     heroSubtitle:
       'Tranquilidade para quem mora em casa ou apartamento, próprio ou alugado. Cobertura contra incêndio, roubo, danos elétricos e serviços emergenciais gratuitos.',
+    definition:
+      'O seguro residencial é um contrato de proteção patrimonial para casas e apartamentos que indeniza danos por incêndio, raio, roubo e danos elétricos, além de oferecer serviços de assistência domiciliar 24 horas.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/residencial',
     ctaText: 'Fazer Cotação do Seguro Residencial',
     protectItemName: 'casa',
@@ -468,6 +549,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'O chaveiro 24h do seguro residencial atendeu o chamado rapidamente e trocou o miolo da fechadura sem custo.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro residencial cobre?',
+        answer:
+          'Cobre a estrutura do imóvel e bens internos contra incêndio, explosão, queda de raio, roubo de pertences, danos elétricos em eletrodomésticos, responsabilidade civil familiar e perda de aluguel.',
+      },
+      {
+        question: 'O seguro residencial pode ser contratado para imóvel alugado?',
+        answer:
+          'Sim. O inquilino pode proteger seus móveis, eletrodomésticos e a responsabilidade civil com o locador, enquanto o proprietário garante a estrutura física do imóvel.',
+      },
+      {
+        question: 'Quais assistências gratuitas estão incluídas?',
+        answer:
+          'A maioria das apólices inclui mão de obra emergencial de encanador, eletricista, chaveiro 24h, conserto de linha branca (geladeira, fogão, máquina de lavar) e desentupimento.',
+      },
+      {
+        question: 'Quanto custa um seguro residencial?',
+        answer:
+          'É um dos seguros mais acessíveis do mercado, custando em média de R$ 20 a R$ 60 por mês para uma cobertura ampla de dezenas de milhares de reais.',
+      },
+    ],
     seo: {
       title: 'Seguro Residencial em São Paulo | Cotação — 3S Corretora',
       description:
@@ -490,6 +593,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'da sua empresa ou comércio',
     heroSubtitle:
       'Soluções completas para escritórios, consultórios, comércios, indústrias e prestadores de serviços. Garanta as operações contra incêndio, roubo e processos civis.',
+    definition:
+      'O seguro empresarial é uma proteção securitária corporativa que resguarda instalações, estoques, maquinários e lucros cessantes de empresas de comércio, indústria e serviços contra incêndio, danos elétricos e roubo.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/empresarial',
     ctaText: 'Fazer Cotação do Seguro Empresarial',
     protectItemName: 'negócio',
@@ -573,6 +678,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A reposição dos computadores ocorreu em poucos dias, permitindo a retomada imediata do trabalho da equipe.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro empresarial cobre?',
+        answer:
+          'Cobre a estrutura do prédio comercial, máquinas, estoques e equipamentos contra incêndio, raio, explosão, danos elétricos, roubo de bens, lucros cessantes e responsabilidade civil de operações.',
+      },
+      {
+        question: 'O seguro empresarial atende MEI e pequenas empresas?',
+        answer:
+          'Sim. Existem apólices simplificadas sob medida para microempreendedores individuais, consultórios, escritórios de serviços e pequenos comércios com parcelamento flexível.',
+      },
+      {
+        question: 'O que é a cobertura de lucros cessantes?',
+        answer:
+          'É a garantia financeira que paga as despesas fixas da empresa (como folha de pagamento e aluguel) e o lucro líquido esperado enquanto o negócio estiver paralisado devido a um sinistro coberto.',
+      },
+      {
+        question: 'Como a 3S Corretora dimensiona o seguro da empresa?',
+        answer:
+          'O corretor analisa o contrato de locação, as exigências do condomínio comercial e o valor real dos ativos para sugerir as importâncias seguradas adequadas, evitando subseguro.',
+      },
+    ],
     seo: {
       title: 'Seguro Empresarial em São Paulo | Cotação — 3S Corretora',
       description:
@@ -595,6 +722,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'prédios residenciais e comerciais',
     heroSubtitle:
       'Cumprimento rigoroso do Art. 1.346 do Código Civil. Proteção para áreas comuns, estrutura predial, portões, elevadores e responsabilidade civil do síndico.',
+    definition:
+      'O seguro condomínio é uma apólice de contratação obrigatória por lei (Art. 1.346 do Código Civil) que cobre toda a edificação contra risco de incêndio ou destruição, além de resguardar áreas comuns e a responsabilidade civil do síndico.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/condominio',
     ctaText: 'Fazer Cotação do Seguro Condomínio',
     protectItemName: 'condomínio',
@@ -678,6 +807,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A apólice acionou a assistência e cobriu as despesas médicas e indenizatórias decorrentes do incidente.',
       },
     ],
+    faq: [
+      {
+        question: 'O seguro condomínio é obrigatório?',
+        answer:
+          'Sim. O Artigo 1.346 do Código Civil determina que todo condomínio edilício deve contratar seguro contra risco de incêndio ou destruição total ou parcial da edificação sob responsabilidade do síndico.',
+      },
+      {
+        question: 'O seguro condomínio cobre a responsabilidade do síndico?',
+        answer:
+          'Sim, quando contratada a cobertura adicional de Responsabilidade Civil do Síndico, que ampara prejuízos financeiros involuntários decorrentes da gestão condominial.',
+      },
+      {
+        question: 'Danos elétricos em elevadores e portões estão inclusos?',
+        answer:
+          'Sim. É uma das coberturas adicionais mais acionadas, cobrindo o conserto ou substituição de motores de elevadores, bombas d’água e sistemas de portão eletrônico.',
+      },
+      {
+        question: 'Qual a diferença entre cobertura simples e ampla?',
+        answer:
+          'A simples cobre apenas riscos nomeados básicos (incêndio, raio e explosão), enquanto a ampla abrange múltiplos eventos súbitos e acidentais que possam danificar a estrutura do prédio.',
+      },
+    ],
     seo: {
       title: 'Seguro Condomínio em São Paulo | Cotação — 3S Corretora',
       description:
@@ -700,6 +851,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'você em vida e a sua família no futuro',
     heroSubtitle:
       'Esqueça o conceito antigo de que seguro de vida só serve na falta. Conte com coberturas para doenças graves, invalidez, diárias de incapacidade e auxílio funeral.',
+    definition:
+      'O seguro de vida é um contrato de proteção financeira pessoal e familiar que prevê o pagamento de indenização isenta de impostos em vida — em caso de doenças graves ou invalidez — e suporte financeiro imediato aos beneficiários.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/vida',
     ctaText: 'Fazer Cotação do Seguro de Vida',
     protectItemName: 'vida',
@@ -783,6 +936,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A indenização integral permitiu a quitação das dívidas, garantia dos estudos dos filhos e estabilidade financeira familiar.',
       },
     ],
+    faq: [
+      {
+        question: 'O seguro de vida pode ser utilizado em vida?',
+        answer:
+          'Sim. As coberturas modernas incluem indenização imediata em caso de diagnóstico de doenças graves (como câncer ou infarto), invalidez por acidente e diárias por incapacidade temporária.',
+      },
+      {
+        question: 'O seguro de vida entra em inventário?',
+        answer:
+          'Não. Pelo Artigo 794 do Código Civil brasileiro, o capital estipulado do seguro de vida não é considerado herança e não entra em inventário, sendo pago diretamente aos beneficiários sem travas judiciais.',
+      },
+      {
+        question: 'A indenização do seguro de vida paga imposto de renda?',
+        answer:
+          'Não. Os valores recebidos pelos beneficiários ou pelo segurado em sinistros de vida são legalmente isentos de Imposto de Renda Pessoa Física (IRPF).',
+      },
+      {
+        question: 'Quem pode ser beneficiário da apólice?',
+        answer:
+          'O segurado tem liberdade total para escolher e alterar os beneficiários a qualquer momento na apólice, indicando cônjuge, filhos, parentes ou terceiros.',
+      },
+    ],
     seo: {
       title: 'Seguro de Vida em São Paulo | Consultoria Personalizada — 3S Corretora',
       description:
@@ -805,6 +980,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'Seguro Viagem Porto Seguro',
     heroSubtitle:
       'Assistência médica internacional, cobertura para extravio de bagagem, cancelamento de voos e suporte 24 horas em português onde você estiver.',
+    definition:
+      'O seguro viagem é uma proteção securitária para viagens nacionais e internacionais que garante atendimento médico e hospitalar de urgência, cobertura para extravio de bagagem e cancelamento de voos com central 24h em português.',
     quoteUrl: 'http://www.porto.vc/VIAGEM_52R04J_1d42503f554f4613952f7754d4da35ce',
     ctaText: 'Cotar Seguro Viagem Porto Seguro',
     protectItemName: 'viagem',
@@ -888,6 +1065,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A cobertura de cancelamento ressarciu as diárias de hotéis e passeios já pagos que não permitiam estorno.',
       },
     ],
+    faq: [
+      {
+        question: 'O seguro viagem Porto Seguro atende o Tratado de Schengen?',
+        answer:
+          'Sim. As opções para a Europa contemplam a cobertura médica e hospitalar mínima exigida de 30 mil euros, com certificado emitido em múltiplos idiomas para apresentação na imigração.',
+      },
+      {
+        question: 'O que fazer em caso de urgência médica no exterior?',
+        answer:
+          'Basta contatar a central da Porto Seguro via telefone ou WhatsApp disponível 24 horas por dia com atendimento em português, que direciona ao hospital conveniado mais próximo.',
+      },
+      {
+        question: 'O seguro cobre perda ou extravio de bagagem?',
+        answer:
+          'Sim. Há indenização complementar ou suplementar para compra de itens de primeira necessidade e reparação financeira caso a companhia aérea extravie definitivamente suas malas.',
+      },
+      {
+        question: 'Como funciona a emissão do seguro viagem?',
+        answer:
+          'A emissão é feita de forma prática e 100% online pelo link oficial da parceria 3S Corretora e Porto Seguro, gerando o bilhete da apólice imediatamente.',
+      },
+    ],
     seo: {
       title: 'Seguro Viagem Porto Seguro | Cotação Online — 3S Corretora',
       description:
@@ -910,6 +1109,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'para o seu celular ou iPhone',
     heroSubtitle:
       'Proteção completa e descomplicada via Porto Seguro. Fique tranquilo para usar seu smartphone na rua, transporte ou viagens sem medo de prejuízo.',
+    definition:
+      'O seguro celular é uma apólice de proteção para smartphones e iPhones que indeniza ou repõe o aparelho em casos de roubo, furto qualificado, quedas com tela quebrada e danos acidentais por líquidos.',
     quoteUrl: 'http://www.porto.vc/SEGUROCELULAR_52R04J_7ded94f85d5542d499a77898d8c8c23a',
     ctaText: 'Cotar Seguro Celular Porto Seguro',
     protectItemName: 'celular',
@@ -993,6 +1194,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A cobertura de danos por líquidos indenizou o conserto ou reposição do aparelho conforme a apólice.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro celular cobre?',
+        answer:
+          'Cobre roubo e assalto à mão armada, furto qualificado mediante arrombamento, quebra acidental de tela ou carcaça, e danos provocados por queda em água ou derramamento de líquidos.',
+      },
+      {
+        question: 'O seguro celular aceita aparelhos usados?',
+        answer:
+          'Sim. A Porto Seguro aceita smartphones com até 18 meses a partir da data de emissão da nota fiscal de compra original.',
+      },
+      {
+        question: 'O seguro funciona em viagens internacionais?',
+        answer:
+          'Sim. A cobertura contra roubo e furto qualificado da Porto Seguro é válida tanto no Brasil quanto no exterior sem custo extra.',
+      },
+      {
+        question: 'Como acionar o seguro em caso de roubo ou quebra?',
+        answer:
+          'Basta registrar o boletim de ocorrência (em caso de roubo) e abrir o chamado diretamente no portal oficial da Porto Seguro ou com o auxílio da equipe da 3S Corretora.',
+      },
+    ],
     seo: {
       title: 'Seguro Celular e iPhone Porto Seguro | Cotação — 3S Corretora',
       description:
@@ -1015,6 +1238,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'no exercício profissional (E&O)',
     heroSubtitle:
       'Seguro de Responsabilidade Civil Profissional para médicos, advogados, engenheiros, contadores e corretores. Custas de defesa jurídica e indenizações a terceiros.',
+    definition:
+      'O seguro de responsabilidade civil profissional (E&O) protege o patrimônio pessoal e a carreira de profissionais liberais contra processos judiciais, custeando advogados, perícias e indenizações por erros ou omissões involuntárias.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
     ctaText: 'Falar com Corretor Especialista no WhatsApp',
     protectItemName: 'reputação',
@@ -1098,6 +1323,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A seguradora arcou com as despesas de remediação técnica, preservando a relação entre contratante e engenheiro.',
       },
     ],
+    faq: [
+      {
+        question: 'O que o seguro de Responsabilidade Civil Profissional cobre?',
+        answer:
+          'Cobre custas judiciais, honorários advocatícios, laudos periciais, indenizações a terceiros e acordos extrajudiciais resultantes de falhas, erros ou omissões involuntárias no exercício da profissão.',
+      },
+      {
+        question: 'Quais profissões podem contratar o RC Profissional?',
+        answer:
+          'Médicos, dentistas, advogados, contadores, engenheiros, arquitetos, corretores de seguros, administradores e outros prestadores de serviços técnicos e consultivos.',
+      },
+      {
+        question: 'O seguro protege os bens pessoais do profissional?',
+        answer:
+          'Sim. Ao absorver os custos de defesa e o valor das condenações até o limite da apólice, o seguro evita penhora de contas bancárias, imóveis ou patrimônio familiar.',
+      },
+      {
+        question: 'Como funciona a consultoria da 3S Corretora para o RC?',
+        answer:
+          'A responsável técnica da corretora avalia as áreas de atuação, o volume de contratos e o risco de judicialização para desenhar a franquia e o limite de indenização ideais.',
+      },
+    ],
     seo: {
       title: 'Seguro RC Profissional em São Paulo | 3S Corretora',
       description:
@@ -1120,6 +1367,8 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitleHighlight: 'as melhores operadoras do Brasil',
     heroSubtitle:
       'Individual, familiar ou empresarial (PJ a partir de 2 vidas). Comparamos Amil, Bradesco Saúde, SulAmérica, Notredame Intermédica e Porto Saúde com a melhor rede credenciada.',
+    definition:
+      'O plano de saúde é um contrato de assistência médica suplementar regulado pela ANS que garante consultas, exames, pronto-atendimento, internações e cirurgias em redes credenciadas hospitalares e laboratoriais.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
     ctaText: 'Falar com Consultor de Saúde no WhatsApp',
     protectItemName: 'saúde',
@@ -1200,6 +1449,28 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'Um casal planejou a gravidez e contratou o plano de saúde com cobertura obstétrica com antecedência.',
         solution:
           'Todos os ultrassons, exames genéticos e o parto em maternidade de referência foram 100% cobertos.',
+      },
+    ],
+    faq: [
+      {
+        question: 'Quem pode contratar plano de saúde empresarial?',
+        answer:
+          'Qualquer empresa com CNPJ ativo (incluindo MEI e microempresas) a partir de 2 vidas — por exemplo, o sócio e um familiar dependente ou colaborador.',
+      },
+      {
+        question: 'Quais operadoras a 3S Corretora compara?',
+        answer:
+          'Comparamos as principais operadoras e seguradoras de saúde do Brasil, incluindo Amil, Bradesco Saúde, SulAmérica, Notredame Intermédica e Porto Saúde.',
+      },
+      {
+        question: 'É possível aproveitar as carências do plano atual?',
+        answer:
+          'Sim. Nossa equipe assessora a portabilidade de carências conforme as regras da ANS para que você migre de plano mantendo ou reduzindo prazos de espera.',
+      },
+      {
+        question: 'Qual a vantagem da consultoria em planos de saúde?',
+        answer:
+          'O consultor mapeia os hospitais e laboratórios preferidos da sua família ou equipe para encontrar o convênio que melhor atende sem sobrepreço.',
       },
     ],
     seo: {

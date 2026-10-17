@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# LLM & AI Generative Engine Optimization index:
+# Informações para motores generativos de IA disponíveis em: https://3scorretoradeseguros.goskip.app/llms.txt
+
 Sitemap: https://3scorretoradeseguros.goskip.app/sitemap.xml

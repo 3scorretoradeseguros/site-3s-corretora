@@ -13,6 +13,7 @@ import {
   Mail,
   Umbrella,
   Cross,
+  HelpCircle,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ServicesGrid } from '@/components/ServicesGrid'
@@ -42,66 +43,134 @@ export default function Index() {
   const origin = typeof window !== 'undefined' ? window.location.origin : COMPANY_INFO.siteUrl
   const canonicalUrl = `${origin}/`
 
+  const homeFaqs = [
+    {
+      question: 'O que faz a 3S Corretora de Seguros?',
+      answer:
+        'A 3S Corretora é uma empresa de consultoria e corretagem de seguros e planos de saúde, devidamente licenciada pela SUSEP (nº 232148773). Nossa equipe analisa as necessidades de cada cliente, compara as condições das seguradoras parceiras e indica a proteção ideal com suporte técnico contínuo.',
+    },
+    {
+      question: 'Quais tipos de seguro a 3S Corretora oferece?',
+      answer:
+        'Oferecemos seguro auto (carro, moto e caminhão), seguro residencial, seguro empresarial, seguro condomínio, seguro de vida com cobertura em vida, seguro viagem nacional e internacional, seguro celular contra roubo e danos, responsabilidade civil profissional e planos de saúde.',
+    },
+    {
+      question: 'A 3S Corretora atende empresas e pessoas físicas?',
+      answer:
+        'Sim. Atendemos pessoas físicas em todas as fases da vida patrimonial e familiar, e também empresas de todos os portes (incluindo MEI e pequenas empresas), com soluções personalizadas para frotas, patrimônio comercial, responsabilidade civil e saúde corporativa.',
+    },
+    {
+      question: 'Onde fica a 3S Corretora em São Paulo?',
+      answer:
+        'A sede física da corretora está localizada na Av. Álvaro Ramos, 235 / Sala 51, no bairro do Belenzinho, em São Paulo - SP (CEP 03058-060), atendendo clientes de toda a capital, Grande São Paulo e do Brasil de forma consultiva e digital.',
+    },
+    {
+      question: 'Como solicitar uma cotação na 3S Corretora?',
+      answer:
+        'Você pode solicitar diretamente pelo formulário de contato desta página inicial, acionar nosso time de corretores no WhatsApp oficial (11) 99463-5763 ou telefone fixo (11) 2777-5052 para uma análise consultiva e sem compromisso.',
+    },
+  ]
+
   const homeJsonLd = {
     '@context': 'https://schema.org',
-    '@type': ['LocalBusiness', 'InsuranceAgency'],
-    name: COMPANY_INFO.name,
-    legalName: COMPANY_INFO.corporateName,
-    alternateName: COMPANY_INFO.corporateName,
-    description:
-      'Proteja o que importa para você. Seguros e planos de saúde para pessoa física e jurídica.',
-    url: canonicalUrl,
-    telephone: COMPANY_INFO.phoneWhatsApp,
-    email: COMPANY_INFO.email,
-    taxID: COMPANY_INFO.cnpj,
-    identifier: [
+    '@graph': [
       {
-        '@type': 'PropertyValue',
-        name: 'CNPJ',
-        value: COMPANY_INFO.cnpj,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'Registro SUSEP Corretora',
-        value: COMPANY_INFO.susepBroker,
-      },
-      {
-        '@type': 'PropertyValue',
-        name: 'SUSEP Responsável Técnica',
-        value: `${COMPANY_INFO.technicalManager} (SUSEP ${COMPANY_INFO.susepTechnical})`,
-      },
-    ],
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51',
-      addressLocality: 'São Paulo',
-      addressRegion: 'SP',
-      postalCode: '03058-060',
-      addressCountry: 'BR',
-    },
-    areaServed: {
-      '@type': 'Country',
-      name: 'Brasil',
-    },
-    contactPoint: [
-      {
-        '@type': 'ContactPoint',
+        '@type': ['LocalBusiness', 'InsuranceAgency'],
+        '@id': `${canonicalUrl}#organization`,
+        name: COMPANY_INFO.name,
+        legalName: COMPANY_INFO.corporateName,
+        alternateName: COMPANY_INFO.corporateName,
+        description:
+          'Proteja o que importa para você. Seguros e planos de saúde para pessoa física e jurídica com atendimento consultivo.',
+        url: canonicalUrl,
         telephone: COMPANY_INFO.phoneWhatsApp,
-        contactType: 'customer service',
-        availableLanguage: ['Portuguese'],
+        email: COMPANY_INFO.email,
+        taxID: COMPANY_INFO.cnpj,
+        identifier: [
+          {
+            '@type': 'PropertyValue',
+            name: 'CNPJ',
+            value: COMPANY_INFO.cnpj,
+          },
+          {
+            '@type': 'PropertyValue',
+            name: 'Registro SUSEP Corretora',
+            value: COMPANY_INFO.susepBroker,
+          },
+          {
+            '@type': 'PropertyValue',
+            name: 'SUSEP Responsável Técnica',
+            value: `${COMPANY_INFO.technicalManager} (SUSEP ${COMPANY_INFO.susepTechnical})`,
+          },
+        ],
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: 'Av. Álvaro Ramos, 235 / Sala 51',
+          addressLocality: 'São Paulo',
+          addressRegion: 'SP',
+          postalCode: '03058-060',
+          addressCountry: 'BR',
+        },
+        geo: {
+          '@type': 'GeoCoordinates',
+          latitude: -23.5414,
+          longitude: -46.5925,
+        },
+        areaServed: {
+          '@type': 'Country',
+          name: 'Brasil',
+        },
+        contactPoint: [
+          {
+            '@type': 'ContactPoint',
+            telephone: COMPANY_INFO.phoneWhatsApp,
+            contactType: 'customer service',
+            availableLanguage: ['Portuguese'],
+          },
+          {
+            '@type': 'ContactPoint',
+            telephone: COMPANY_INFO.phoneLandline,
+            contactType: 'customer service',
+            availableLanguage: ['Portuguese'],
+          },
+        ],
+        sameAs: [
+          COMPANY_INFO.social.linkedin,
+          COMPANY_INFO.social.instagram,
+          COMPANY_INFO.social.facebook,
+          COMPANY_INFO.social.google,
+        ],
       },
       {
-        '@type': 'ContactPoint',
-        telephone: COMPANY_INFO.phoneLandline,
-        contactType: 'customer service',
-        availableLanguage: ['Portuguese'],
+        '@type': 'WebPage',
+        '@id': `${canonicalUrl}#webpage`,
+        url: canonicalUrl,
+        name: '3S Corretora de Seguros | Corretora de Seguros e Planos de Saúde em São Paulo',
+        description:
+          'Proteja o que importa para você. Seguros e planos de saúde para pessoa física e jurídica com consultoria personalizada.',
+        isPartOf: {
+          '@type': 'WebSite',
+          '@id': `${canonicalUrl}#website`,
+          name: '3S Corretora de Seguros',
+          url: canonicalUrl,
+        },
+        speakable: {
+          '@type': 'SpeakableSpecification',
+          cssSelector: ['#hero-title', '#hero-definition', '#faq-section'],
+        },
       },
-    ],
-    sameAs: [
-      COMPANY_INFO.social.linkedin,
-      COMPANY_INFO.social.instagram,
-      COMPANY_INFO.social.facebook,
-      COMPANY_INFO.social.google,
+      {
+        '@type': 'FAQPage',
+        '@id': `${canonicalUrl}#faq`,
+        mainEntity: homeFaqs.map((faq) => ({
+          '@type': 'Question',
+          name: faq.question,
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: faq.answer,
+          },
+        })),
+      },
     ],
   }
 
@@ -165,7 +234,10 @@ export default function Index() {
                 Corretora de Seguros e Planos de Saúde
               </div>
 
-              <h1 className="font-serif font-black text-4xl sm:text-5xl lg:text-6xl text-[#004173] tracking-tight leading-[1.15]">
+              <h1
+                id="hero-title"
+                className="font-serif font-black text-4xl sm:text-5xl lg:text-6xl text-[#004173] tracking-tight leading-[1.15]"
+              >
                 Proteja{' '}
                 <span className="relative inline-block text-[#0979B0] underline decoration-[#0CB7F2] decoration-4 underline-offset-4">
                   o que importa
@@ -173,9 +245,14 @@ export default function Index() {
                 , com quem cuida de você.
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal">
-                Seguros e planos de saúde para pessoa física e jurídica, com agilidade, condições
-                sob medida e o atendimento acolhedor que você merece.
+              <p
+                id="hero-definition"
+                className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
+              >
+                A 3S Corretora de Seguros é uma corretora de seguros e planos de saúde sediada no
+                Belenzinho, São Paulo. Atuamos com consultoria independente para pessoas físicas e
+                empresas, analisando coberturas e indicando a melhor proteção nas principais
+                seguradoras do país.
               </p>
 
               {/* Botões de Ação */}
@@ -676,6 +753,54 @@ export default function Index() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5.1. SEÇÃO DE PERGUNTAS FREQUENTES (FAQ GEO) */}
+      <section id="faq-section" className="py-20 bg-white border-b border-slate-100 scroll-mt-20">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
+              Tire Suas Dúvidas
+            </span>
+            <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#004173] tracking-tight mb-3">
+              Perguntas Frequentes sobre a 3S Corretora
+            </h2>
+            <p className="text-base text-slate-600">
+              Informações objetivas e transparentes sobre nossos serviços, modalidades de seguro e
+              modelo consultivo de atendimento.
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {homeFaqs.map((faq, index) => (
+              <div
+                key={index}
+                className="bg-[#F5F8FB] rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-sm"
+              >
+                <div className="flex items-start gap-3.5">
+                  <div className="w-8 h-8 rounded-xl bg-white text-[#0979B0] flex items-center justify-center shrink-0 shadow-sm border border-slate-100 mt-0.5">
+                    <HelpCircle className="w-4 h-4 text-[#0CB7F2]" />
+                  </div>
+                  <div>
+                    <h3 className="font-serif font-bold text-base sm:text-lg text-[#004173] mb-2">
+                      {faq.question}
+                    </h3>
+                    <p className="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 text-center">
+            <Button
+              onClick={scrollToContact}
+              className="rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-6 font-medium shadow-md"
+            >
+              Fazer uma pergunta ao corretor
+            </Button>
           </div>
         </div>
       </section>

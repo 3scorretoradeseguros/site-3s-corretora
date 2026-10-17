@@ -5,7 +5,7 @@ export interface SEOProps {
   description: string
   canonicalUrl: string
   keywords?: string[]
-  jsonLd?: Record<string, unknown>
+  jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>
 }
 
 export const SEO: React.FC<SEOProps> = ({ title, description, canonicalUrl, keywords, jsonLd }) => {
