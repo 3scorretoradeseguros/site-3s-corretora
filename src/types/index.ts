@@ -88,7 +88,8 @@ export const SERVICES_CATALOG: ServiceItem[] = [
   {
     id: 'seguro_auto_carro',
     title: 'Seguro Auto Carro',
-    shortDescription: 'Proteção completa para o seu veículo, com assistência 24h e cotação rápida.',
+    shortDescription:
+      'Proteção completa para o seu veículo, com assistência 24h e análise consultiva.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/auto',
     isExternalQuote: true,
   },

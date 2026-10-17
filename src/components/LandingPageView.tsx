@@ -85,14 +85,6 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
         <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-gradient-to-tr from-sky-100/70 via-blue-50/50 to-transparent border border-sky-100/80 flex items-center justify-center p-6 shadow-sm">
           <div className={iconWrapperClass}>{graphicIcon}</div>
         </div>
-
-        {/* Badge flutuante sutil (estática, sem animação) */}
-        <div className="absolute -bottom-2 sm:bottom-0 bg-white/95 border border-slate-200/90 rounded-2xl px-4 py-2 shadow-md flex items-center gap-2">
-          <ShieldCheck className="w-4 h-4 text-[#0979B0]" />
-          <span className="text-xs font-semibold text-slate-800">
-            SUSEP {COMPANY_INFO.susepBroker}
-          </span>
-        </div>
       </div>
     )
   }
@@ -208,32 +200,26 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
 
               {/* CTA Principal Imediato */}
               <div className="pt-2">
-                <Button
-                  asChild
-                  size="lg"
-                  className="w-full sm:w-auto h-13 px-8 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-base font-semibold shadow-lg shadow-[#004173]/20 transition-colors"
+                <a
+                  href={data.quoteUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-4 sm:px-5 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold shadow-sm transition-colors"
                 >
-                  <a
-                    href={data.quoteUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2.5"
-                  >
-                    {data.isWhatsApp ? (
-                      <Phone className="w-5 h-5 text-[#0CB7F2]" />
-                    ) : (
-                      <ArrowRight className="w-5 h-5 text-[#0CB7F2]" />
-                    )}
-                    <span>{data.ctaText}</span>
-                  </a>
-                </Button>
+                  {data.isWhatsApp ? (
+                    <Phone className="w-4 h-4 text-[#0CB7F2]" />
+                  ) : (
+                    <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
+                  )}
+                  <span>{data.ctaText}</span>
+                </a>
               </div>
 
               {/* Prova de Confiança */}
               <div className="pt-2 flex flex-wrap items-center justify-center lg:justify-start gap-4 text-xs text-slate-500">
                 <div className="flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Cotação rápida e sem compromisso</span>
+                  <span>Análise consultiva e sem compromisso</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0" />
@@ -280,6 +266,23 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               </div>
             ))}
           </div>
+
+          {/* CTA de fim da seção de coberturas */}
+          <div className="mt-10 text-center">
+            <a
+              href={data.quoteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-sm transition-colors"
+            >
+              {data.isWhatsApp ? (
+                <Phone className="w-4 h-4 text-[#0CB7F2]" />
+              ) : (
+                <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
+              )}
+              <span>{data.ctaText}</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -311,6 +314,23 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
                 <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{b.description}</p>
               </div>
             ))}
+          </div>
+
+          {/* CTA de fim da seção de benefícios */}
+          <div className="mt-10 text-center">
+            <a
+              href={data.quoteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-sm transition-colors"
+            >
+              {data.isWhatsApp ? (
+                <Phone className="w-4 h-4 text-[#0CB7F2]" />
+              ) : (
+                <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
+              )}
+              <span>{data.ctaText}</span>
+            </a>
           </div>
         </div>
       </section>
@@ -354,6 +374,23 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               </div>
             ))}
           </div>
+
+          {/* CTA de fim da seção de exemplos práticos */}
+          <div className="mt-10 text-center">
+            <a
+              href={data.quoteUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-5 py-2.5 text-xs sm:text-sm font-semibold shadow-sm transition-colors"
+            >
+              {data.isWhatsApp ? (
+                <Phone className="w-4 h-4 text-[#0CB7F2]" />
+              ) : (
+                <ArrowRight className="w-4 h-4 text-[#0CB7F2]" />
+              )}
+              <span>{data.ctaText}</span>
+            </a>
+          </div>
         </div>
       </section>
 
@@ -362,7 +399,7 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-xs text-sky-100 border border-white/20">
             <ShieldCheck className="w-3.5 h-3.5 text-[#0CB7F2]" />
-            <span>Cotação Rápida e Confiável</span>
+            <span>Atendimento Consultivo e Personalizado</span>
           </div>
 
           <h2 className="font-serif font-black text-2xl sm:text-3xl lg:text-4xl tracking-tight text-white">
@@ -370,15 +407,15 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
           </h2>
 
           <p className="text-sky-100 text-sm sm:text-base leading-relaxed max-w-xl mx-auto">
-            Faça sua simulação agora mesmo e descubra as melhores condições para o seu{' '}
-            {data.productName}.
+            Envie sua solicitação de cotação e receba a análise detalhada com a indicação ideal para
+            o seu {data.productName}.
           </p>
 
           <div className="pt-2">
             <Button
               asChild
               size="lg"
-              className="h-13 px-8 rounded-2xl bg-white hover:bg-slate-100 text-[#004173] font-bold text-base shadow-xl transition-colors inline-flex items-center gap-2"
+              className="h-12 sm:h-13 px-7 sm:px-8 rounded-2xl bg-white hover:bg-slate-100 text-[#004173] font-bold text-sm sm:text-base shadow-xl transition-colors inline-flex items-center gap-2"
             >
               <a href={data.quoteUrl} target="_blank" rel="noopener noreferrer">
                 {data.isWhatsApp ? (

@@ -70,7 +70,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitle: 'Seguro Auto sob medida para',
     heroTitleHighlight: 'o seu carro e seu bolso',
     heroSubtitle:
-      'Cotação rápida nas maiores seguradoras do Brasil. Cobertura para colisão, roubo, terceiros e assistência 24 horas em todo o país com a consultoria da 3S Corretora.',
+      'Análise consultiva nas principais seguradoras do Brasil. Cobertura para colisão, roubo, terceiros e assistência 24 horas com a indicação ideal para o seu perfil.',
     quoteUrl: 'https://3s.seucorretor.digital/#/formularios/auto',
     ctaText: 'Fazer Cotação do Seguro Auto',
     isWhatsApp: false,
@@ -115,9 +115,9 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     ],
     benefits: [
       {
-        title: 'Multi-cálculo com as Maiores Seguradoras',
+        title: 'Análise Consultiva de Mercado',
         description:
-          'Comparamos Porto Seguro, Allianz, Tokio Marine, Azul, Bradesco e HDI para garantir o menor preço e melhor condição.',
+          'Comparamos opções na Porto Seguro, Allianz, Tokio Marine, Azul, Bradesco e HDI, analisando as coberturas para indicar a melhor relação custo-benefício.',
       },
       {
         title: 'Assessoria em Caso de Sinistro',
@@ -154,7 +154,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       },
     ],
     seo: {
-      title: 'Seguro Auto Carro em São Paulo | Cotação Rápida — 3S Corretora',
+      title: 'Seguro Auto Carro em São Paulo | Consultoria Especializada — 3S Corretora',
       description:
         'Cote seu Seguro Auto Carro com a 3S Corretora em São Paulo. Cobertura completa para roubo, colisão, terceiros e assistência 24h com as principais seguradoras.',
       keywords: [
@@ -258,9 +258,9 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       },
     ],
     seo: {
-      title: 'Seguro Auto Moto em São Paulo | Cotação Rápida — 3S Corretora',
+      title: 'Seguro Auto Moto em São Paulo | Consultoria Especializada — 3S Corretora',
       description:
-        'Seguro para motos e scooters em São Paulo. Cotação simplificada contra roubo, furto, colisão e guincho 24h especializado com a 3S Corretora.',
+        'Seguro para motos e scooters em São Paulo. Análise consultiva contra roubo, furto, colisão e guincho 24h especializado com a 3S Corretora.',
       keywords: [
         'seguro moto são paulo',
         'seguro motocicleta',
@@ -776,7 +776,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
       },
     ],
     seo: {
-      title: 'Seguro de Vida em São Paulo | Cotação Rápida — 3S Corretora',
+      title: 'Seguro de Vida em São Paulo | Consultoria Personalizada — 3S Corretora',
       description:
         'Cotação de Seguro de Vida individual e familiar em São Paulo. Cobertura para doenças graves, invalidez e amparo familiar com a 3S Corretora.',
       keywords: [
@@ -846,9 +846,9 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'Apólices com cobertura médica mínima de 30 mil euros exigida para entrada em países da Europa.',
       },
       {
-        title: 'Emissão Online Imediata via Porto Seguro',
+        title: 'Emissão Prática Online via Porto Seguro',
         description:
-          'Contrate pelo link oficial e receba o certificado no seu e-mail em poucos minutos antes do embarque.',
+          'Contrate pelo link oficial e receba a apólice com o certificado de cobertura diretamente no seu e-mail antes do embarque.',
       },
       {
         title: 'Evite Contas Médicas Milionárias no Exterior',
@@ -900,7 +900,7 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
     heroTitle: 'Proteção contra roubo, furto e quebra',
     heroTitleHighlight: 'para o seu celular ou iPhone',
     heroSubtitle:
-      'Contratação rápida e descomplicada via Porto Seguro. Fique tranquilo para usar seu smartphone na rua, transporte ou viagens sem medo de prejuízo.',
+      'Proteção completa e descomplicada via Porto Seguro. Fique tranquilo para usar seu smartphone na rua, transporte ou viagens sem medo de prejuízo.',
     quoteUrl: 'http://www.porto.vc/SEGUROCELULAR_52R04J_7ded94f85d5542d499a77898d8c8c23a',
     ctaText: 'Cotar Seguro Celular Porto Seguro',
     isWhatsApp: false,
@@ -950,9 +950,9 @@ export const LANDING_PAGES_DATA: Record<string, LandingPageData> = {
           'A seguradora mais conceituada do Brasil no segmento de tecnologia e smartphones.',
       },
       {
-        title: 'Contratação 100% Online em Minutos',
+        title: 'Contratação Prática 100% Online',
         description:
-          'Basta informar os dados do aparelho e efetuar a cotação instantânea pelo link oficial da 3S Corretora.',
+          'Basta informar os dados do aparelho e concluir a solicitação diretamente pelo link oficial da Porto Seguro com a 3S Corretora.',
       },
       {
         title: 'Válido para Aparelhos Novos e Usados',

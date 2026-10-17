@@ -96,11 +96,11 @@ export default function Index() {
               <div className="pt-4 flex flex-wrap items-center justify-center lg:justify-start gap-6 text-xs text-slate-500">
                 <div className="flex items-center gap-1.5">
                   <CheckCircle className="w-4 h-4 text-emerald-600" />
-                  <span>Cotação rápida e sem burocracia</span>
+                  <span>Atendimento consultivo do início ao fim</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <CheckCircle className="w-4 h-4 text-emerald-600" />
-                  <span>Assessoria completa em todas as etapas</span>
+                  <span>Indicação personalizada conforme seu objetivo</span>
                 </div>
               </div>
             </div>
@@ -279,10 +279,10 @@ export default function Index() {
                   </div>
                   <div>
                     <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
-                      Cotação Simplificada
+                      Análise Consultiva
                     </span>
                     <span className="text-[9px] sm:text-[10px] text-slate-500 block">
-                      Parcerias com seguradoras
+                      Opções comparadas para você
                     </span>
                   </div>
                 </div>
@@ -408,11 +408,11 @@ export default function Index() {
                 <Zap className="w-7 h-7 text-white" />
               </div>
               <h3 className="font-serif font-bold text-xl text-[#004173] mb-3">
-                Cotação Simplificada
+                Consultoria Especializada
               </h3>
               <p className="text-sm text-slate-600 leading-relaxed">
-                Formulários digitais integrados com as principais seguradoras do mercado para
-                simular o melhor custo-benefício, sem burocracia.
+                Analisamos e comparamos as opções das principais seguradoras para indicar a proteção
+                que realmente faz sentido para o seu objetivo e orçamento.
               </p>
             </div>
 
@@ -461,10 +461,10 @@ export default function Index() {
 
             <div className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm text-center">
               <span className="font-serif font-black text-3xl sm:text-4xl text-[#004173] block mb-1">
-                Cotação
+                Consultoria
               </span>
               <span className="text-xs sm:text-sm font-medium text-slate-600">
-                Rápida e Consultiva
+                Análise e indicação personalizada
               </span>
             </div>
 
