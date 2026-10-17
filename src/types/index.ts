@@ -157,7 +157,7 @@ export const SERVICES_CATALOG: ServiceItem[] = [
   },
   {
     id: 'responsabilidade_civil',
-    title: 'Responsabilidade Civil',
+    title: 'Responsabilidade Civil Profissional',
     shortDescription: 'Proteção financeira para danos causados a terceiros.',
     quoteUrl: 'https://api.whatsapp.com/send?phone=5511994635763',
     badge: 'WHATSAPP',
