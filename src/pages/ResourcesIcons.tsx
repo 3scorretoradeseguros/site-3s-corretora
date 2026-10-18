@@ -44,6 +44,7 @@ export default function ResourcesIcons() {
   const [selectedColor, setSelectedColor] = useState('#0979B0')
   const [downloadingId, setDownloadingId] = useState<string | null>(null)
   const [copiedId, setCopiedId] = useState<string | null>(null)
+  const [isDownloadingAllPng, setIsDownloadingAllPng] = useState(false)
 
   const handleLogout = () => {
     logout()
@@ -146,6 +147,41 @@ export default function ResourcesIcons() {
       title: `Baixando ${count} ícones em SVG...`,
       description: 'Os arquivos estão sendo descarregados pelo navegador.',
     })
+  }
+
+  // Baixar pacote completo em lote (todos os PNGs em sequência)
+  const handleDownloadAllPngs = async () => {
+    if (filteredIcons.length === 0 || isDownloadingAllPng) return
+
+    setIsDownloadingAllPng(true)
+    toast({
+      title: `Iniciando download de ${filteredIcons.length} ícones em PNG...`,
+      description: 'Renderizando em 512×512 com fundo transparente e a cor selecionada.',
+    })
+
+    try {
+      for (let i = 0; i < filteredIcons.length; i++) {
+        const icon = filteredIcons[i]
+        const markup = icon.getSvgMarkup({ color: selectedColor, size: 512 })
+        await downloadSvgAsPng(markup, `${icon.recommendedFileName}-512x512.png`, 512, 512)
+        // Pequena pausa entre downloads para o navegador não sobrecarregar
+        await new Promise((resolve) => setTimeout(resolve, 200))
+      }
+
+      toast({
+        title: 'Download em lote concluído (PNG)',
+        description: `Todos os ${filteredIcons.length} arquivos PNG foram descarregados com sucesso.`,
+      })
+    } catch (err: any) {
+      console.error('Erro durante o download em lote de PNGs:', err)
+      toast({
+        variant: 'destructive',
+        title: 'Erro no download em lote',
+        description: err?.message || 'Ocorreu uma falha ao renderizar os PNGs.',
+      })
+    } finally {
+      setIsDownloadingAllPng(false)
+    }
   }
 
   return (
@@ -323,7 +359,7 @@ export default function ResourcesIcons() {
             <div className="flex flex-wrap items-center gap-2">
               <span className="font-semibold text-slate-700 flex items-center gap-1.5 mr-1">
                 <Palette className="w-4 h-4 text-[#0979B0]" />
-                Cor do Traço SVG:
+                Cor do traço:
               </span>
               {COLOR_PRESETS.map((preset) => {
                 const isSelected = selectedColor === preset.value
@@ -348,15 +384,29 @@ export default function ResourcesIcons() {
               })}
             </div>
 
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleDownloadAllSvgs}
-              className="rounded-xl border-[#0979B0]/40 text-[#004173] hover:bg-sky-50 text-xs font-semibold h-8 shrink-0 self-start sm:self-auto"
-            >
-              <Download className="w-3.5 h-3.5 mr-1 text-[#0979B0]" />
-              Baixar todos os {filteredIcons.length} em SVG
-            </Button>
+            <div className="flex flex-wrap items-center gap-2 shrink-0 self-start sm:self-auto">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleDownloadAllSvgs}
+                disabled={filteredIcons.length === 0}
+                className="rounded-xl border-[#0979B0]/40 text-[#004173] hover:bg-sky-50 text-xs font-semibold h-8"
+              >
+                <Download className="w-3.5 h-3.5 mr-1 text-[#0979B0]" />
+                Baixar todos os {filteredIcons.length} em SVG
+              </Button>
+
+              <Button
+                variant="default"
+                size="sm"
+                onClick={handleDownloadAllPngs}
+                disabled={filteredIcons.length === 0 || isDownloadingAllPng}
+                className="rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-xs font-semibold h-8 flex items-center gap-1.5"
+              >
+                <ImageIcon className="w-3.5 h-3.5 text-[#0CB7F2]" />
+                <span>{isDownloadingAllPng ? 'Baixando...' : 'Baixar todos em PNG'}</span>
+              </Button>
+            </div>
           </div>
         </div>
 
