@@ -3,12 +3,20 @@ import React, { useEffect } from 'react'
 export interface SEOProps {
   title: string
   description: string
-  canonicalUrl: string
+  canonicalUrl?: string
   keywords?: string[]
   jsonLd?: Record<string, unknown> | Array<Record<string, unknown>>
+  noindex?: boolean
 }
 
-export const SEO: React.FC<SEOProps> = ({ title, description, canonicalUrl, keywords, jsonLd }) => {
+export const SEO: React.FC<SEOProps> = ({
+  title,
+  description,
+  canonicalUrl,
+  keywords,
+  jsonLd,
+  noindex = false,
+}) => {
   useEffect(() => {
     // 1. Atualizar Title
     document.title = title
@@ -22,6 +30,16 @@ export const SEO: React.FC<SEOProps> = ({ title, description, canonicalUrl, keyw
         document.head.appendChild(element)
       }
       element.setAttribute('content', content)
+    }
+
+    // Controle de indexação (robots noindex / nofollow)
+    if (noindex) {
+      setMetaTag('name', 'robots', 'noindex, nofollow')
+    } else {
+      const robotsMeta = document.querySelector('meta[name="robots"]')
+      if (robotsMeta) {
+        robotsMeta.setAttribute('content', 'index, follow')
+      }
     }
 
     // 2. Meta Description
@@ -44,14 +62,18 @@ export const SEO: React.FC<SEOProps> = ({ title, description, canonicalUrl, keyw
     setMetaTag('name', 'twitter:title', title)
     setMetaTag('name', 'twitter:description', description)
 
-    // 6. Link Canonical
+    // 6. Link Canonical (apenas se fornecido)
     let canonicalLink = document.querySelector('link[rel="canonical"]') as HTMLLinkElement | null
-    if (!canonicalLink) {
-      canonicalLink = document.createElement('link')
-      canonicalLink.setAttribute('rel', 'canonical')
-      document.head.appendChild(canonicalLink)
+    if (canonicalUrl) {
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link')
+        canonicalLink.setAttribute('rel', 'canonical')
+        document.head.appendChild(canonicalLink)
+      }
+      canonicalLink.setAttribute('href', canonicalUrl)
+    } else if (canonicalLink && noindex) {
+      canonicalLink.remove()
     }
-    canonicalLink.setAttribute('href', canonicalUrl)
 
     // 7. Schema.org JSON-LD
     let scriptTag = document.getElementById('route-jsonld') as HTMLScriptElement | null

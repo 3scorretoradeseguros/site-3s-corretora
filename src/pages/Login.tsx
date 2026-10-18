@@ -105,7 +105,7 @@ export default function Login() {
                 <Input
                   id="login-email"
                   type="email"
-                  placeholder="seguros3scorretora@gmail.com"
+                  placeholder="seuemail@email.com"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   className="rounded-xl h-11 pl-10 border-slate-200 focus-visible:ring-[#004173]"

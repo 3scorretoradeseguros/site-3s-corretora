@@ -10,6 +10,7 @@ import Index from '@/pages/Index'
 import Login from '@/pages/Login'
 import ContactsDashboard from '@/pages/ContactsDashboard'
 import ResourcesIcons from '@/pages/ResourcesIcons'
+import ChangePassword from '@/pages/ChangePassword'
 import ForgotPassword from '@/pages/ForgotPassword'
 import ResetPassword from '@/pages/ResetPassword'
 import NotFound from '@/pages/NotFound'
@@ -63,6 +64,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <ResourcesIcons />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/painel/alterar-senha"
+              element={
+                <ProtectedRoute>
+                  <ChangePassword />
                 </ProtectedRoute>
               }
             />

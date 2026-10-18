@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /painel/
+Disallow: /painel
 Allow: /
 
 # LLM & AI Generative Engine Optimization index:

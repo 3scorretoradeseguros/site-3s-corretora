@@ -11,7 +11,8 @@ export default function Layout() {
   const location = useLocation()
   const isDashboardRoute =
     location.pathname.startsWith('/painel/contatos') ||
-    location.pathname.startsWith('/painel/recursos')
+    location.pathname.startsWith('/painel/recursos') ||
+    location.pathname.startsWith('/painel/alterar-senha')
   const isLandingPageRoute =
     location.pathname === '/seguro-auto-carro' ||
     location.pathname === '/seguro-auto-moto' ||
