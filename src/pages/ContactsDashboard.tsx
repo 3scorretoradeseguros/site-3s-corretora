@@ -19,6 +19,7 @@ import {
   AlertTriangle,
   ChevronDown,
   ChevronUp,
+  DownloadCloud,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -230,9 +231,24 @@ export default function ContactsDashboard() {
                     3S Corretora
                   </span>
                   <span className="text-[10px] text-slate-500 font-medium uppercase tracking-wider">
-                    Painel de Contatos
+                    Área Logada
                   </span>
                 </div>
+              </Link>
+            </div>
+
+            {/* Navegação entre seções da área logada */}
+            <div className="hidden sm:flex items-center gap-1 bg-slate-100/80 p-1 rounded-xl border border-slate-200/60">
+              <span className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-white text-[#004173] shadow-sm">
+                Contatos & Leads
+              </span>
+              <Link
+                to="/painel/recursos"
+                className="px-3 py-1.5 rounded-lg text-xs font-semibold text-slate-600 hover:text-[#004173] hover:bg-white/60 transition-colors flex items-center gap-1.5"
+                title="Acessar biblioteca de ícones e recursos da corretora"
+              >
+                <DownloadCloud className="w-3.5 h-3.5 text-[#0979B0]" />
+                <span>Recursos & Ícones</span>
               </Link>
             </div>
 
@@ -288,6 +304,13 @@ export default function ContactsDashboard() {
           </div>
 
           <div className="flex items-center gap-2">
+            <Link
+              to="/painel/recursos"
+              className="sm:hidden inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-sky-50 text-[#004173] text-xs font-semibold border border-sky-200/60"
+            >
+              <DownloadCloud className="w-3.5 h-3.5 text-[#0979B0]" />
+              <span>Ícones</span>
+            </Link>
             <Button
               variant="outline"
               size="sm"

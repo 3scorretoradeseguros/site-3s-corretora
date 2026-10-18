@@ -9,6 +9,7 @@ import Layout from '@/components/Layout'
 import Index from '@/pages/Index'
 import Login from '@/pages/Login'
 import ContactsDashboard from '@/pages/ContactsDashboard'
+import ResourcesIcons from '@/pages/ResourcesIcons'
 import ForgotPassword from '@/pages/ForgotPassword'
 import ResetPassword from '@/pages/ResetPassword'
 import NotFound from '@/pages/NotFound'
@@ -54,6 +55,14 @@ const App = () => (
               element={
                 <ProtectedRoute>
                   <ContactsDashboard />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/painel/recursos"
+              element={
+                <ProtectedRoute>
+                  <ResourcesIcons />
                 </ProtectedRoute>
               }
             />

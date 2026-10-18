@@ -9,7 +9,9 @@ import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
 
 export default function Layout() {
   const location = useLocation()
-  const isDashboardRoute = location.pathname.startsWith('/painel/contatos')
+  const isDashboardRoute =
+    location.pathname.startsWith('/painel/contatos') ||
+    location.pathname.startsWith('/painel/recursos')
   const isLandingPageRoute =
     location.pathname === '/seguro-auto-carro' ||
     location.pathname === '/seguro-auto-moto' ||
