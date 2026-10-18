@@ -9,6 +9,7 @@ import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
 
 export default function Layout() {
   const location = useLocation()
+  const isLoginRoute = location.pathname === '/painel'
   const isDashboardRoute =
     location.pathname.startsWith('/painel/contatos') ||
     location.pathname.startsWith('/painel/recursos') ||
@@ -43,8 +44,8 @@ export default function Layout() {
         <Outlet />
       </main>
       {!isDashboardRoute && <Footer />}
-      {/* Botão flutuante de WhatsApp fixo em todas as telas públicas exceto LPs e Dashboard */}
-      {!isDashboardRoute && <WhatsAppFloatingButton />}
+      {/* Botão flutuante de WhatsApp fixo em todas as telas públicas exceto LPs, Dashboard e Tela de Login */}
+      {!isDashboardRoute && !isLoginRoute && <WhatsAppFloatingButton />}
     </div>
   )
 }
