@@ -26,6 +26,12 @@ import {
   HelpCircle,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 import { SEO } from '@/components/SEO'
 import { LPHeader } from '@/components/LPHeader'
 import { LPFooter } from '@/components/LPFooter'
@@ -220,11 +226,18 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
         jsonLd={jsonLdGraph}
       />
 
-      {/* 2. Header Mínimo (apenas logo e CTA) */}
-      <LPHeader quoteUrl={data.quoteUrl} ctaText={data.ctaText} />
+      {/* 2. Header LP com navegação por âncoras e CTA */}
+      <LPHeader
+        quoteUrl={data.quoteUrl}
+        ctaText={data.ctaText}
+        hasFaq={Boolean(data.faq && data.faq.length > 0)}
+      />
 
       {/* 3. HERO SECTION (Enxuta, direta e com CTA imediato) */}
-      <section className="bg-gradient-to-b from-[#F5F8FB] via-white to-white py-12 sm:py-16 lg:py-20 border-b border-slate-100">
+      <section
+        id="inicio"
+        className="bg-gradient-to-b from-[#F5F8FB] via-white to-white py-12 sm:py-16 lg:py-20 border-b border-slate-100 scroll-mt-20"
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Texto Hero */}
@@ -289,7 +302,10 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
       </section>
 
       {/* 4. BLOCO DE MAIS INFORMAÇÕES: COBERTURAS COMUNS */}
-      <section className="py-14 sm:py-16 bg-white border-b border-slate-100">
+      <section
+        id="coberturas"
+        className="py-14 sm:py-16 bg-white border-b border-slate-100 scroll-mt-20"
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
@@ -341,7 +357,10 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
       </section>
 
       {/* 5. IMPORTÂNCIA E BENEFÍCIOS DE CONTRATAR */}
-      <section className="py-14 sm:py-16 bg-[#F5F8FB] border-b border-slate-200/70">
+      <section
+        id="vantagens"
+        className="py-14 sm:py-16 bg-[#F5F8FB] border-b border-slate-200/70 scroll-mt-20"
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
@@ -390,7 +409,10 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
       </section>
 
       {/* 6. EXEMPLOS PRÁTICOS DE USO NO DIA A DIA */}
-      <section className="py-14 sm:py-16 bg-white border-b border-slate-100">
+      <section
+        id="na-pratica"
+        className="py-14 sm:py-16 bg-white border-b border-slate-100 scroll-mt-20"
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
@@ -450,7 +472,10 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
 
       {/* 6.1. SEÇÃO DE PERGUNTAS FREQUENTES (FAQ GEO) */}
       {data.faq && data.faq.length > 0 && (
-        <section className="py-14 sm:py-16 bg-[#F5F8FB] border-b border-slate-200/70">
+        <section
+          id="faq-section"
+          className="py-14 sm:py-16 bg-[#F5F8FB] border-b border-slate-200/70 scroll-mt-20"
+        >
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-10">
               <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
@@ -465,28 +490,31 @@ export const LandingPageView: React.FC<LandingPageViewProps> = ({ data }) => {
               </p>
             </div>
 
-            <div className="space-y-4">
+            <Accordion type="single" collapsible className="space-y-4">
               {data.faq.map((item, idx) => (
-                <div
+                <AccordionItem
                   key={idx}
-                  className="bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm"
+                  value={`faq-${idx}`}
+                  className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-200 hover:border-slate-300 data-[state=open]:border-[#0979B0]/40 data-[state=open]:shadow-md"
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="w-7 h-7 rounded-lg bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0 mt-0.5">
-                      <HelpCircle className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <h3 className="font-serif font-bold text-base text-[#004173] mb-2">
+                  <AccordionTrigger className="w-full text-left p-5 sm:p-6 hover:no-underline group [&[data-state=open]>div>svg]:rotate-180">
+                    <div className="flex items-center gap-3.5 flex-1 pr-2">
+                      <div className="w-8 h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0 shadow-sm border border-slate-100 group-hover:border-[#0CB7F2]/40 transition-colors">
+                        <HelpCircle className="w-4 h-4 text-[#0CB7F2]" />
+                      </div>
+                      <h3 className="font-serif font-bold text-base sm:text-lg text-[#004173] group-hover:text-[#0979B0] transition-colors leading-snug">
                         {item.question}
                       </h3>
-                      <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                        {item.answer}
-                      </p>
                     </div>
-                  </div>
-                </div>
+                  </AccordionTrigger>
+                  <AccordionContent className="px-5 sm:px-6 pb-6 pt-0 text-sm text-slate-600 leading-relaxed">
+                    <div className="pl-[46px] border-t border-slate-200/50 pt-3">
+                      <p>{item.answer}</p>
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
               ))}
-            </div>
+            </Accordion>
 
             <div className="mt-10 text-center">
               <a
