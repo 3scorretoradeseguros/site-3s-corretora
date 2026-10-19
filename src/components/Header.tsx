@@ -110,6 +110,13 @@ export const Header: React.FC = () => {
             </button>
             <button
               type="button"
+              onClick={() => scrollToAnchor('faq-section')}
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+            >
+              FAQ
+            </button>
+            <button
+              type="button"
               onClick={() => scrollToAnchor('contato')}
               className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
             >
@@ -200,6 +207,14 @@ export const Header: React.FC = () => {
               className="flex items-center justify-between px-3 py-2 text-base font-medium text-slate-800 rounded-lg hover:bg-slate-100"
             >
               <span>Depoimentos</span>
+              <ChevronRight className="w-4 h-4 text-slate-400" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollToAnchor('faq-section')}
+              className="flex items-center justify-between px-3 py-2 text-base font-medium text-slate-800 rounded-lg hover:bg-slate-100"
+            >
+              <span>FAQ</span>
               <ChevronRight className="w-4 h-4 text-slate-400" />
             </button>
             <button
