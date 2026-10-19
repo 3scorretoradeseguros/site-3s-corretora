@@ -2,7 +2,6 @@ import React from 'react'
 import {
   ShieldCheck,
   Star,
-  Award,
   ArrowRight,
   Phone,
   CheckCircle,
@@ -14,12 +13,24 @@ import {
   Umbrella,
   Cross,
   HelpCircle,
+  Car,
+  Home,
+  HeartPulse,
+  Plane,
+  Smartphone,
+  Stethoscope,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ServicesGrid } from '@/components/ServicesGrid'
 import { ContactForm } from '@/components/ContactForm'
 import { SEO } from '@/components/SEO'
 import { COMPANY_INFO } from '@/types'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 
 export default function Index() {
   const scrollToContact = () => {
@@ -444,47 +455,59 @@ export default function Index() {
                     </text>
                   </svg>
                 </div>{' '}
-                {/* Floating Badges - Reposicionados nas bordas para NUNCA cobrir o texto central */}
-                {/* Topo / Lateral esquerda alta */}
-                <div className="absolute -top-3 -left-3 sm:-top-2 sm:-left-6 z-20 animate-float bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
-                    <Zap className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
-                      Atendimento Ágil
-                    </span>
-                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
-                      Resposta humanizada
-                    </span>
+                {/* Floating Badges com ícones dos ramos de seguros — pequenos, sem texto, ao redor do escudo e sem cobrir o lema central */}
+                {/* 1. Topo-esquerda: Carro (Seguro Auto) */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -top-3 -left-3 sm:-top-2 sm:-left-6 z-20 animate-float bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-lg border border-slate-100/90 flex items-center justify-center"
+                >
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Car className="w-4 h-4 sm:w-5 sm:h-5 text-[#0979B0]" />
                   </div>
                 </div>
-                {/* Lateral direita alta (acima da linha do texto central) */}
-                <div className="absolute top-2 -right-3 sm:top-6 sm:-right-8 z-20 animate-float [animation-delay:1.5s] bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
-                    <Award className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </div>
-                  <div>
-                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
-                      Análise Consultiva
-                    </span>
-                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
-                      Opções comparadas para você
-                    </span>
+                {/* 2. Topo-direita: Residencial (Casa) */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1 -right-3 sm:top-2 sm:-right-6 z-20 animate-float [animation-delay:1.2s] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-lg border border-slate-100/90 flex items-center justify-center"
+                >
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Home className="w-4 h-4 sm:w-5 sm:h-5 text-[#0979B0]" />
                   </div>
                 </div>
-                {/* Base / Lateral esquerda baixa (abaixo do escudo, sem cobrir o texto) */}
-                <div className="absolute -bottom-4 left-2 sm:-bottom-4 sm:left-4 z-20 animate-float [animation-delay:3s] bg-white/95 backdrop-blur-md rounded-2xl px-3.5 py-2 sm:px-4 sm:py-2.5 shadow-lg border border-slate-100 flex items-center gap-2.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
-                    <Building2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                {/* 3. Meio-esquerda externa: Seguro de Vida */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 -left-4 sm:top-1/2 sm:-left-8 -translate-y-1/2 z-20 animate-float [animation-delay:2.4s] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-lg border border-slate-100/90 flex items-center justify-center"
+                >
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <HeartPulse className="w-4 h-4 sm:w-5 sm:h-5 text-[#0979B0]" />
                   </div>
-                  <div>
-                    <span className="text-[11px] sm:text-xs font-bold text-slate-800 block leading-tight">
-                      Atendemos PJ e PF
-                    </span>
-                    <span className="text-[9px] sm:text-[10px] text-slate-500 block">
-                      Planos e seguros sob medida
-                    </span>
+                </div>
+                {/* 4. Meio-direita externa: Seguro Viagem */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute top-1/2 -right-4 sm:top-1/2 sm:-right-8 -translate-y-1/2 z-20 animate-float [animation-delay:3.6s] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-lg border border-slate-100/90 flex items-center justify-center"
+                >
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Plane className="w-4 h-4 sm:w-5 sm:h-5 text-[#0979B0]" />
+                  </div>
+                </div>
+                {/* 5. Inferior-esquerda: Planos de Saúde */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -bottom-4 left-3 sm:-bottom-3 sm:left-4 z-20 animate-float [animation-delay:1.8s] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-lg border border-slate-100/90 flex items-center justify-center"
+                >
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Stethoscope className="w-4 h-4 sm:w-5 sm:h-5 text-[#0979B0]" />
+                  </div>
+                </div>
+                {/* 6. Inferior-direita: Celular / Portáteis */}
+                <div
+                  aria-hidden="true"
+                  className="pointer-events-none absolute -bottom-4 right-3 sm:-bottom-3 sm:right-4 z-20 animate-float [animation-delay:4.8s] bg-white/95 backdrop-blur-md rounded-2xl p-2.5 sm:p-3 shadow-lg border border-slate-100/90 flex items-center justify-center"
+                >
+                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-sky-50 text-[#0979B0] flex items-center justify-center shrink-0">
+                    <Smartphone className="w-4 h-4 sm:w-5 sm:h-5 text-[#0979B0]" />
                   </div>
                 </div>{' '}
               </div>
@@ -773,26 +796,31 @@ export default function Index() {
             </p>
           </div>
 
-          <div className="space-y-4">
+          <Accordion type="single" collapsible className="space-y-4">
             {homeFaqs.map((faq, index) => (
-              <div
+              <AccordionItem
                 key={index}
-                className="bg-[#F5F8FB] rounded-2xl p-6 sm:p-7 border border-slate-200/80 shadow-sm"
+                value={`faq-${index}`}
+                className="bg-[#F5F8FB] rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden transition-all duration-200 hover:border-slate-300 data-[state=open]:border-[#0979B0]/40 data-[state=open]:shadow-md"
               >
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-xl bg-white text-[#0979B0] flex items-center justify-center shrink-0 shadow-sm border border-slate-100 mt-0.5">
-                    <HelpCircle className="w-4 h-4 text-[#0CB7F2]" />
-                  </div>
-                  <div>
-                    <h3 className="font-serif font-bold text-base sm:text-lg text-[#004173] mb-2">
+                <AccordionTrigger className="w-full text-left p-5 sm:p-6 hover:no-underline group [&[data-state=open]>div>svg]:rotate-180">
+                  <div className="flex items-center gap-3.5 flex-1 pr-2">
+                    <div className="w-8 h-8 rounded-xl bg-white text-[#0979B0] flex items-center justify-center shrink-0 shadow-sm border border-slate-100 group-hover:border-[#0CB7F2]/40 transition-colors">
+                      <HelpCircle className="w-4 h-4 text-[#0CB7F2]" />
+                    </div>
+                    <h3 className="font-serif font-bold text-base sm:text-lg text-[#004173] group-hover:text-[#0979B0] transition-colors leading-snug">
                       {faq.question}
                     </h3>
-                    <p className="text-sm text-slate-600 leading-relaxed">{faq.answer}</p>
                   </div>
-                </div>
-              </div>
+                </AccordionTrigger>
+                <AccordionContent className="px-5 sm:px-6 pb-6 pt-0 text-sm text-slate-600 leading-relaxed">
+                  <div className="pl-[46px] border-t border-slate-200/50 pt-3">
+                    <p>{faq.answer}</p>
+                  </div>
+                </AccordionContent>
+              </AccordionItem>
             ))}
-          </div>
+          </Accordion>
 
           <div className="mt-10 text-center">
             <Button
