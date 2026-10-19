@@ -260,10 +260,9 @@ export default function Index() {
                 id="hero-definition"
                 className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-normal"
               >
-                A 3S Corretora de Seguros é uma corretora de seguros e planos de saúde sediada no
-                Belenzinho, São Paulo. Atuamos com consultoria independente para pessoas físicas e
-                empresas, analisando coberturas e indicando a melhor proteção nas principais
-                seguradoras do país.
+                A 3S é uma corretora de seguros e planos de saúde. Atuamos com consultoria
+                independente para pessoas físicas e empresas, analisando coberturas e indicando a
+                melhor proteção nas principais seguradoras do país.
               </p>
 
               {/* Botões de Ação */}
