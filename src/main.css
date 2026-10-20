@@ -307,3 +307,116 @@
     animation: spotlight 2s ease forwards;
   }
 }
+
+/* ==========================================================================
+   NATIVE ACCESSIBILITY STYLES (A11Y)
+   Suporte a:
+   1. a11y-high-contrast: Contraste máximo, bordas nítidas, textos escuros/claros sólidos.
+   2. a11y-font-large (+25%) e a11y-font-larger (+50%): Escala proporcional da raiz.
+   3. a11y-reading-mode: Foco no texto, ocultando elementos puramente decorativos.
+   ========================================================================== */
+
+/* Níveis de Tamanho de Fonte Global */
+html.a11y-font-large {
+  font-size: 125%;
+}
+
+html.a11y-font-larger {
+  font-size: 150%;
+}
+
+/* Modo Alto Contraste */
+html.a11y-high-contrast {
+  filter: contrast(115%);
+}
+
+html.a11y-high-contrast body {
+  background-color: #ffffff !important;
+  color: #050505 !important;
+}
+
+/* Forçar textos a terem contraste máximo contra fundos claros */
+html.a11y-high-contrast p,
+html.a11y-high-contrast span,
+html.a11y-high-contrast li,
+html.a11y-high-contrast td,
+html.a11y-high-contrast label,
+html.a11y-high-contrast input,
+html.a11y-high-contrast textarea {
+  font-weight: 500;
+}
+
+html.a11y-high-contrast .text-slate-500,
+html.a11y-high-contrast .text-slate-600,
+html.a11y-high-contrast .text-slate-400 {
+  color: #1e293b !important; /* slate-800 com contraste altíssimo */
+}
+
+html.a11y-high-contrast [class*='text-\\[\\#004173\\]'],
+html.a11y-high-contrast [class*='text-\\[\\#0979B0\\]'] {
+  color: #002244 !important; /* Azul ainda mais escuro para máxima nitidez */
+}
+
+/* Bordas reforçadas em cards, containers e formulários */
+html.a11y-high-contrast div,
+html.a11y-high-contrast section,
+html.a11y-high-contrast article,
+html.a11y-high-contrast input,
+html.a11y-high-contrast textarea,
+html.a11y-high-contrast select,
+html.a11y-high-contrast button {
+  border-color: #334155 !important; /* Linhas bem visíveis */
+}
+
+html.a11y-high-contrast input,
+html.a11y-high-contrast textarea {
+  border-width: 2px !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+/* Links no modo alto contraste */
+html.a11y-high-contrast a:not([class*='bg-']) {
+  text-decoration: underline !important;
+  text-underline-offset: 3px !important;
+  font-weight: 600 !important;
+}
+
+/* Botões no modo alto contraste */
+html.a11y-high-contrast button,
+html.a11y-high-contrast a[class*='bg-'] {
+  border: 2px solid #000000 !important;
+}
+
+/* Foco visível hiper nítido em alto contraste */
+html.a11y-high-contrast *:focus-visible {
+  outline: 3px solid #000000 !important;
+  outline-offset: 2px !important;
+}
+
+/* Foco visível geral para acessibilidade por teclado */
+*:focus-visible {
+  outline: 2px solid #004173;
+  outline-offset: 2px;
+}
+
+/* Modo Leitura */
+html.a11y-reading-mode {
+  line-height: 1.8;
+  letter-spacing: 0.02em;
+}
+
+/* Ocultar elementos decorativos no modo leitura */
+html.a11y-reading-mode [aria-hidden='true'] {
+  opacity: 0.2;
+}
+
+/* Suavizar gradientes e backgrounds complexos no modo leitura */
+html.a11y-reading-mode section {
+  background-image: none !important;
+}
+
+/* Aumentar espaçamento entre parágrafos no modo leitura */
+html.a11y-reading-mode p {
+  margin-bottom: 1rem;
+}

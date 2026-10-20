@@ -282,6 +282,8 @@ export const ContactForm: React.FC = () => {
               setName(e.target.value)
               if (errors.name) setErrors((prev) => ({ ...prev, name: undefined }))
             }}
+            aria-invalid={Boolean(errors.name)}
+            aria-describedby={errors.name ? 'lead-name-error' : undefined}
             className={`rounded-xl h-11 border-slate-200 focus-visible:ring-[#004173] ${
               errors.name ? 'border-red-400 focus-visible:ring-red-400' : ''
             }`}
@@ -289,8 +291,13 @@ export const ContactForm: React.FC = () => {
             maxLength={120}
           />
           {errors.name && (
-            <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
-              <AlertCircle className="w-3.5 h-3.5" />
+            <p
+              id="lead-name-error"
+              role="alert"
+              aria-live="assertive"
+              className="text-xs text-red-600 flex items-center gap-1 mt-1"
+            >
+              <AlertCircle className="w-3.5 h-3.5" aria-hidden="true" />
               {errors.name}
             </p>
           )}
@@ -313,6 +320,8 @@ export const ContactForm: React.FC = () => {
               placeholder="(11) 99999-9999"
               value={whatsapp}
               onChange={handleWhatsappChange}
+              aria-invalid={Boolean(errors.whatsapp)}
+              aria-describedby={errors.whatsapp ? 'lead-whatsapp-error' : undefined}
               className={`rounded-xl h-11 border-slate-200 focus-visible:ring-[#004173] ${
                 errors.whatsapp ? 'border-red-400 focus-visible:ring-red-400' : ''
               }`}
@@ -320,8 +329,13 @@ export const ContactForm: React.FC = () => {
               maxLength={15}
             />
             {errors.whatsapp && (
-              <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
-                <AlertCircle className="w-3.5 h-3.5" />
+              <p
+                id="lead-whatsapp-error"
+                role="alert"
+                aria-live="assertive"
+                className="text-xs text-red-600 flex items-center gap-1 mt-1"
+              >
+                <AlertCircle className="w-3.5 h-3.5" aria-hidden="true" />
                 {errors.whatsapp}
               </p>
             )}
@@ -344,6 +358,8 @@ export const ContactForm: React.FC = () => {
                 setEmail(e.target.value)
                 if (errors.email) setErrors((prev) => ({ ...prev, email: undefined }))
               }}
+              aria-invalid={Boolean(errors.email)}
+              aria-describedby={errors.email ? 'lead-email-error' : undefined}
               className={`rounded-xl h-11 border-slate-200 focus-visible:ring-[#004173] ${
                 errors.email ? 'border-red-400 focus-visible:ring-red-400' : ''
               }`}
@@ -351,8 +367,13 @@ export const ContactForm: React.FC = () => {
               maxLength={150}
             />
             {errors.email && (
-              <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
-                <AlertCircle className="w-3.5 h-3.5" />
+              <p
+                id="lead-email-error"
+                role="alert"
+                aria-live="assertive"
+                className="text-xs text-red-600 flex items-center gap-1 mt-1"
+              >
+                <AlertCircle className="w-3.5 h-3.5" aria-hidden="true" />
                 {errors.email}
               </p>
             )}
@@ -377,6 +398,8 @@ export const ContactForm: React.FC = () => {
           >
             <SelectTrigger
               id="lead-need"
+              aria-invalid={Boolean(errors.need)}
+              aria-describedby={errors.need ? 'lead-need-error' : undefined}
               className={`rounded-xl h-11 border-slate-200 text-left focus:ring-[#004173] ${
                 errors.need ? 'border-red-400 focus:ring-red-400' : ''
               }`}
@@ -392,8 +415,13 @@ export const ContactForm: React.FC = () => {
             </SelectContent>
           </Select>
           {errors.need && (
-            <p className="text-xs text-red-600 flex items-center gap-1 mt-1">
-              <AlertCircle className="w-3.5 h-3.5" />
+            <p
+              id="lead-need-error"
+              role="alert"
+              aria-live="assertive"
+              className="text-xs text-red-600 flex items-center gap-1 mt-1"
+            >
+              <AlertCircle className="w-3.5 h-3.5" aria-hidden="true" />
               {errors.need}
             </p>
           )}

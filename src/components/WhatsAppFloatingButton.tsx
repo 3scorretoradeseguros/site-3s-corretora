@@ -27,7 +27,8 @@ export const WhatsAppFloatingButton: React.FC = () => {
   }, [])
 
   return (
-    <div
+    <aside
+      aria-label="Atendimento via WhatsApp"
       className={`fixed bottom-6 right-6 z-50 flex items-center transition-all duration-500 ease-out ${
         mounted ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-4 scale-90'
       }`}
@@ -36,7 +37,8 @@ export const WhatsAppFloatingButton: React.FC = () => {
         href="https://api.whatsapp.com/send?phone=5511994635763"
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Falar conosco no WhatsApp"
+        aria-label="Falar com corretor no WhatsApp"
+        title="Falar no WhatsApp"
         className="group relative flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-[#25D366] text-white shadow-xl shadow-[#25D366]/40 hover:bg-[#20ba59] hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-[#25D366]/40"
       >
         {/* Onda de pulso sutil */}
@@ -48,10 +50,13 @@ export const WhatsAppFloatingButton: React.FC = () => {
         {/* Tooltip no hover (Desktop) */}
         <span className="hidden md:block absolute right-full mr-3.5 px-3 py-1.5 rounded-xl bg-slate-900/90 backdrop-blur-sm text-white text-xs font-semibold whitespace-nowrap shadow-lg opacity-0 translate-x-2 pointer-events-none transition-all duration-200 group-hover:opacity-100 group-hover:translate-x-0">
           Fale conosco no WhatsApp
-          <span className="absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-slate-900/90 rotate-45" />
+          <span
+            className="absolute right-[-4px] top-1/2 -translate-y-1/2 w-2 h-2 bg-slate-900/90 rotate-45"
+            aria-hidden="true"
+          />
         </span>
       </a>
-    </div>
+    </aside>
   )
 }
 

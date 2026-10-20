@@ -88,7 +88,7 @@ export const LPHeader: React.FC<LPHeaderProps> = ({
                 key={item.anchor}
                 type="button"
                 onClick={() => scrollToAnchor(item.anchor)}
-                className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+                className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
               >
                 {item.label}
               </button>
@@ -110,10 +110,15 @@ export const LPHeader: React.FC<LPHeaderProps> = ({
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100"
-              aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              className="md:hidden p-2 text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
+              aria-label={mobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              {mobileMenuOpen ? (
+                <X className="w-5 h-5" aria-hidden="true" />
+              ) : (
+                <Menu className="w-5 h-5" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>

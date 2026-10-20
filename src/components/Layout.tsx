@@ -6,6 +6,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { Header } from './Header'
 import { Footer } from './Footer'
 import { WhatsAppFloatingButton } from './WhatsAppFloatingButton'
+import { AccessibilityFloatingButton } from './AccessibilityFloatingButton'
 
 export default function Layout() {
   const location = useLocation()
@@ -27,12 +28,17 @@ export default function Layout() {
     location.pathname === '/seguro-rc-profissional' ||
     location.pathname === '/planos-de-saude'
 
+  // O WhatsApp só é exibido na Home pública e páginas públicas genéricas (não nas LPs, Dashboard ou Login)
+  const showWhatsApp = !isDashboardRoute && !isLoginRoute && !isLandingPageRoute
+
   if (isLandingPageRoute) {
     return (
       <div className="flex flex-col min-h-screen bg-white text-slate-900 relative">
         <main className="flex-grow">
           <Outlet />
         </main>
+        {/* Botão nativo de acessibilidade visível também nas LPs */}
+        <AccessibilityFloatingButton hasWhatsAppBelow={false} />
       </div>
     )
   }
@@ -44,8 +50,12 @@ export default function Layout() {
         <Outlet />
       </main>
       {!isDashboardRoute && <Footer />}
-      {/* Botão flutuante de WhatsApp fixo em todas as telas públicas exceto LPs, Dashboard e Tela de Login */}
-      {!isDashboardRoute && !isLoginRoute && <WhatsAppFloatingButton />}
+
+      {/* Botão flutuante de WhatsApp fixo nas telas públicas (ex: Home) */}
+      {showWhatsApp && <WhatsAppFloatingButton />}
+
+      {/* Botão nativo de acessibilidade visível em todas as telas (Home, Login, Painel) empilhado acima do WhatsApp quando ele estiver presente */}
+      <AccessibilityFloatingButton hasWhatsAppBelow={showWhatsApp} />
     </div>
   )
 }

@@ -83,42 +83,42 @@ export const Header: React.FC = () => {
                   window.location.href = '/'
                 }
               }}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
             >
               Início
             </button>
             <button
               type="button"
               onClick={() => scrollToAnchor('coberturas')}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
             >
               Coberturas
             </button>
             <button
               type="button"
               onClick={() => scrollToAnchor('por-que-a-3s')}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
             >
               Por que a 3S
             </button>
             <button
               type="button"
               onClick={() => scrollToAnchor('depoimentos')}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
             >
               Depoimentos
             </button>
             <button
               type="button"
               onClick={() => scrollToAnchor('faq-section')}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
             >
               FAQ
             </button>
             <button
               type="button"
               onClick={() => scrollToAnchor('contato')}
-              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors"
+              className="px-3 py-2 text-sm font-medium text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100/70 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
             >
               Contato
             </button>
@@ -157,10 +157,15 @@ export const Header: React.FC = () => {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="p-2 text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100"
-              aria-label={mobileMenuOpen ? 'Fechar menu' : 'Abrir menu'}
+              className="p-2 text-slate-700 hover:text-[#004173] rounded-lg hover:bg-slate-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#004173]"
+              aria-label={mobileMenuOpen ? 'Fechar menu de navegação' : 'Abrir menu de navegação'}
+              aria-expanded={mobileMenuOpen}
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? (
+                <X className="w-6 h-6" aria-hidden="true" />
+              ) : (
+                <Menu className="w-6 h-6" aria-hidden="true" />
+              )}
             </button>
           </div>
         </div>
