@@ -71,6 +71,8 @@ export const ServicesGrid: React.FC = () => {
       {SERVICES_CATALOG.map((service) => {
         const isWhatsapp = service.quoteUrl.includes('whatsapp.com')
         const lpRoute = LP_ROUTE_MAP[service.id]
+        const isTwoLineBroker =
+          service.id === 'planos_saude' || service.id === 'responsabilidade_civil'
 
         return (
           <div
@@ -123,14 +125,24 @@ export const ServicesGrid: React.FC = () => {
                 href={service.quoteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`order-2 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-xs sm:text-[13px] font-semibold shadow-md shadow-[#004173]/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center whitespace-nowrap ${
-                  lpRoute ? 'flex-1 sm:justify-center' : 'w-full sm:w-auto mx-auto'
-                }`}
+                className={`order-2 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-xs sm:text-[13px] font-semibold shadow-md shadow-[#004173]/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center ${
+                  isTwoLineBroker ? '' : 'whitespace-nowrap'
+                } ${lpRoute ? 'flex-1 sm:justify-center' : 'w-full sm:w-auto mx-auto'}`}
                 title={`Cotar agora ${service.title}`}
               >
-                <span className="whitespace-nowrap">
-                  {isWhatsapp ? 'Fale com Corretor' : 'Cotar agora'}
-                </span>
+                {isTwoLineBroker ? (
+                  <>
+                    <span className="sm:hidden whitespace-nowrap">Fale com Corretor</span>
+                    <span className="hidden sm:flex flex-col items-center text-center leading-[1.15]">
+                      <span>Fale com</span>
+                      <span>Corretor</span>
+                    </span>
+                  </>
+                ) : (
+                  <span className="whitespace-nowrap">
+                    {isWhatsapp ? 'Fale com Corretor' : 'Cotar agora'}
+                  </span>
+                )}
                 {isWhatsapp ? (
                   <MessageCircle className="w-3.5 h-3.5 text-[#0CB7F2] shrink-0" />
                 ) : (
