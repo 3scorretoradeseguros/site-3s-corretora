@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   Car,
   Bike,
@@ -12,11 +13,25 @@ import {
   Stethoscope,
   Scale,
   HelpCircle,
-  ExternalLink,
   Phone,
   ArrowRight,
+  Info,
 } from 'lucide-react'
 import { SERVICES_CATALOG, type ServiceItem } from '@/types'
+
+const LP_ROUTE_MAP: Partial<Record<ServiceItem['id'], string>> = {
+  seguro_auto_carro: '/seguro-auto-carro',
+  seguro_auto_moto: '/seguro-auto-moto',
+  seguro_auto_caminhao: '/seguro-auto-caminhao',
+  seguro_residencial: '/seguro-residencial',
+  seguro_empresarial: '/seguro-empresarial',
+  seguro_condominio: '/seguro-condominio',
+  seguro_vida: '/seguro-de-vida',
+  seguro_viagem: '/seguro-viagem',
+  seguro_celular: '/seguro-celular',
+  responsabilidade_civil: '/seguro-rc-profissional',
+  planos_saude: '/planos-de-saude',
+}
 
 const getServiceIcon = (id: ServiceItem['id']) => {
   const iconClass =
@@ -55,6 +70,7 @@ export const ServicesGrid: React.FC = () => {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
       {SERVICES_CATALOG.map((service) => {
         const isWhatsapp = service.quoteUrl.includes('whatsapp.com')
+        const lpRoute = LP_ROUTE_MAP[service.id]
 
         return (
           <div
@@ -87,19 +103,32 @@ export const ServicesGrid: React.FC = () => {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 mt-auto">
+            <div className="pt-4 border-t border-slate-100 mt-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
+              {lpRoute ? (
+                <Link
+                  to={lpRoute}
+                  className="order-1 flex-1 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl border border-slate-300 hover:border-[#0979B0] text-slate-700 hover:text-[#004173] hover:bg-sky-50/50 text-xs sm:text-[13px] font-medium transition-all text-center"
+                  title={`Saiba mais sobre ${service.title}`}
+                >
+                  <Info className="w-3.5 h-3.5 text-[#0979B0] shrink-0" />
+                  <span>Saiba mais</span>
+                </Link>
+              ) : null}
+
               <a
                 href={service.quoteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-semibold text-[#0979B0] group-hover:text-[#004173] transition-colors focus:outline-none focus-visible:underline"
+                className={`order-2 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-xs sm:text-[13px] font-semibold shadow-md shadow-[#004173]/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center ${
+                  lpRoute ? 'flex-1 sm:justify-center' : 'w-full sm:w-auto ml-auto'
+                }`}
                 title={`Cotar agora ${service.title}`}
               >
                 <span>{isWhatsapp ? 'Fale com Corretor' : 'Cotar agora'}</span>
                 {isWhatsapp ? (
-                  <Phone className="w-4 h-4 text-[#0CB7F2] group-hover:translate-x-0.5 transition-transform" />
+                  <Phone className="w-3.5 h-3.5 text-[#0CB7F2] shrink-0" />
                 ) : (
-                  <ArrowRight className="w-4 h-4 text-[#0CB7F2] group-hover:translate-x-0.5 transition-transform" />
+                  <ArrowRight className="w-3.5 h-3.5 text-[#0CB7F2] shrink-0" />
                 )}
               </a>
             </div>
