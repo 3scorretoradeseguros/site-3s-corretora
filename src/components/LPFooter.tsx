@@ -1,5 +1,5 @@
 import React from 'react'
-import { MapPin, Phone, Mail, ShieldCheck } from 'lucide-react'
+import { MapPin, Phone, Smartphone, Mail, ShieldCheck } from 'lucide-react'
 import { COMPANY_INFO } from '@/types'
 import { Logo } from '@/components/Logo'
 
@@ -38,7 +38,7 @@ export const LPFooter: React.FC<LPFooterProps> = ({ allowWhatsAppContactLink = f
             <h3 className="font-serif font-bold text-base text-white tracking-wide">Atendimento</h3>
             <ul className="space-y-3 text-sm text-slate-300">
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-[#0CB7F2] mt-1 shrink-0" />
+                <Smartphone className="w-4 h-4 text-[#0CB7F2] mt-1 shrink-0" />
                 <div>
                   <span className="text-xs text-slate-400 block">WhatsApp / Celular</span>
                   {allowWhatsAppContactLink ? (

@@ -6,6 +6,7 @@ import { AuthProvider } from '@/contexts/AuthContext'
 import { AccessibilityProvider } from '@/contexts/AccessibilityContext'
 import { ProtectedRoute } from '@/components/ProtectedRoute'
 import Layout from '@/components/Layout'
+import { ScrollToTop } from '@/components/ScrollToTop'
 
 import Index from '@/pages/Index'
 import Login from '@/pages/Login'
@@ -19,6 +20,7 @@ import LandingPageTemplate from '@/pages/LandingPageTemplate'
 
 const App = () => (
   <BrowserRouter>
+    <ScrollToTop />
     <AuthProvider>
       <AccessibilityProvider>
         <TooltipProvider>

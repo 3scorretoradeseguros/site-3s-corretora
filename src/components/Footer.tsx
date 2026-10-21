@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail, ShieldCheck, Lock, ExternalLink, Heart } from 'lucide-react'
+import { MapPin, Phone, Smartphone, Mail, ShieldCheck, Lock } from 'lucide-react'
 import { COMPANY_INFO } from '@/types'
 import { Logo } from '@/components/Logo'
+import { LinkedInIcon, InstagramIcon, FacebookIcon, GoogleIcon } from '@/components/SocialIcons'
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
@@ -42,7 +43,7 @@ export const Footer: React.FC = () => {
                   aria-label="LinkedIn da 3S Corretora"
                   title="LinkedIn"
                 >
-                  <span className="font-bold text-xs">in</span>
+                  <LinkedInIcon className="w-4 h-4 fill-current" />
                 </a>
                 <a
                   href={COMPANY_INFO.social.instagram}
@@ -52,7 +53,7 @@ export const Footer: React.FC = () => {
                   aria-label="Instagram da 3S Corretora"
                   title="Instagram"
                 >
-                  <span className="font-bold text-xs">ig</span>
+                  <InstagramIcon className="w-4 h-4 fill-current" />
                 </a>
                 <a
                   href={COMPANY_INFO.social.facebook}
@@ -62,7 +63,7 @@ export const Footer: React.FC = () => {
                   aria-label="Facebook da 3S Corretora"
                   title="Facebook"
                 >
-                  <span className="font-bold text-xs">fb</span>
+                  <FacebookIcon className="w-4 h-4 fill-current" />
                 </a>
                 <a
                   href={COMPANY_INFO.social.google}
@@ -72,7 +73,7 @@ export const Footer: React.FC = () => {
                   aria-label="Avaliações no Google da 3S Corretora"
                   title="Google"
                 >
-                  <span className="font-bold text-xs">G</span>
+                  <GoogleIcon className="w-4 h-4 fill-current" />
                 </a>
               </div>
             </div>
@@ -85,7 +86,7 @@ export const Footer: React.FC = () => {
             </h3>
             <ul className="space-y-3 text-sm text-slate-300">
               <li className="flex items-start gap-3">
-                <Phone className="w-4 h-4 text-[#0CB7F2] mt-1 shrink-0" />
+                <Smartphone className="w-4 h-4 text-[#0CB7F2] mt-1 shrink-0" />
                 <div>
                   <span className="text-xs text-slate-400 block">WhatsApp / Celular</span>
                   <a

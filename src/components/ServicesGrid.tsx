@@ -13,7 +13,7 @@ import {
   Stethoscope,
   Scale,
   HelpCircle,
-  Phone,
+  MessageCircle,
   ArrowRight,
   Info,
 } from 'lucide-react'
@@ -103,11 +103,15 @@ export const ServicesGrid: React.FC = () => {
               </p>
             </div>
 
-            <div className="pt-4 border-t border-slate-100 mt-auto flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5">
+            <div
+              className={`pt-4 border-t border-slate-100 mt-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 ${
+                lpRoute ? 'justify-between' : 'justify-center'
+              }`}
+            >
               {lpRoute ? (
                 <Link
                   to={lpRoute}
-                  className="order-1 flex-1 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl border border-slate-300 hover:border-[#0979B0] text-slate-700 hover:text-[#004173] hover:bg-sky-50/50 text-xs sm:text-[13px] font-medium transition-all text-center"
+                  className="order-1 flex-1 inline-flex items-center justify-center gap-1.5 h-10 px-3 rounded-xl border border-slate-300 hover:border-[#0979B0] text-slate-700 hover:text-[#004173] hover:bg-sky-50/50 text-xs sm:text-[13px] font-medium transition-all text-center whitespace-nowrap"
                   title={`Saiba mais sobre ${service.title}`}
                 >
                   <Info className="w-3.5 h-3.5 text-[#0979B0] shrink-0" />
@@ -119,14 +123,16 @@ export const ServicesGrid: React.FC = () => {
                 href={service.quoteUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`order-2 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-xs sm:text-[13px] font-semibold shadow-md shadow-[#004173]/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center ${
-                  lpRoute ? 'flex-1 sm:justify-center' : 'w-full sm:w-auto ml-auto'
+                className={`order-2 inline-flex items-center justify-center gap-1.5 h-10 px-3.5 rounded-xl bg-[#004173] hover:bg-[#00335c] text-white text-xs sm:text-[13px] font-semibold shadow-md shadow-[#004173]/20 hover:scale-[1.02] active:scale-[0.98] transition-all text-center whitespace-nowrap ${
+                  lpRoute ? 'flex-1 sm:justify-center' : 'w-full sm:w-auto mx-auto'
                 }`}
                 title={`Cotar agora ${service.title}`}
               >
-                <span>{isWhatsapp ? 'Fale com Corretor' : 'Cotar agora'}</span>
+                <span className="whitespace-nowrap">
+                  {isWhatsapp ? 'Fale com Corretor' : 'Cotar agora'}
+                </span>
                 {isWhatsapp ? (
-                  <Phone className="w-3.5 h-3.5 text-[#0CB7F2] shrink-0" />
+                  <MessageCircle className="w-3.5 h-3.5 text-[#0CB7F2] shrink-0" />
                 ) : (
                   <ArrowRight className="w-3.5 h-3.5 text-[#0CB7F2] shrink-0" />
                 )}

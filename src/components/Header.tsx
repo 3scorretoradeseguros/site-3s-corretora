@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { ShieldCheck, Menu, X, Phone, ChevronRight } from 'lucide-react'
+import { ShieldCheck, Menu, X, Smartphone, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { COMPANY_INFO } from '@/types'
 import { Logo } from '@/components/Logo'
@@ -134,9 +134,9 @@ export const Header: React.FC = () => {
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                title="Falar no WhatsApp"
+                title="Falar com Corretor"
               >
-                <Phone className="w-4 h-4 text-[#0CB7F2]" />
+                <Smartphone className="w-4 h-4 text-[#0CB7F2]" />
                 <span>Falar com Corretor</span>
               </a>
             </Button>
@@ -238,8 +238,8 @@ export const Header: React.FC = () => {
               className="w-full bg-[#004173] hover:bg-[#00335c] text-white rounded-xl py-2.5 font-medium flex items-center justify-center gap-2"
             >
               <a href={COMPANY_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer">
-                <Phone className="w-4 h-4 text-[#0CB7F2]" />
-                <span>Falar no WhatsApp</span>
+                <Smartphone className="w-4 h-4 text-[#0CB7F2]" />
+                <span>Falar com Corretor</span>
               </a>
             </Button>
           </div>
