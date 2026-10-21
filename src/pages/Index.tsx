@@ -283,7 +283,7 @@ export default function Index() {
                   className="w-full sm:w-auto h-12 px-6 rounded-xl border-slate-300 hover:border-[#0979B0] hover:text-[#004173] hover:bg-sky-50/50 font-medium transition-all"
                 >
                   <a href={COMPANY_INFO.whatsappUrl} target="_blank" rel="noopener noreferrer">
-                    <Phone className="w-4 h-4 text-[#0979B0] mr-2" />
+                    <Smartphone className="w-4 h-4 text-[#0979B0] mr-2" />
                     <span>Falar com o Corretor</span>
                   </a>
                 </Button>
