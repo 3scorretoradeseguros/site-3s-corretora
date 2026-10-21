@@ -567,9 +567,7 @@ export default function Index() {
           <ServicesGrid />
 
           <div className="mt-12 text-center">
-            <p className="text-sm text-slate-500 mb-4">
-              Precisa de uma condição especial ou múltiplos seguros?
-            </p>
+            <p className="text-sm text-slate-500 mb-4">Precisa de múltiplos seguros?</p>
             <Button
               onClick={scrollToContact}
               className="rounded-xl bg-[#004173] hover:bg-[#00335c] text-white px-6 font-medium shadow-md"
