@@ -10,11 +10,15 @@ import { AccessibilityFloatingButton } from './AccessibilityFloatingButton'
 
 export default function Layout() {
   const location = useLocation()
-  const isLoginRoute = location.pathname === '/painel'
-  const isDashboardRoute =
-    location.pathname.startsWith('/painel/contatos') ||
-    location.pathname.startsWith('/painel/recursos') ||
-    location.pathname.startsWith('/painel/alterar-senha')
+  // Identifica rotas da área restrita / painel / autenticação:
+  // /painel e quaisquer sub-rotas (/painel/contatos, /painel/depoimentos, /painel/recursos, /painel/alterar-senha...),
+  // além das telas de autenticação (/recuperar-senha, /redefinir-senha).
+  const isPanelOrAuthRoute =
+    location.pathname === '/painel' ||
+    location.pathname.startsWith('/painel/') ||
+    location.pathname === '/recuperar-senha' ||
+    location.pathname === '/redefinir-senha'
+
   const isLandingPageRoute =
     location.pathname === '/seguro-auto-carro' ||
     location.pathname === '/seguro-auto-moto' ||
@@ -28,34 +32,47 @@ export default function Layout() {
     location.pathname === '/seguro-rc-profissional' ||
     location.pathname === '/planos-de-saude'
 
-  // O WhatsApp só é exibido na Home pública e páginas públicas genéricas (não nas LPs, Dashboard ou Login)
-  const showWhatsApp = !isDashboardRoute && !isLoginRoute && !isLandingPageRoute
+  // Caso 1: Área logada / Telas do painel e autenticação
+  // Removidos por completo: Header público, Footer público, WhatsApp flutuante e Botão de acessibilidade flutuante.
+  // As preferências de acessibilidade continuam ativas via AccessibilityProvider.
+  if (isPanelOrAuthRoute) {
+    return (
+      <div className="flex flex-col min-h-screen bg-slate-50 text-slate-900 relative">
+        <main className="flex-grow">
+          <Outlet />
+        </main>
+      </div>
+    )
+  }
 
+  // Caso 2: Landing Pages dedicadas (possuem seu próprio LPHeader e LPFooter; sem WhatsApp flutuante; com Botão de acessibilidade)
   if (isLandingPageRoute) {
     return (
       <div className="flex flex-col min-h-screen bg-white text-slate-900 relative">
         <main className="flex-grow">
           <Outlet />
         </main>
-        {/* Botão nativo de acessibilidade visível também nas LPs */}
+        {/* Botão nativo de acessibilidade visível nas LPs */}
         <AccessibilityFloatingButton hasWhatsAppBelow={false} />
       </div>
     )
   }
 
+  // Caso 3: Páginas públicas (Home, 404, etc.)
+  // Exibe Header, Footer, WhatsApp flutuante e Botão de acessibilidade flutuante.
   return (
     <div className="flex flex-col min-h-screen bg-white text-slate-900 relative">
-      {!isDashboardRoute && <Header />}
-      <main className={`flex-grow ${!isDashboardRoute ? 'pt-[76px]' : ''}`}>
+      <Header />
+      <main className="flex-grow pt-[76px]">
         <Outlet />
       </main>
-      {!isDashboardRoute && <Footer />}
+      <Footer />
 
-      {/* Botão flutuante de WhatsApp fixo nas telas públicas (ex: Home) */}
-      {showWhatsApp && <WhatsAppFloatingButton />}
+      {/* Botão flutuante de WhatsApp fixo nas telas públicas */}
+      <WhatsAppFloatingButton />
 
-      {/* Botão nativo de acessibilidade visível em todas as telas (Home, Login, Painel) empilhado acima do WhatsApp quando ele estiver presente */}
-      <AccessibilityFloatingButton hasWhatsAppBelow={showWhatsApp} />
+      {/* Botão nativo de acessibilidade visível nas páginas públicas, empilhado acima do WhatsApp */}
+      <AccessibilityFloatingButton hasWhatsAppBelow={true} />
     </div>
   )
 }
