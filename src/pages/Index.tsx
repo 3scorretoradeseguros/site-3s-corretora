@@ -23,6 +23,7 @@ import {
 import { Button } from '@/components/ui/button'
 import { ServicesGrid } from '@/components/ServicesGrid'
 import { ContactForm } from '@/components/ContactForm'
+import { TestimonialsSection } from '@/components/TestimonialsSection'
 import { SEO } from '@/components/SEO'
 import { COMPANY_INFO } from '@/types'
 import {
@@ -688,92 +689,8 @@ export default function Index() {
             </div>
           </div>
 
-          {/* Cabeçalho dos depoimentos */}
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="text-xs font-bold uppercase tracking-wider text-[#0979B0] block mb-2">
-              Depoimentos Reais
-            </span>
-            <h2 className="font-serif font-black text-3xl sm:text-4xl text-[#004173] tracking-tight">
-              Quem confia, recomenda
-            </h2>
-          </div>
-
-          {/* Cards de Depoimentos */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-slate-700 text-sm leading-relaxed italic mb-6">
-                  "Renovei o seguro do meu carro com a 3S e foi a melhor experiência. Atendimento
-                  super ágil, encontraram um valor menor do que eu pagava e com assistência ainda
-                  melhor."
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-sky-100 text-[#004173] font-bold text-sm flex items-center justify-center">
-                  MS
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-sm text-slate-900">Marcelo Santoro</h4>
-                  <p className="text-xs text-slate-500">Cliente — Seguro Auto</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-slate-700 text-sm leading-relaxed italic mb-6">
-                  "A Ana Paula e sua equipe cuidaram de todo o seguro patrimonial da nossa empresa
-                  no Belenzinho. Explicaram cada detalhe da apólice sem complicação. Recomendo
-                  fortemente."
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-sky-100 text-[#004173] font-bold text-sm flex items-center justify-center">
-                  CR
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-sm text-slate-900">Cláudia Regina</h4>
-                  <p className="text-xs text-slate-500">Empresária — Seguro Empresarial</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white rounded-2xl p-8 border border-slate-200/80 shadow-sm flex flex-col justify-between">
-              <div>
-                <div className="flex items-center gap-1 text-amber-400 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400" />
-                  ))}
-                </div>
-                <p className="text-slate-700 text-sm leading-relaxed italic mb-6">
-                  "Estávamos perdidos com tantas opções de plano de saúde para nossa família. A
-                  corretora comparou as redes credenciadas e achou a opção com o melhor
-                  custo-benefício."
-                </p>
-              </div>
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-sky-100 text-[#004173] font-bold text-sm flex items-center justify-center">
-                  GF
-                </div>
-                <div>
-                  <h4 className="font-serif font-bold text-sm text-slate-900">
-                    Gustavo Figueiredo
-                  </h4>
-                  <p className="text-xs text-slate-500">Família — Plano de Saúde</p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Carrossel Dinâmico Infinito de Depoimentos (com cabeçalho interno auto-ocultável caso não haja depoimentos) */}
+          <TestimonialsSection />
         </div>
       </section>
 

@@ -53,6 +53,40 @@ export const CONTACT_NEED_LABELS: Record<ContactNeed, string> = {
   outros: 'Outros Seguros',
 }
 
+export type TestimonialSource = 'site' | 'google'
+
+export interface TestimonialRecord {
+  id: string
+  collectionId: string
+  collectionName: string
+  name: string
+  text: string
+  rating: number
+  source: TestimonialSource
+  active: boolean
+  sort_order: number
+  created: string
+  updated: string
+}
+
+export interface CreateTestimonialInput {
+  name: string
+  text: string
+  rating?: number
+  source: TestimonialSource
+  active?: boolean
+  sort_order?: number
+}
+
+export interface UpdateTestimonialInput {
+  name?: string
+  text?: string
+  rating?: number
+  source?: TestimonialSource
+  active?: boolean
+  sort_order?: number
+}
+
 export const COMPANY_INFO = {
   name: '3S Corretora de Seguros',
   subtitle: 'corretora de seguros e planos de saúde',

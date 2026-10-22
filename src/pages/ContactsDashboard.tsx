@@ -231,6 +231,12 @@ export default function ContactsDashboard() {
 
           <div className="flex items-center gap-2">
             <Link
+              to="/painel/depoimentos"
+              className="sm:hidden inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-sky-50 text-[#004173] text-xs font-semibold border border-sky-200/60"
+            >
+              <span>Depoimentos</span>
+            </Link>
+            <Link
               to="/painel/recursos"
               className="sm:hidden inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-xl bg-sky-50 text-[#004173] text-xs font-semibold border border-sky-200/60"
             >

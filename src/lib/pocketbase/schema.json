@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-21T13:43:32.627Z",
+  "generatedAt": "2026-10-22T13:56:32.972Z",
   "collections": [
     {
       "name": "users",
@@ -130,6 +130,74 @@
       "indexes": [
         "CREATE INDEX idx_contacts_status ON contacts (status)",
         "CREATE INDEX idx_contacts_created ON contacts (created DESC)"
+      ]
+    },
+    {
+      "name": "testimonials",
+      "type": "base",
+      "apiRules": {
+        "list": "",
+        "view": "",
+        "create": "@request.auth.id != ''",
+        "update": "@request.auth.id != ''",
+        "delete": "@request.auth.id != ''"
+      },
+      "fields": [
+        {
+          "name": "name",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "text",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "rating",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "source",
+          "type": "select",
+          "required": true,
+          "system": false,
+          "selectValues": ["site", "google"]
+        },
+        {
+          "name": "active",
+          "type": "bool",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "sort_order",
+          "type": "number",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate"]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate", "onUpdate"]
+        }
+      ],
+      "indexes": [
+        "CREATE INDEX idx_testimonials_active_sort ON testimonials (active, sort_order ASC)",
+        "CREATE INDEX idx_testimonials_sort ON testimonials (sort_order ASC)"
       ]
     }
   ]

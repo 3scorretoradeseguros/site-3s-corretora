@@ -11,6 +11,7 @@ import { ScrollToTop } from '@/components/ScrollToTop'
 import Index from '@/pages/Index'
 import Login from '@/pages/Login'
 import ContactsDashboard from '@/pages/ContactsDashboard'
+import TestimonialsDashboard from '@/pages/TestimonialsDashboard'
 import ResourcesIcons from '@/pages/ResourcesIcons'
 import ChangePassword from '@/pages/ChangePassword'
 import ForgotPassword from '@/pages/ForgotPassword'
@@ -60,6 +61,14 @@ const App = () => (
                 element={
                   <ProtectedRoute>
                     <ContactsDashboard />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/painel/depoimentos"
+                element={
+                  <ProtectedRoute>
+                    <TestimonialsDashboard />
                   </ProtectedRoute>
                 }
               />

@@ -3,10 +3,17 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { Logo } from '@/components/Logo'
 import { useAuth } from '@/contexts/AuthContext'
 import { Button } from '@/components/ui/button'
-import { Inbox, DownloadCloud, KeyRound, ExternalLink, LogOut } from 'lucide-react'
+import {
+  Inbox,
+  MessageSquareQuote,
+  DownloadCloud,
+  KeyRound,
+  ExternalLink,
+  LogOut,
+} from 'lucide-react'
 
 interface DashboardHeaderProps {
-  currentTab?: 'contatos' | 'recursos' | 'senha'
+  currentTab?: 'contatos' | 'depoimentos' | 'recursos' | 'senha'
 }
 
 export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ currentTab }) => {
@@ -16,11 +23,13 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ currentTab }) 
 
   const active =
     currentTab ||
-    (location.pathname.startsWith('/painel/recursos')
-      ? 'recursos'
-      : location.pathname.startsWith('/painel/alterar-senha')
-        ? 'senha'
-        : 'contatos')
+    (location.pathname.startsWith('/painel/depoimentos')
+      ? 'depoimentos'
+      : location.pathname.startsWith('/painel/recursos')
+        ? 'recursos'
+        : location.pathname.startsWith('/painel/alterar-senha')
+          ? 'senha'
+          : 'contatos')
 
   const handleLogout = () => {
     logout()
@@ -59,6 +68,18 @@ export const DashboardHeader: React.FC<DashboardHeaderProps> = ({ currentTab }) 
             >
               <Inbox className="w-3.5 h-3.5 text-[#0979B0]" />
               <span>Contatos & Leads</span>
+            </Link>
+            <Link
+              to="/painel/depoimentos"
+              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-colors flex items-center gap-1.5 ${
+                active === 'depoimentos'
+                  ? 'bg-white text-[#004173] shadow-sm'
+                  : 'text-slate-600 hover:text-[#004173] hover:bg-white/60'
+              }`}
+              title="Gerenciar depoimentos exibidos no site"
+            >
+              <MessageSquareQuote className="w-3.5 h-3.5 text-[#0979B0]" />
+              <span>Depoimentos</span>
             </Link>
             <Link
               to="/painel/recursos"
