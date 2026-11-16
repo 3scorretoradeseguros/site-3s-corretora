@@ -1,12 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { MapPin, Phone, Smartphone, Mail, ShieldCheck, Lock } from 'lucide-react'
 import { COMPANY_INFO } from '@/types'
 import { Logo } from '@/components/Logo'
 import { LinkedInIcon, InstagramIcon, FacebookIcon, GoogleIcon } from '@/components/SocialIcons'
+import { ReviewSeguroBadge } from '@/components/ReviewSeguroBadge'
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
+  const location = useLocation()
+  // Selo ReviewSeguro aparece somente na home (rota "/")
+  const isHome = location.pathname === '/'
 
   return (
     <footer className="bg-[#002847] text-white pt-16 pb-12 border-t border-slate-800">
@@ -170,6 +174,15 @@ export const Footer: React.FC = () => {
             </div>
           </div>
         </div>
+
+        {/* Selo de avaliações ReviewSeguro (somente na home) */}
+        {isHome && (
+          <div className="pt-8 flex justify-center">
+            <div className="bg-white rounded-2xl p-3 shadow-md">
+              <ReviewSeguroBadge />
+            </div>
+          </div>
+        )}
 
         {/* Rodapé inferior */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
