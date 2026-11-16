@@ -5,12 +5,15 @@ import { COMPANY_INFO } from '@/types'
 import { Logo } from '@/components/Logo'
 import { LinkedInIcon, InstagramIcon, FacebookIcon, GoogleIcon } from '@/components/SocialIcons'
 import { ReviewSeguroBadge } from '@/components/ReviewSeguroBadge'
+import { useReviewSeguroBadgeEnabled } from '@/hooks/use-reviewseguro-badge-enabled'
 
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear()
   const location = useLocation()
   // Selo ReviewSeguro aparece somente na home (rota "/")
   const isHome = location.pathname === '/'
+  // Preferência salva no painel: o selo só é renderizado (e seu script carregado) se ativado
+  const badgeEnabled = useReviewSeguroBadgeEnabled(isHome)
 
   return (
     <footer className="bg-[#002847] text-white pt-16 pb-12 border-t border-slate-800">
@@ -176,7 +179,7 @@ export const Footer: React.FC = () => {
         </div>
 
         {/* Selo de avaliações ReviewSeguro (somente na home) */}
-        {isHome && (
+        {badgeEnabled && (
           <div className="pt-8 flex justify-center">
             <div className="bg-white rounded-2xl p-3 shadow-md">
               <ReviewSeguroBadge />

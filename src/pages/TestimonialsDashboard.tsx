@@ -50,6 +50,7 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { GoogleIcon } from '@/components/SocialIcons'
+import { ReviewSeguroBadgeControl } from '@/components/ReviewSeguroBadgeControl'
 import { toast } from '@/hooks/use-toast'
 import {
   getTestimonials,
@@ -368,6 +369,9 @@ export default function TestimonialsDashboard() {
             </Button>
           </div>
         </div>
+
+        {/* SELO REVIEWSEGURO (exibição no rodapé da home) */}
+        <ReviewSeguroBadgeControl />
 
         {/* ALERTA INFORMATIVO SOBRE REQUISITO DO SISTEMA */}
         <div className="bg-gradient-to-r from-sky-50 to-blue-50 border border-sky-200 rounded-2xl p-4 sm:p-5 mb-8 flex items-start gap-3.5 shadow-sm">

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-16T12:55:38.759Z",
+  "generatedAt": "2026-11-16T13:23:02.414Z",
   "collections": [
     {
       "name": "users",
@@ -198,6 +198,48 @@
       "indexes": [
         "CREATE INDEX idx_testimonials_active_sort ON testimonials (active, sort_order ASC)",
         "CREATE INDEX idx_testimonials_sort ON testimonials (sort_order ASC)"
+      ]
+    },
+    {
+      "name": "site_settings",
+      "type": "base",
+      "apiRules": {
+        "list": "",
+        "view": "",
+        "create": "@request.auth.id != ''",
+        "update": "@request.auth.id != ''",
+        "delete": "@request.auth.id != ''"
+      },
+      "fields": [
+        {
+          "name": "setting_key",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "value",
+          "type": "text",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate"]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": ["onCreate", "onUpdate"]
+        }
+      ],
+      "indexes": [
+        "CREATE UNIQUE INDEX idx_site_settings_setting_key ON site_settings (setting_key)"
       ]
     }
   ]
